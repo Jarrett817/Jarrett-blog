@@ -1,0 +1,67 @@
+@import './vars.css';
+
+/* 覆盖vitepress默认的颜色样式 */
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+* {
+  scroll-behavior: smooth;
+}
+
+.no-sidebar {
+  .home {
+    padding-top: 0 !important;
+    &-hero {
+      padding: 0 !important;
+      margin: var(--header-height) 0 !important;
+      .figure {
+        padding: 0 !important;
+        vertical-align: text-top;
+
+        & > .image {
+          margin: 0;
+          height: 100%;
+          width: 100%;
+          max-height: 400px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+/* ===== Scrollbar CSS ===== */ /* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--blue-atoll) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 22px;
+  border: 3px solid #ffffff;
+}
+.sidebar:hover,
+.no-sidebar:hover {
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--blue-atoll);
+  }
+}
+
+body::-webkit-scrollbar {
+  &-thumb {
+    background-color: var(--blue-atoll);
+  }
+}
