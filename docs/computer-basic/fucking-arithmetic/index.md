@@ -1,4 +1,14 @@
-# 时间空间复杂度
+---
+title: 数据结构与算法
+desc: 数据结构与算法笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# 数据结构与算法
+
+## 时间空间复杂度
 
 算法是用来操作数据、解决问题的一组方法。主要是用事后统计法和事前分析估算衡量算法之间的优劣。
 事后统计是通过统计、监控、利用计时器对不同算法的运行时间进行比较，从而确定算法效率的高低，但是有非常大的局限性。
@@ -43,11 +53,11 @@ n*2 及以上阶的时间复杂度效率很低，递归的时间复杂度约为 
 ![image.png](./images/complexity.png)
 还可以考虑概率，但实际应用中，我们一般只看最坏的情况。
 
-# 数组
+## 数组
 
 数组下标都是从 0 开始，内存空间的地址是连续的
 
-## 为什么很多语言中数组都从 0 开始编号
+### 为什么很多语言中数组都从 0 开始编号
 
 ### 如何实现随机访问
 
@@ -451,7 +461,7 @@ const bSearch = (array, n, value) => {
 };
 ```
 
-##### 查找第一个值等于给定值的元素
+#### 查找第一个值等于给定值的元素
 
 分两种情况，算上右侧边界，需要定 right=nums.length-1，否则不用减 1
 
@@ -477,68 +487,6 @@ var search = function (nums, target) {
   return -1;
 };
 ```
-
-##### 查找最后一个值等于给定值的元素
-
-```js
-const bsearch = (ary, value) => {
-  let low = 0;
-  let high = ary.length - 1;
-  while (low <= high) {
-    let mid = low + ((high - low) >> 1);
-    if (ary[mid] > value) {
-      high = mid - 1;
-    } else if (a[mid] < value) {
-      low = mid + 1;
-    } else {
-      if (mid === ary.length - 1 || a[mid + 1] !== value) return mid;
-      else low = mid = 1;
-    }
-  }
-  return -1;
-};
-```
-
-##### 查找第一个大于等于给定值的元素
-
-```js
-const bsearch = (ary, value) => {
-  let low = 0;
-  let high = ary.length - 1;
-  while (low <= high) {
-    let mid = low + ((high - low) >> 1);
-    if (ary[mid] >= value) {
-      if (mid === 0 || ary[mid - 1] >= value) return mid;
-      else high = mid - 1;
-    } else {
-      low = mid + 1;
-    }
-  }
-  return -1;
-};
-```
-
-##### 查找最后一个小于等于给定值的元素
-
-```js
-const bsearch = (ary, value) => {
-  let low = 0;
-  let high = ary.length - 1;
-  while (low <= high) {
-    let mid = low + ((high - low) >> 1);
-    if (ary[mid] > value) {
-      high = mid - 1;
-    } else {
-      low = mid + 1;
-      if (mid === ary.length - 1 || ary[mid + 1] > value) return mid;
-      else low = mid + 1;
-    }
-  }
-  return -1;
-};
-```
-
-## 跳表
 
 ## 移除元素
 

@@ -1,4 +1,14 @@
-# JS 数据类型
+---
+title: js
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# JavaScript
+
+## JS 数据类型
 
 js 数据类型包括四基两空一对象
 
@@ -10,9 +20,9 @@ js 数据类型包括四基两空一对象
 1. Symbol；
 1. Object。
 
-## 两个空类型
+### 两个空类型
 
-### Undefined
+#### Undefined
 
 Undefined 类型表示未定义，只有一个值 undefined，任何变量在赋值前都是 Undefined 类型，值为 undefined。
 一般可以用全局变量 undefined 直接使用，但是 js 设计上有个失误，undefined 是个变量而不是关键字
@@ -27,13 +37,13 @@ const test = () => {
 
 使用 void(0)获取 undefined 是更好的做法
 
-### Null
+#### Null
 
 Null 表示定义了但是为空，也只有一个值 null，但是 null 是 JS 关键字，所以可以放心使用 null 关键字来获取 null 值
 null 更准确的说是一个空对象指针，用 typeof 检测返回的是 object
 null 可以用来做对象的初始化
 
-## Symbol
+### Symbol
 
 ES6 中引入的新原始数据类型，一切非字符串的对象 key 的集合。
 Symbol 值通过 Symbol 构造函数生成，生成一个 **全局独一无二的值** ，即便使用相同的字符串作为参数，它们也不相等。这个参数相当于一种描述
@@ -54,9 +64,9 @@ sym.toString();
 sym.description;
 ```
 
-# 作用域和闭包
+## 作用域和闭包
 
-## 闭包的概念
+### 闭包的概念
 
 - MDN:
   - 函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你**_从内部函数访问外部函数作用域_**。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。
@@ -66,7 +76,7 @@ sym.description;
 
 总结下来就是闭包是定义在一个函数内部的函数，可以从内部函数访问外部函数作用域，它是由函数以及声明该函数的词法环境组合而成的，包含被引用变量 or 函数的对象
 
-## 变量的作用域
+### 变量的作用域
 
 首先明确 JavaScript 中变量的作用域。
 
@@ -186,7 +196,7 @@ var Counter = (function () {
     },
     value: function () {
       return privateCounter;
-    }
+    },
   };
 })();
 
@@ -211,7 +221,7 @@ var makeCounter = function () {
     },
     value: function () {
       return privateCounter;
-    }
+    },
   };
 };
 
@@ -1079,7 +1089,8 @@ class Promise {
   }
   then(onFulfilled, onRejected) {
     // onFulfilled如果不是函数，就忽略onFulfilled，直接返回value
-    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
+    onFulfilled =
+      typeof onFulfilled === 'function' ? onFulfilled : value => value;
     // onRejected如果不是函数，就忽略onRejected，直接扔出错误
     onRejected =
       typeof onRejected === 'function'
@@ -1299,7 +1310,7 @@ function throttle(fn, delay) {
 let box = document.querySelector('.box');
 let down = {
   x: 0,
-  y: 0
+  y: 0,
 };
 let move = {};
 

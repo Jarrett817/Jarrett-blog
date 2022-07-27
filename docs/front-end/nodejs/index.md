@@ -1,3 +1,13 @@
+---
+title: node
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# nodejs
+
 ## nodejs 是什么？
 
 不是 web 框架，也不是编程语言，而是一个将多种技术组合起来的平台

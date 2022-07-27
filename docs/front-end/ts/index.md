@@ -1,10 +1,20 @@
+---
+title: node
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# typescript
+
 ## 启用 ts
 
-webpack+babel
+- webpack+babel
 
-vite2
+- vite2
 
-tsc typescript compiler 执行编译，会把 ts 编译成 js
+- tsc typescript compiler 执行编译，会把 ts 编译成 js
 
 ## 类型 type vs 类 class
 
@@ -58,7 +68,7 @@ enum Dir {
   东,
   南,
   西,
-  北
+  北,
 }
 
 let d: Dir = Dir.东; //即Dir.东是0
@@ -66,11 +76,11 @@ let d: Dir = Dir.东; //即Dir.东是0
 
 ## 注意点
 
-typeof null 会返回 object，错误点
+- typeof null 会返回 object，错误点
 
-typeof funtion 会返回 function，但函数也是对象
+- typeof funtion 会返回 function，但函数也是对象
 
-class 包括 Array、Function，class 既是 value 也是 type
+- class 包括 Array、Function，class 既是 value 也是 type
 
 ```ts
 class A {}
@@ -172,7 +182,7 @@ const createResource = (path: string) => {
     create(attrs: Omit<Partial<User>, 'id'>) {},
     delete() {},
     update() {},
-    get() {}
+    get() {},
   };
 };
 var userResource = createFetcher('/api/v1/user');

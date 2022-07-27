@@ -1,6 +1,16 @@
-# 为什么要使用单页面应用
+---
+title: vue
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
 
-## 传统的网页应用
+# vue
+
+## 为什么要使用单页面应用
+
+### 传统的网页应用
 
 ---
 
@@ -9,13 +19,13 @@
 传统的网页应用，浏览器作为展示层，路由处理、服务调用、页面跳转都由后端处理，即便有 ajax，但也并不是标准的单页面应用。
 这种网页应用的重心都在后端，后端几乎包揽了 MVC，浏览器端仅是一个展示层
 
-## 单页面应用
+### 单页面应用
 
 ---
 
 MVC 前置到浏览器端，前端负责路由，各个小的组件组成页面，在路由变化时，不刷新整个页面，仅仅是组合小的组件，替换变化部分。甚至数据层也在前端，前端封装后端 API，这种情况下，后端只是提供操作数据库的 API
 
-## 单页面应用的优点
+### 单页面应用的优点
 
 ---
 
@@ -23,7 +33,7 @@ MVC 前置到浏览器端，前端负责路由，各个小的组件组成页面�
 - 前端组件化，代码的结构和组织更加规划化，利于修改和维护，并且可以开发独立的组件库，开发时直接使用即可，极大提高了开发效率
 - API 共享，如果要多端开发（浏览器、微信、安卓、ios），只需要修改容易变化的前端 UI，对后端 API 的调用基本是相同的，极大的降低了开发成本
 
-## 单页面应用的缺点
+### 单页面应用的缺点
 
 ---
 
@@ -34,15 +44,15 @@ MVC 前置到浏览器端，前端负责路由，各个小的组件组成页面�
 
 ---
 
-# vue 核心
+## vue 核心
 
-## vue 的响应式原理
+### vue 的响应式原理
 
 vue2 通过数据劫持 ➕ 发布订阅模式实现数据响应式
 主要由`Object.defineProperty`、`Observer`、`Dep`、`Watcher`实现
 ![](./images/vue-reactive.png)
 
-### Observer、Dep 和 Watcher
+#### Observer、Dep 和 Watcher
 
 ---
 
@@ -60,7 +70,7 @@ function defineReactive(obj: Object, key: string, val: any) {
     set: function reactiveSetter(newVal) {
       //发布
       dep.notify();
-    }
+    },
   });
 }
 复制代码;
@@ -143,7 +153,7 @@ class Watcher {
 复制代码
 ```
 
-### 关于对象
+## 关于对象
 
 vue 无法检测属性的添加或移除，对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是可以用`Vue.set(object,propertyName,value)`
 如果要为已有对象赋值多个新的 property，应该用原对象与要混合进去的对象的 property 一起创建一个新的对象。
@@ -153,7 +163,7 @@ vue 无法检测属性的添加或移除，对于已经创建的实例，Vue 不
 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 });
 ```
 
-### 关于数组
+## 关于数组
 
 数据也不是响应式的，直接修改数组内某项和修改数组的长度都是无法被检测的。也需要用 Vue.set
 
@@ -258,7 +268,7 @@ export default {
 
 4. 任意组件传值，用 vuex
 
-### 其他不常用的方法
+## 其他不常用的方法
 
 1. 所有子组件都可以通过`$root`获取根实例。
 
@@ -322,7 +332,7 @@ const app = new Vue({
     <div class="app">
       <counter></counter>
     </div>
-  `
+  `,
 });
 ```
 
@@ -338,14 +348,14 @@ const store = new Vuex.Store({
   state: {
     todos: [
       { id: 1, text: '...', done: true },
-      { id: 2, text: '...', done: false }
-    ]
+      { id: 2, text: '...', done: false },
+    ],
   },
   getters: {
     doneTodos: state => {
       return state.todos.filter(todo => todo.done);
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -359,14 +369,14 @@ getter 也可以返回一个函数，可以实现给 getter 传参，但是这�
 ```javascript
 const store = new Vuex.Store({
   state: {
-    count: 1
+    count: 1,
   },
   mutations: {
     increment(state) {
       // 变更状态
       state.count++;
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -390,7 +400,7 @@ mutations: {
 
 ```javascript
 store.commit('increment', {
-  amount: 10
+  amount: 10,
 });
 ```
 
@@ -399,7 +409,7 @@ store.commit('increment', {
 ```javascript
 store.commit({
   type: 'increment',
-  amount: 10
+  amount: 10,
 });
 ```
 
@@ -416,18 +426,18 @@ Action 类似于 mutation，但是
 ```javascript
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
   },
   mutations: {
     increment(state) {
       state.count++;
-    }
+    },
   },
   actions: {
     increment(context) {
       context.commit('increment');
-    }
-  }
+    },
+  },
 });
 ```
 
@@ -453,33 +463,6 @@ const store = new Vuex.Store({
     b: moduleB
   }
 })
-```
-
-## vuex 实现
-
-```js
-import { inject, reactive } from 'vue';
-
-const STORE_key = '__store__';
-
-// 需要一个创建store的方法
-function createStore(options) {
-  return new Store(options);
-}
-
-// Store类
-class Store {
-  constructor(options) {
-    this._state = reactive({
-      data: options.state()
-    });
-    this._mutations = options.mutations;
-  }
-
-  install(app) {
-    app.provide(STORE_KEY, this);
-  }
-}
 ```
 
 ## vue-router 核心

@@ -1,4 +1,14 @@
-# 头部元素
+---
+title: html
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# html
+
+## 头部元素
 
 ```html
 <title>可以添加文档标题

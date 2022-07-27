@@ -1,12 +1,22 @@
-# css 模块化
+---
+title: css
+desc: css
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
 
-## 为什么要模块化
+# css
+
+## css 模块化
+
+### 为什么要模块化
 
 为了解决 class 命名问题、层级结构不清晰问题、代码难以复用问题、单个 css 庞大的问题
 
-## css 模块化的实现方式
+### css 模块化的实现方式
 
-### BEM 命名规范
+#### BEM 命名规范
 
 BEM: block、element、modifier
 是一种前端命名方法论，通过规范命名方式实现模块化
@@ -19,17 +29,15 @@ BEM: block、element、modifier
 示例
 
 ```html
-.form { } .form--theme-xmas { } .form--simple { } .form__input { } .form__submit { }
-.form__submit--disabled { } //对应的HTML结构如下：
+.form { } .form--theme-xmas { } .form--simple { } .form__input { } .form__submit
+{ } .form__submit--disabled { } //对应的HTML结构如下：
 <form class="form form--theme-xmas form--simple">
   <input class="form__input" type="text" />
   <input class="form__submit form__submit--disabled" type="submit" />
 </form>
 ```
 
-###
-
-### css Modules
+#### css Modules
 
 像引入 js 一样去引入 css
 
@@ -68,7 +76,7 @@ url(./image.png) => require('./image.png');
 
 参考：[css-loader](https://github.com/webpack-contrib/css-loader#url)、[css-modules](https://github.com/css-modules/css-modules)
 
-### css in JS
+#### css in JS
 
 用 js 写 css，是一种编写思想，已经有很多种实现，最具代表性的是 styled-components
 缺点是不支持预处理器
@@ -117,17 +125,17 @@ const TomatoButton = styled(Button)`
 ![css-module.png](./images/css-module.png)
 参考：[css 模块化](https://juejin.im/post/6844904034281734151#heading-5)
 
-# css 布局方案
+## css 布局方案
 
-## 正常流布局
+### 正常流布局
 
 浏览器默认的布局方式，按照 HTML 的书写排列
 
-## display
+### display
 
 `display:inline/block/inline-block`，改变元素的行为方式
 
-## flex 弹性盒
+### flex 弹性盒
 
 用于一维布局     
 基本使用方法：
@@ -144,7 +152,7 @@ flex-basis:;定义元素的空间大小
 flex:1 0 100px;是上面三个属性的缩写
 ```
 
-## grid 网格
+### grid 网格
 
 基于网格的二维布局
 基本使用方法
@@ -213,7 +221,7 @@ flex:1 0 100px;是上面三个属性的缩写
 
 参考：[张鑫旭-grid](https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/)
 
-## float 浮动
+### float 浮动
 
 设置元素浮动，移出正常文档流，周围元素会环绕这个元素
 
@@ -245,7 +253,7 @@ float: unset;
 
 参考：[清除浮动的远原理](https://juejin.cn/post/6844903504545316877)
 
-## position 定位
+### position 定位
 
 不是主要用来做布局的，主要是微调
 
@@ -255,7 +263,7 @@ float: unset;
 - fixed，固定定位。类似 absolute，但是是相对于浏览器视口
 - sticky。粘性定位，在没有到设置位置的时候表现在正常文档流中，到了设置位置后就停止和 fixed 表现一样
 
-## 表格布局
+### 表格布局
 
 老方法，过时了
 
@@ -316,7 +324,7 @@ form p {
 }
 ```
 
-## 多列布局
+### 多列布局
 
 多列显示
 
@@ -325,13 +333,13 @@ column-count:;设置多少列
 column-width:;设置列的宽度
 ```
 
-# css3.0 常用属性
+## css3.0 常用属性
 
 参考：[css3 属性罗列](https://juejin.cn/post/6844903925234024462)
 [box-shadow 调试](https://www.cssmatic.com/box-shadow)
 [gradient 调试](https://cssgradient.io/)
 
-# sass 和 less
+## sass 和 less
 
 都是 css 预处理器，都可以通过编译转为普通 css 文件
 

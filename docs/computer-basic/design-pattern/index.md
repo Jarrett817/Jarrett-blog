@@ -1,3 +1,13 @@
+---
+title: 设计模式
+desc: 《JavaScript设计模式》、《大话设计模式》笔记
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
+# 设计模式
+
 ## 设计模式的利与弊
 
 js 的设计模式有工厂模式、桥接模式、组合模式、门面模式、适配器模式装饰者模式、享元模式、代理模式、观察者模式、命令模式、职责链模式
@@ -86,7 +96,7 @@ Book.prototype = {
   getProtoName() {
     console.log(this);
     return this.name;
-  }
+  },
 };
 const book = new Book('xxxx');
 console.log(book.getName());
@@ -400,14 +410,20 @@ class User {
       case 'superAdmin':
         return new User({
           name: '超级管理员',
-          viewPage: ['首页', '通讯录', '发现页', '应用数据', '权限管理']
+          viewPage: ['首页', '通讯录', '发现页', '应用数据', '权限管理'],
         });
         break;
       case 'admin':
-        return new User({ name: '管理员', viewPage: ['首页', '通讯录', '发现页', '应用数据'] });
+        return new User({
+          name: '管理员',
+          viewPage: ['首页', '通讯录', '发现页', '应用数据'],
+        });
         break;
       case 'user':
-        return new User({ name: '普通用户', viewPage: ['首页', '通讯录', '发现页'] });
+        return new User({
+          name: '普通用户',
+          viewPage: ['首页', '通讯录', '发现页'],
+        });
         break;
       default:
         throw new Error('参数错误, 可选参数:superAdmin、admin、user');
@@ -455,13 +471,22 @@ class FunctionFactory1 extends FunctionFactoryBase {
       case 'admin':
         return new FunctionFactory1({
           role: '管理员',
-          permissions: ['设置', '删除', '新增', '创建', '开发', '推送', '提问', '评论']
+          permissions: [
+            '设置',
+            '删除',
+            '新增',
+            '创建',
+            '开发',
+            '推送',
+            '提问',
+            '评论',
+          ],
         });
         break;
       case 'developer':
         return new FunctionFactory1({
           role: '开发者',
-          permissions: ['开发', '推送', '提问', '评论']
+          permissions: ['开发', '推送', '提问', '评论'],
         });
         break;
       default:
@@ -487,7 +512,7 @@ class FunctionFactory2 extends FunctionFactoryBase {
       case 'user':
         return new FunctionFactory2({
           role: '用户',
-          permissions: ['提问', '评论']
+          permissions: ['提问', '评论'],
         });
         break;
       default:
@@ -722,7 +747,7 @@ let singleTon = {
   name1: 'xxx',
   name2: 'yyy',
   methods1() {},
-  method2() {}
+  method2() {},
 };
 ```
 
@@ -798,7 +823,7 @@ const util = {
   stop() {},
   start() {},
   fire() {},
-  drive() {}
+  drive() {},
 };
 ```
 
@@ -834,7 +859,7 @@ Car.prototype = {
   },
   getPrice() {
     return this.price;
-  }
+  },
 };
 ```
 
@@ -858,7 +883,7 @@ const carFactory = (function () {
         createdCars[year + 'price' + price] = car;
         return car;
       }
-    }
+    },
   };
 })();
 ```
@@ -874,9 +899,9 @@ const CarRecordManager = (function () {
       const car = CarFactory.createCar(year, owner);
       carRecordDatabase[owner] = {
         car,
-        age
+        age,
       };
-    }
+    },
     // 其他操作
   };
 })();
@@ -910,7 +935,7 @@ CalendarYear.prototype = {
       this.months[i].display();
     }
     this.element.style.display = 'block';
-  }
+  },
 };
 const CalendarMonth = function (monthNum, numDays, parent) {
   this.monthNum = monthNum;
@@ -929,7 +954,7 @@ CalendarMonth.prototype = {
       this.days[i].display();
     }
     this.element.style.display = 'block';
-  }
+  },
 };
 
 const CalendarDay = function (date, parent) {
@@ -942,7 +967,7 @@ CalendarDay.prototype = {
   display: function () {
     this.element.style.display = 'block';
     this.element.innerHTML = this.date;
-  }
+  },
 };
 ```
 
@@ -961,7 +986,7 @@ CalendarDay.prototype = {
     const element = document.createElement('div');
     parent.appendChild(element);
     element.innerHTML = date;
-  }
+  },
 };
 ```
 
@@ -988,7 +1013,7 @@ CalendarMonth.prototype = {
       this.days[i].display(i, this.element);
     }
     this.element.style.display = 'block';
-  }
+  },
 };
 ```
 
@@ -1042,7 +1067,7 @@ publicLibraryVirtualProxy.prototye = {
   findBooks: function (searchString) {
     this._initializeLibrary();
     return this.library.findBooks(searchString);
-  }
+  },
 };
 ```
 

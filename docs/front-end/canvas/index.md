@@ -1,3 +1,11 @@
+---
+title: canvas
+desc: canvas
+keywords: 设计模式、笔记
+date: 2020-02-17 01:01:00
+cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
+---
+
 # canvas
 
 ## 是什么？
@@ -277,5 +285,3 @@ ctx.fill(circle);
 #### 参考
 
 - [canvas 教程 MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial)
-
-## 前端与图形学
