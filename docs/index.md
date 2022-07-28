@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Jarrett
-  tagLine: 宽和慈善，不忤于物
+  tagLine: 做一个有灵魂的前端工程师
   image:
     src: /background.jpeg
     alt: VitePress

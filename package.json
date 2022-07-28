@@ -11,6 +11,7 @@
   "author": "Jarrett",
   "license": "MIT",
   "devDependencies": {
+    "@types/turndown": "^5.0.1",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.24.0",

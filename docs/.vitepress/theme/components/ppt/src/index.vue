@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/sky.css';
