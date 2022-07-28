@@ -16,7 +16,10 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-vue": "^9.3.0",
-    "marked": "^4.0.18"
+    "marked": "^4.0.18",
+    "naive-ui": "^2.32.0",
+    "unplugin-vue-components": "^0.21.2",
+    "vfonts": "^0.0.3"
   },
   "dependencies": {
     "mind-elixir": "^1.1.0",

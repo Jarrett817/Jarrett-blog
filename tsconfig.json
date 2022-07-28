@@ -13,7 +13,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["naive-ui/volar"]
   },
   // .xx文件夹路径会被忽略，需要写明具体路径
   "include": [
