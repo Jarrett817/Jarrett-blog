@@ -1,8 +1,7 @@
 <script setup>
-import DefaultTheme from 'vitepress/dist/client/theme-default';
+import DefaultTheme from 'vitepress/theme';
 import BackTop from './back-top.vue';
 import JSlides from './ppt/src/index.vue';
-import Articles from './articles.vue';
 import { reactive, ref, computed } from 'vue';
 import { useData } from 'vitepress';
 const { Layout } = DefaultTheme;
@@ -21,9 +20,7 @@ const actionList = computed(() => {
   <j-slides v-if="slidesVisible" />
   <back-top :actionList="actionList" />
   <Layout v-if="!slidesVisible">
-    <template #home-features>
-      <articles />
-    </template>
+    <template #home-features> </template>
     <template #page-top> </template>
     <template #page-bottom></template>
     <template #home-footer> </template>

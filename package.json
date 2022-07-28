@@ -1,5 +1,5 @@
 {
-  "name": "Jarrett-blog",
+  "name": "jarrett-blog",
   "version": "1.0.0",
   "description": "Jarrett的博客",
   "main": "index.js",
@@ -11,16 +11,18 @@
   "author": "Jarrett",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.24.0",
-    "eslint-plugin-vue": "^7.16.0",
-    "marked": "^3.0.1"
+    "eslint-plugin-vue": "^9.3.0",
+    "marked": "^4.0.18"
   },
   "dependencies": {
+    "mind-elixir": "^1.1.0",
     "reveal.js": "^4.1.3",
-    "sass": "^1.38.0",
+    "sass": "^1.54.0",
     "turndown": "^7.1.1",
-    "vitepress": "^0.16.1"
+    "uuid": "^8.3.2",
+    "vitepress": "^1.0.0-alpha.4"
   }
 }

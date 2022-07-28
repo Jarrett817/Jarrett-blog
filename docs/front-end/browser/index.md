@@ -440,7 +440,7 @@ window 不仅是全局作用域，还表示浏览器窗口
 
 - `location`  对象表示当前页面的 url 信息
 
-```http
+```text
 http://www.example.com:8080/path/index.html?a=1&b=2#TOP
 ```
 
