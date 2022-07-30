@@ -1,10 +1,10 @@
-import { defineConfigWithTheme } from 'vitepress';
-// import Components from 'unplugin-vue-components/vite';
-// import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { defineConfig } from 'vitepress';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { themeConfig } from './config/index';
-// import WindiCSS from 'vite-plugin-windicss';
+import WindiCSS from 'vite-plugin-windicss';
 
-export default defineConfigWithTheme({
+export default defineConfig({
   lang: 'en-US',
   title: '🏠 JarrettBlog',
   titleTemplate: 'Vite & Vue powered static site generator',
@@ -26,18 +26,22 @@ export default defineConfigWithTheme({
       }
     ]
   ],
-  themeConfig
-  // vite: {
-  //   plugins: [
-  //     WindiCSS({
-  //       scan: {
-  //         dirs: ['./packages', './theme', '/docs/.vitepress'], // all files in the cwd
-  //         fileExtensions: ['vue', 'js', 'ts'] // also enabled scanning for js/ts
-  //       }
-  //     }),
-  //     Components({
-  //       resolvers: [NaiveUiResolver()]
-  //     })
-  //   ]
-  // }
+  themeConfig,
+  vite: {
+    plugins: [
+      WindiCSS({
+        scan: {
+          dirs: ['./packages', './theme', '/docs/.vitepress/theme'], // all files in the cwd
+          fileExtensions: ['vue', 'js', 'ts'] // also enabled scanning for js/ts
+        }
+        // extract: {
+        //   include: ['.vitepress/theme/**/*.{ts,vue}']
+        //   // exclude: ['node_modules', '.git']
+        // }
+      }),
+      Components({
+        resolvers: [NaiveUiResolver()]
+      })
+    ]
+  }
 });
