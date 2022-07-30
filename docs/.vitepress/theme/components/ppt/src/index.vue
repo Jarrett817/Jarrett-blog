@@ -3,6 +3,9 @@ import { onMounted, ref } from 'vue';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/sky.css';
 import TurndownService from 'turndown';
+import Reveal from 'reveal.js';
+import RevealHighLight from 'reveal.js/plugin/highlight/highlight.esm.js';
+import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 
 const themes = [
   'black',
@@ -25,14 +28,14 @@ let turndownService = new TurndownService({
     emDelimiter: '*'
   }
 });
+
 const html = ref('');
-const textContent = document.querySelector('.content').children[0];
+
 turndownService.addRule('title-formatter', {
   filter: ['h1', 'h2', 'h3', 'h4'],
   replacement: function (content, node, options) {
     const map = { H1: '#', H2: '##', H3: '###', H4: '####' };
     let res = '';
-    console.log('content', content);
     res = content.replace(/^\[#\]/, map[node.tagName]).replace(/\(#.*\)/, '');
     if (
       textContent.children[0].id === res.slice(-textContent.children[0].id.length) ||
@@ -43,22 +46,20 @@ turndownService.addRule('title-formatter', {
     return res;
   }
 });
-const md = turndownService.turndown(textContent);
-html.value = md;
-let Reveal = null;
-let RevealHighLight = null;
-let Markdown = null;
+
 const init = async () => {
-  !Reveal && (Reveal = (await import('reveal.js')).default);
-  !RevealHighLight &&
-    (RevealHighLight = await import('reveal.js/plugin/highlight/highlight.esm.js').default);
-  !Markdown && (Markdown = await import('reveal.js/plugin/markdown/markdown.esm.js').default);
   let deck = new Reveal({
     plugins: [Markdown, RevealHighLight]
   });
   deck.initialize();
 };
 onMounted(() => {
+  console.log(document.querySelector('.content-container')?.children);
+  const textContent = document.querySelector('.content-container')?.children[0]?.innerText;
+
+  const md = turndownService.turndown(textContent);
+  html.value = md;
+
   init();
 });
 </script>

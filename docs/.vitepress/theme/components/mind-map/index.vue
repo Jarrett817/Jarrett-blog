@@ -8,7 +8,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import MindElixir from 'mind-elixir';
 import { onMounted, ref } from 'vue';
-import { MindMapNode } from './types.ts';
+import { MindMapNode } from './types';
 const uuid = 'mindMap' + uuidv4();
 const emits = defineEmits(['node-click']);
 

@@ -1,9 +1,10 @@
-import { defineConfig } from 'vitepress';
-import Components from 'unplugin-vue-components/vite';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { defineConfigWithTheme } from 'vitepress';
+// import Components from 'unplugin-vue-components/vite';
+// import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { themeConfig } from './config/index';
+// import WindiCSS from 'vite-plugin-windicss';
 
-export default defineConfig({
+export default defineConfigWithTheme({
   lang: 'en-US',
   title: '🏠 JarrettBlog',
   titleTemplate: 'Vite & Vue powered static site generator',
@@ -25,12 +26,18 @@ export default defineConfig({
       }
     ]
   ],
-  themeConfig,
-  vite: {
-    plugins: [
-      Components({
-        resolvers: [NaiveUiResolver()]
-      })
-    ]
-  }
+  themeConfig
+  // vite: {
+  //   plugins: [
+  //     WindiCSS({
+  //       scan: {
+  //         dirs: ['./packages', './theme', '/docs/.vitepress'], // all files in the cwd
+  //         fileExtensions: ['vue', 'js', 'ts'] // also enabled scanning for js/ts
+  //       }
+  //     }),
+  //     Components({
+  //       resolvers: [NaiveUiResolver()]
+  //     })
+  //   ]
+  // }
 });
