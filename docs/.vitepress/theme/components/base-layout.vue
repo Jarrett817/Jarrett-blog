@@ -29,7 +29,7 @@ const listenThemeChange = () => {
     <j-slides v-if="slidesVisible" />
     <Layout v-if="!slidesVisible">
       <template #aside-bottom>
-        <div class="relative"></div>
+        <div class="relative border bg-blue-500">123123</div>
         <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
           <template #icon>
             <n-icon size="40"><PlayOutline /></n-icon>
