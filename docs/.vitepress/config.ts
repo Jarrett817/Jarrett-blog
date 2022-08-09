@@ -11,7 +11,8 @@ export default defineConfigWithTheme({
   lastUpdated: true,
   markdown: {
     theme: 'material-palenight',
-    lineNumbers: true
+    lineNumbers: true,
+    toc: { level: [1, 2] }
   },
   head: [
     [

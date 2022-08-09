@@ -2,37 +2,49 @@
 import DefaultTheme from 'vitepress/theme';
 import JSlides from './ppt/src/index.vue';
 import { ref, onMounted } from 'vue';
-import { useData } from 'vitepress';
 import { darkTheme, lightTheme } from 'naive-ui';
-import { PlayOutline } from '@vicons/carbon';
+import { PlayOutline, Maximize } from '@vicons/carbon';
 
 const { Layout } = DefaultTheme;
 const slidesVisible = ref(false);
 
 const theme = ref<'dark' | 'light'>('light');
+const APPEARANCE_KEY = 'vitepress-theme-appearance';
 
+const setTheme = (isDark: boolean) => {
+  theme.value = isDark ? 'dark' : 'light';
+};
 onMounted(() => {
   listenThemeChange();
+  setTheme(isDarkMode());
 });
+
+const isDarkMode = () => {
+  // 监听vitepress设置的主题
+  const query = window.matchMedia('(prefers-color-scheme: dark)');
+  let userPreference = localStorage.getItem(APPEARANCE_KEY) || 'auto';
+  return userPreference === 'auto' ? query.matches : userPreference === 'dark';
+};
 
 const listenThemeChange = () => {
   const buttonEl = document.querySelector('.VPSwitchAppearance');
-  buttonEl &&
-    buttonEl.addEventListener('click', () => {
-      theme.value = theme.value === 'dark' ? 'light' : 'dark';
-    });
+  buttonEl && buttonEl.addEventListener('click', () => setTheme(isDarkMode()));
 };
 </script>
 
 <template>
   <n-config-provider :theme="theme === 'dark' ? darkTheme : lightTheme">
     <j-slides v-if="slidesVisible" />
-    <Layout v-if="!slidesVisible">
+    <Layout v-show="!slidesVisible">
       <template #aside-bottom>
-        <div class="relative border bg-blue-500">123123</div>
         <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
           <template #icon>
-            <n-icon size="40"><PlayOutline /></n-icon>
+            <n-icon size="26"><PlayOutline /></n-icon>
+          </template>
+        </n-button>
+        <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
+          <template #icon>
+            <n-icon size="20"><Maximize /></n-icon>
           </template>
         </n-button>
       </template>
