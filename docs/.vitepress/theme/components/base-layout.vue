@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme';
-import JSlides from './ppt/src/index.vue';
+// import JSlides from './ppt/src/index.vue';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { PlayOutline, Maximize } from '@vicons/carbon';
@@ -52,9 +52,9 @@ const openFullScreenMode = () => {
 
 <template>
   <n-config-provider :theme="theme === 'dark' ? darkTheme : lightTheme">
-    <ClientOnly v-if="slidesVisible">
+    <!-- <ClientOnly v-if="slidesVisible">
       <j-slides />
-    </ClientOnly>
+    </ClientOnly> -->
 
     <div class="h-full w-full"></div>
     <Layout v-show="!slidesVisible">
