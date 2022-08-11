@@ -4,7 +4,6 @@ import JSlides from './ppt/src/index.vue';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { PlayOutline, Maximize } from '@vicons/carbon';
-import { useData } from 'vitepress';
 
 const { Layout } = DefaultTheme;
 const slidesVisible = ref(false);
@@ -53,7 +52,10 @@ const openFullScreenMode = () => {
 
 <template>
   <n-config-provider :theme="theme === 'dark' ? darkTheme : lightTheme">
-    <j-slides v-if="slidesVisible" />
+    <ClientOnly v-if="slidesVisible">
+      <j-slides />
+    </ClientOnly>
+
     <div class="h-full w-full"></div>
     <Layout v-show="!slidesVisible">
       <template #aside-bottom>
