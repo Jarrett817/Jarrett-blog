@@ -30,6 +30,25 @@ const listenThemeChange = () => {
   const buttonEl = document.querySelector('.VPSwitchAppearance');
   buttonEl && buttonEl.addEventListener('click', () => setTheme(isDarkMode()));
 };
+
+const openFullScreenMode = () => {
+  const mainContent: HTMLElement = document.querySelector('main.main') || document.body;
+
+  if (mainContent) {
+    type Styles = Partial<Omit<CSSStyleDeclaration, 'parentRule' | 'length'>>;
+    const styles: Styles = {
+      padding: '40px',
+      overflow: 'auto',
+      backgroundColor: 'var(--vp-c-bg)',
+      color: 'var(--vp-c-text-1)'
+    };
+    for (const key in styles) {
+      mainContent.style[key] = styles[key] as string;
+    }
+    mainContent.requestFullscreen();
+  }
+  mainContent;
+};
 </script>
 
 <template>
@@ -37,12 +56,12 @@ const listenThemeChange = () => {
     <j-slides v-if="slidesVisible" />
     <Layout v-show="!slidesVisible">
       <template #aside-bottom>
-        <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
+        <!-- <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
           <template #icon>
             <n-icon size="26"><PlayOutline /></n-icon>
           </template>
-        </n-button>
-        <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
+        </n-button> -->
+        <n-button quaternary circle type="info" size="large" @click="openFullScreenMode">
           <template #icon>
             <n-icon size="20"><Maximize /></n-icon>
           </template>
