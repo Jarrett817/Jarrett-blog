@@ -8,8 +8,8 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: Get Started
-      link: /getting-started
+      text: 概览
+      link: /knowledge-map
     - theme: alt
       text: View on GitHub
       link: https://github.com/Jarrett817/Jarrett-blog

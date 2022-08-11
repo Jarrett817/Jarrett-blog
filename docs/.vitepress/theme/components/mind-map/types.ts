@@ -1,8 +1,8 @@
 export interface MindMapNode {
+  id: string;
   name: string;
   topic?: string;
-  id: string;
-  routeName?: string;
+  route?: string;
   root?: boolean;
   expanded?: boolean;
   direction?: 0 | 1;
