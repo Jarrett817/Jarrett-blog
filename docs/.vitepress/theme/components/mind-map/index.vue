@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import MindElixir from 'mind-elixir';
 import { onMounted, ref } from 'vue';
 import { MindMapNode } from './types';
 const emits = defineEmits(['node-click']);
@@ -20,11 +19,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isClicked = ref(false);
 
-onMounted(() => {
-  if (!props.data) return;
-  console.log(props.data);
+onMounted(async () => {
+  const MindElixir = await import('mind-elixir');
 
-  const mind = new MindElixir({
+  if (!props.data) return;
+
+  const mind = new MindElixir.default({
     el: '#mind-map',
     direction: MindElixir.RIGHT,
     draggable: true, // default true
