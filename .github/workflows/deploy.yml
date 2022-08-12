@@ -15,13 +15,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.19.0
+          node-version: 16.14.0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
         id: pnpm-install
         with:
-          version: 5.16.0
+          version: 7.9.0
           run_install: false
 
       - name: Get pnpm store directory
