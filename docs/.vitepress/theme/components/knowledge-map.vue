@@ -3,6 +3,7 @@ import { useData, type DefaultTheme, useRouter } from 'vitepress';
 import { MindMapNode } from './mind-map/types';
 import MindMap from './mind-map/index.vue';
 import { v4 } from 'uuid';
+import { base } from '@/shared';
 
 const sidebar = useData().theme.value.sidebar as DefaultTheme.SidebarGroup[];
 
@@ -20,7 +21,7 @@ const formatData = (data: DefaultTheme.SidebarGroup[]): MindMapNode => {
         id: v4(),
         topic: text,
         expanded: true,
-        route: link
+        route: base + link
       }))
     } as MindMapNode;
   });

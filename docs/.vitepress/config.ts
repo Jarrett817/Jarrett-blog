@@ -1,12 +1,13 @@
 import { defineConfigWithTheme } from 'vitepress';
 import { themeConfig } from './config/index';
+import { base } from './shared';
 
 export default defineConfigWithTheme({
   lang: 'en-US',
   title: '🏠 JarrettBlog',
   titleTemplate: 'Vite & Vue powered static site generator',
   description: '前端学习笔记',
-  base: '/Jarrett-blog/',
+  base,
   appearance: true,
   lastUpdated: true,
   markdown: {
