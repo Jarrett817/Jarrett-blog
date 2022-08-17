@@ -20,11 +20,12 @@ const props = withDefaults(defineProps<Props>(), {
 const isClicked = ref(false);
 
 onMounted(async () => {
-  const MindElixir = await import('mind-elixir');
+  // @ts-ignore
+  const MindElixir = await import('mind-elixir')?.default;
 
   if (!props.data) return;
 
-  const mind = new MindElixir.default({
+  const mind = new MindElixir({
     el: '#mind-map',
     direction: MindElixir.RIGHT,
     draggable: true, // default true

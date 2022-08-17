@@ -1,3 +1,57 @@
 {
-  "cSpell.words": ["vitepress"]
+  "cSpell.words": ["vitepress"],
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "｜": true
+  },
+  "editor.fontFamily": "Fira Code,monospace",
+  "editor.fontLigatures": true,
+  "git.enableSmartCommit": true,
+  "open-in-browser.default": "chrome",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontSize": 16,
+  "editor.fontWeight": "normal",
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.suggestSelection": "first",
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabSize": 2,
+  "jest.autoRun": {
+    "watch": true
+  },
+  "eslint.format.enable": false
 }

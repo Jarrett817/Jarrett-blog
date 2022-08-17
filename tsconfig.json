@@ -23,5 +23,6 @@
     "docs/.vitepress/**/*.tsx",
     "docs/.vitepress/**/*.vue",
     "docs/**/*.md"
-  ]
+  ],
+  "exclude": ["docs/.vitepress/dist"]
 }
