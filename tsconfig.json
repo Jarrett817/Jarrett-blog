@@ -12,9 +12,9 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./docs/.vitepress/*"]
-    },
+    // "paths": {
+    //   "@/*": ["./docs/.vitepress/*"]
+    // },
     "types": ["naive-ui/volar"]
   },
   // .xx文件夹路径会被忽略，需要写明具体路径

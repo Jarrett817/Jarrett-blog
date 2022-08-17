@@ -1,7 +1,5 @@
 ---
-sidebar:false
+layout: home
 ---
-
-# 知识导图一览
 
 <KnowledgeMap/>
