@@ -1402,7 +1402,7 @@ text.addEventListener('input', e => {
 
 ## 面试题
 
-<!--@include: ./FQA.md-->
+<!--@include: ./FAQ.md-->
 
 ## 参考
 

@@ -190,4 +190,4 @@ var userResource = createFetcher('/api/v1/user');
 
 ## 面试题
 
-<!--@include: ./FQA.md-->
+<!--@include: ./FAQ.md-->
