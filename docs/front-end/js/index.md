@@ -196,7 +196,7 @@ var Counter = (function () {
     },
     value: function () {
       return privateCounter;
-    },
+    }
   };
 })();
 
@@ -221,7 +221,7 @@ var makeCounter = function () {
     },
     value: function () {
       return privateCounter;
-    },
+    }
   };
 };
 
@@ -395,7 +395,7 @@ add(); // 2
 
 # 原型和原型链
 
-## 明确一些概念：
+### 明确一些概念：
 
 #### 什么是堆？什么是栈？
 
@@ -1089,8 +1089,7 @@ class Promise {
   }
   then(onFulfilled, onRejected) {
     // onFulfilled如果不是函数，就忽略onFulfilled，直接返回value
-    onFulfilled =
-      typeof onFulfilled === 'function' ? onFulfilled : value => value;
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
     // onRejected如果不是函数，就忽略onRejected，直接扔出错误
     onRejected =
       typeof onRejected === 'function'
@@ -1310,7 +1309,7 @@ function throttle(fn, delay) {
 let box = document.querySelector('.box');
 let down = {
   x: 0,
-  y: 0,
+  y: 0
 };
 let move = {};
 
@@ -1400,3 +1399,27 @@ text.addEventListener('input', e => {
   debounced(e.target.value);
 });
 ```
+
+## 面试题
+
+<!--@include: ./FQA.md-->
+
+## 参考
+
+[前端基础进阶（一）：内存空间详细图解](https://www.jianshu.com/p/996671d4dcc4)
+[前端基础进阶（四）：作用域与作用域链](https://www.jianshu.com/p/9b984874776c)
+[JavaScript 深入之词法作用域和动态作用域](https://juejin.cn/post/6844903473012539405)
+[前端基础进阶（二）：执行上下文详细图解](https://www.jianshu.com/p/a6d37c77e8db)
+[JavaScript 深入之执行上下文栈](https://juejin.cn/post/6844903473301946381)
+[JavaScript 深入之执行上下文](https://juejin.cn/post/6844903474027560968)
+[前端基础进阶（十一）：详解面向对象、构造函数、原型与原型链](https://www.jianshu.com/p/15ac7393bc1f)
+[前端基础进阶（七）：全方位解读 this](https://www.jianshu.com/p/d647aa6d1ae6)
+[JavaScript 深入之从 ECMAScript 规范解读 this](https://juejin.cn/post/6844903473872371725)
+[前端基础进阶（五）：闭包](https://www.jianshu.com/p/21a16d44f150)
+[前端基础进阶（六）：setTimeout 与循环闭包面试题详解](https://www.jianshu.com/p/9b4a54a98660)
+[JavaScript 深入之闭包](https://juejin.cn/post/6844903475998900237)
+[前端基础进阶（十四）：深入核心，详解事件循环机制](https://www.jianshu.com/p/12b9f73c5a4f)
+[说说事件循环机制](https://juejin.cn/post/6844904079353708557)
+浏览器工作原理与实践 --- 15-消息队列和事件循环：页面是怎么“活”起来的？
+[Promise 链式调用顺序引发的思考](https://juejin.cn/post/6844903972008886279) 配合作业 1 食用
+[理解 Promise.then 回调的执行顺序](https://juejin.cn/post/6876686095954903048)

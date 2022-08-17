@@ -68,7 +68,7 @@ enum Dir {
   东,
   南,
   西,
-  北,
+  北
 }
 
 let d: Dir = Dir.东; //即Dir.东是0
@@ -182,8 +182,12 @@ const createResource = (path: string) => {
     create(attrs: Omit<Partial<User>, 'id'>) {},
     delete() {},
     update() {},
-    get() {},
+    get() {}
   };
 };
 var userResource = createFetcher('/api/v1/user');
 ```
+
+## 面试题
+
+<!--@include: ./FQA.md-->
