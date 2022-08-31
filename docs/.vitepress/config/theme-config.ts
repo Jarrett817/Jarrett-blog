@@ -1,4 +1,4 @@
-import { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar } from './link-config';
+import { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar } from './link-config';
 import type { DefaultTheme } from 'vitepress';
 
 export const themeConfig: DefaultTheme.Config = {
@@ -32,6 +32,11 @@ export const themeConfig: DefaultTheme.Config = {
       text: '🔧 工具',
       link: '/tools/slides',
       activeMatch: '^/packages/'
+    },
+    {
+      text: '🏹 方案',
+      link: '/plan/virtual-scroll/',
+      activeMatch: '^/plan/'
     }
   ],
 
@@ -47,6 +52,10 @@ export const themeConfig: DefaultTheme.Config = {
     {
       text: '工具',
       items: PackagesSidebar
+    },
+    {
+      text: '方案',
+      items: PlanSidebar
     }
   ],
   footer: {

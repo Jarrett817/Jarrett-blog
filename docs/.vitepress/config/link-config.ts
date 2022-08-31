@@ -34,8 +34,19 @@ const FrontEndSidebar = [
 const PackagesSidebar = [
   {
     text: 'ppt生成器',
-    link: '/packages/ppt/'
+    link: '/tools/ppt/'
   }
 ];
 
-export { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar };
+const PlanSidebar = [
+  {
+    text: '虚拟滚动',
+    link: '/plan/virtual-scroll/'
+  },
+  {
+    text: '多级跳转',
+    link: '/plan/multistage-routing/'
+  }
+];
+
+export { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar };
