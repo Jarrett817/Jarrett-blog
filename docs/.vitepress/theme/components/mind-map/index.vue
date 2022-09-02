@@ -28,7 +28,7 @@ onMounted(async () => {
   const mind = new MindElixir({
     el: '#mind-map',
     direction: MindElixir.RIGHT,
-    draggable: true, // default true
+    draggable: true,
     contextMenu: false, // default true
     toolBar: true, // default true
     nodeMenu: false, // default true
