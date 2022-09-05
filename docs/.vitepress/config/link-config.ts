@@ -45,7 +45,11 @@ const PlanSidebar = [
   },
   {
     text: '多级跳转',
-    link: '/plan/multistage-routing/'
+    link: '/plan/navigation/'
+  },
+  {
+    text: '微前端下的主子通信',
+    link: '/plan/micro-fe-communication/'
   }
 ];
 
