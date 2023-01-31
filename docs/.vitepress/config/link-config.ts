@@ -9,7 +9,7 @@ const ComputerBasicSidebar = [
   },
   {
     text: '数据结构与算法',
-    link: '/computer-basic/fucking-arithmetic/'
+    link: '/computer-basic/arithmetic/'
   }
 ];
 

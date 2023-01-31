@@ -8,6 +8,80 @@ cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
 
 # css
 
+## BFC 是什么
+
+块级格式化上下文，比如浮动元素、绝对定位元素、inline-block 元素、overflow 不为 visible 的元素、flex 元素
+
+每个块级上下文都是一个独立的容器
+
+解决了什么问题？
+
+- 清除浮动
+- 防止 margin 合并
+
+## 清除浮动
+
+[清除浮动](https://www.jianshu.com/p/9d6a6fc3e398)
+
+- 父元素加上.clearfix
+
+```css
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+```
+
+- 父元素加上 overflow:hidden 或者 auto，或者设置高度
+- 添加一个额外的标签并添加 clear:both
+
+## 水平居中
+
+行内元素：
+
+- text-align: center
+
+确定宽度的元素：
+
+- margin:0 auto 左右居中
+- 绝对定位加 margin-left:-width/2
+
+不确定宽度的元素：
+
+- 绝对定位加 translate:-50%
+- inline-block 元素加 text-align: center
+- flex 布局
+
+## 垂直居中
+
+- 纯文本 line-height 等于 height 实现垂直居中
+- 绝对定位加 margin:auto，子元素设置上下左右为 0
+- flex 加 margin:auto
+
+## 选择器优先级
+
+css3 中
+
+1. 选择器越具体，优先级越高
+2. 相同优先级，出现在后面的覆盖前面的
+3. 属性后面加!important 优先级最高
+
+## 两个 inline-block 元素产生空隙
+
+是因为元素排版的时候，元素之间的空白符（空格、回车），字体不为 0 的情况下，空白符占据一定宽度
+
+解决方式：
+
+1. 将子元素标签的结束符和下一个标签的开始符号写在同一行或把所有子标签写在同一行
+2. 父元素中设置 font-size:0，在子元素上重置正确的 font-size
+3. 为子元素设置 float:left
+
+## 两种盒模型的区别
+
+- content-box，width=width+padding+border
+- border-box，width=width
+
 ## css 模块化
 
 ### 为什么要模块化
@@ -29,8 +103,8 @@ BEM: block、element、modifier
 示例
 
 ```html
-.form { } .form--theme-xmas { } .form--simple { } .form__input { } .form__submit
-{ } .form__submit--disabled { } //对应的HTML结构如下：
+.form { } .form--theme-xmas { } .form--simple { } .form__input { } .form__submit { }
+.form__submit--disabled { } //对应的HTML结构如下：
 <form class="form form--theme-xmas form--simple">
   <input class="form__input" type="text" />
   <input class="form__submit form__submit--disabled" type="submit" />
@@ -368,13 +442,11 @@ body {
 
 基本用法
 
-|      | sass/scss   | less    |
-| ---- | ----------- | ------- |
-| 变量 | $h:5px;     | @h:5px; |
-| 混合 | @mixin xxx{ |
+|      | sass/scss                  | less    |
+| ---- | -------------------------- | ------- |
+| 变量 | $h:5px;                    | @h:5px; |
+| 混合 | @mixin xxx\{some code...\} |         |
 
-some code...;
-}
 a{
   @include xxx;
 } | .bordered {
