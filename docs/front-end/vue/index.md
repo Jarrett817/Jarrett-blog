@@ -314,11 +314,11 @@ this.$refs.usernameInput
 
 `$refs`只会在组件渲染完成后生效，并且不是响应式的。避免在模版或计算属性中访问$refs
 
-# vuex 核心
+## vuex 核心
 
 vuex 是一个单一状态树，作为一个唯一数据源使用
 
-## State
+### State
 
 全局注册
 
@@ -338,7 +338,7 @@ const app = new Vue({
 
 通过 this.$store 访问，vuex 也是响应式的，我们可以用计算属性获取 vuex 中的数据
 
-## Getters
+### Getters
 
 vuex 的计算属性
 接受 state 作为第一个参数
@@ -362,7 +362,7 @@ const store = new Vuex.Store({
 同样通过 `this.$store.getters.xxx`  访问
 getter 也可以返回一个函数，可以实现给 getter 传参，但是这样会每次都进行调用，而不会缓存结果
 
-## Mutations
+### Mutations
 
 注册一个事件，接收 state 作为第一个参数
 
@@ -415,7 +415,7 @@ store.commit({
 
 mutation 需要遵守 Vue 的响应规则
 
-## Actions
+### Actions
 
 mutation 必须是同步函数，异步回调中进行的状态的改变都是不可追踪的
 Action 类似于 mutation，但是
@@ -441,7 +441,7 @@ const store = new Vuex.Store({
 });
 ```
 
-## Modules
+### Modules
 
 为了避免 store 太过臃肿，我们可以分割模块
 
@@ -465,23 +465,3 @@ const store = new Vuex.Store({
 })
 ```
 
-## Vue2 和 Vue3 的区别
-
-除了 api 和使用上的变化之外，主要有如下几点
-
-1. 响应式的变化
-
-   - 借助 proxy，实现更精细的响应式转换，比起 vue2 需要对对象进行深度遍历，vue3 只会将 get 到的对象属性进行包装，并且能够拦截新增的对象属性
-   - 可选的响应式转换，对于渲染函数中的变量传递更为自由，可以直接 return js 变量使用，省去了多余的响应式包装
-
-2. diff 算法
-   - vue2 双端 diff 算法。vue3 双端对比 + 最长递增子序列
-3. 模版编译优化
-   - 更改了编译优化策略。vue2 会标记静态节点和静态根节点，vue3 以 patchFlag 区分不同类型的动态节点，以 block 为维度收集子级树中所有的动态节点，更新时跳过所有静态节点直接更新动态节点，并且得益于 patchFlag 的区分，能做到精准的靶向更新
-   - 静态提升。把生成的静态的子树或者静态 prop 提升到渲染函数之外，只持有引用
-4. 组合式 api
-   - 利于 tree shaking，可以结合使用特性开关去掉 options api，只使用 composition api，进一步减少打包体积
-   - 比起 vue2 将所有东西都挂在 this 上，很多时候只能靠 mixin 复用逻辑，hook 的写法更方便逻辑复用，且更加类型友好
-5. 自定义渲染器
-   - vue3 开放了自定义渲染器的接口 createRenderer，可以非常方便的实现自定义渲染逻辑，使用场景更广
-6. 新增了 Fragment vNode 类型，允许多根节点模版

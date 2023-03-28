@@ -13,12 +13,22 @@ cover: https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/02/1.jpg
 js 数据类型包括四基两空一对象
 
 1. Undefined；
-1. Null；
-1. Boolean；
-1. String；
-1. Number；
-1. Symbol；
-1. Object。
+2. Null；
+3. Boolean；
+4. String；
+5. Number；
+6. Symbol；
+7. bigInt
+8. Object。
+
+引用类型 object 包括
+
+- 普通对象 Object
+- 数组对象 Array
+- 正则对象 RegExp
+- 日期对象 Date
+- 数学函数 Math
+- 函数对象 Function
 
 ### 两个空类型
 
@@ -42,6 +52,8 @@ const test = () => {
 Null 表示定义了但是为空，也只有一个值 null，但是 null 是 JS 关键字，所以可以放心使用 null 关键字来获取 null 值
 null 更准确的说是一个空对象指针，用 typeof 检测返回的是 object
 null 可以用来做对象的初始化
+
+null 不是对象，使用 typeof 会输出 object 是 js 的历史 bug。JS 最初版本使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，000 开头代表是对象，然而 null 表示为全 0，导致被误判成 object
 
 ### Symbol
 

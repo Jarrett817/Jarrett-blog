@@ -26,6 +26,7 @@ const FrontEndSidebar = [
   { text: 'TS', link: '/front-end/ts/' },
   { text: '浏览器', link: '/front-end/browser/' },
   { text: 'vue', link: '/front-end/vue/' },
+  { text: 'vue3', link: '/front-end/vue3/' },
   { text: 'nodejs', link: '/front-end/nodejs/' },
   { text: 'git', link: '/front-end/git/' },
   { text: 'canvas', link: '/front-end/canvas/' }
