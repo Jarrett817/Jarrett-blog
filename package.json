@@ -1,7 +1,7 @@
 {
   "name": "jarrett-blog",
   "version": "1.0.0",
-  "description": "Jarrett的博客",
+  "description": "Jarrett's blog",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vitepress dev docs",
@@ -10,8 +10,10 @@
   },
   "author": "Jarrett",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "@types/node": "^18.7.1",
+    "@types/pixi.js": "^5.0.0",
     "@types/turndown": "^5.0.1",
     "@types/uuid": "^8.3.4",
     "@vicons/carbon": "^0.12.0",
@@ -25,15 +27,17 @@
     "unplugin-vue-components": "^0.22.4",
     "vfonts": "^0.0.3",
     "vite-plugin-windicss": "^1.8.7",
-    "vitepress": "1.0.0-alpha.4",
-    "vue": "^3.2.37",
+    "vitepress": "1.0.0-rc.22",
     "windicss": "^3.5.6"
   },
   "dependencies": {
+    "@vueuse/core": "^10.5.0",
     "mind-elixir": "workspace:^1.1.0",
+    "pixi.js": "^7.3.1",
     "reveal.js": "^4.3.1",
     "turndown": "^7.1.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vue": "^3.3.4"
   },
   "engines": {
     "node": ">=14",
