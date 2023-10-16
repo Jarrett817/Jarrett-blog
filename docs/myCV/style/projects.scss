@@ -1,0 +1,19 @@
+.projects > ol {
+  margin-top: 0;
+  list-style-position: inside;
+  padding: 0;
+  li {
+    > header {
+      display: flex;
+      justify-content: space-between;
+    }
+    h3 {
+      display: inline-block;
+    }
+    a {
+      border: 1px solid #6c6c6c;
+      border-radius: 6px;
+      padding: 1px 4px;
+    }
+  }
+}

@@ -35,7 +35,7 @@ const FrontEndSidebar = [
 const PackagesSidebar = [
   {
     text: 'ppt生成器',
-    link: '/tools/ppt/'
+    link: '/tools/slides'
   }
 ];
 
@@ -54,4 +54,11 @@ const PlanSidebar = [
   }
 ];
 
-export { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar };
+const placticeSidebar = [
+  {
+    text: '算法题',
+    link: '/practice/leetcode'
+  }
+];
+
+export { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar, placticeSidebar };

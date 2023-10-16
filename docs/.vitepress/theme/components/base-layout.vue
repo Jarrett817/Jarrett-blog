@@ -4,11 +4,12 @@ import DefaultTheme from 'vitepress/theme';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { PlayOutline, Maximize } from '@vicons/carbon';
-import { useData } from 'vitepress';
+import { useData, useRoute } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
 
 const { frontmatter } = useData();
+const { path } = useRoute();
 
 const { Layout } = DefaultTheme;
 const slidesVisible = ref(false);
@@ -56,7 +57,10 @@ const openFullScreenMode = () => {
 </script>
 
 <template>
-  <n-config-provider :theme="theme === 'dark' ? darkTheme : lightTheme">
+  <n-config-provider
+    v-if="!path.includes('myCV')"
+    :theme="theme === 'dark' ? darkTheme : lightTheme"
+  >
     <!-- <ClientOnly v-if="slidesVisible">
       <j-slides />
     </ClientOnly> -->
@@ -83,13 +87,14 @@ const openFullScreenMode = () => {
       </template>
     </Layout>
   </n-config-provider>
+  <Content v-else />
 </template>
 
 <style lang="scss" scoped>
 .time-tree {
   position: absolute;
   bottom: 112px;
-  right: 25vw;
+  right: 10px;
 
   &,
   ::v-deep canvas {

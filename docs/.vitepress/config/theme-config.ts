@@ -1,4 +1,10 @@
-import { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar } from './link-config';
+import {
+  ComputerBasicSidebar,
+  FrontEndSidebar,
+  PackagesSidebar,
+  PlanSidebar,
+  placticeSidebar
+} from './link-config';
 import type { DefaultTheme } from 'vitepress';
 
 export const themeConfig: DefaultTheme.Config = {
@@ -39,8 +45,13 @@ export const themeConfig: DefaultTheme.Config = {
     },
     {
       text: '✍ 练习题',
-      link: '/practice/',
+      link: '/practice/leetcode',
       activeMatch: '^/pratice/'
+    },
+    {
+      text: '🔖 简历',
+      link: '/myCV/index.html',
+      activeMatch: '^/myCV/'
     }
   ],
 
@@ -60,6 +71,10 @@ export const themeConfig: DefaultTheme.Config = {
     {
       text: '方案',
       items: PlanSidebar
+    },
+    {
+      text: '练习题',
+      items: placticeSidebar
     }
   ],
   footer: {

@@ -1,0 +1,15 @@
+.internExperience {
+  > ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding: 0;
+    > li {
+      margin: 16px 0;
+      > header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+}

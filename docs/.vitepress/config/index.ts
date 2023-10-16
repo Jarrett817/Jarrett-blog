@@ -14,7 +14,7 @@ export default defineConfigWithTheme({
   appearance: true,
   lastUpdated: true,
   markdown: {
-    theme: 'material-theme-palenight',
+    theme: 'solarized-dark',
     lineNumbers: true,
     toc: { level: [1, 2] }
   },
