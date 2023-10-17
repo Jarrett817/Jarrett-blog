@@ -13,6 +13,8 @@
       </p>
       <p>
         个人站点：
+        <a href="https://jarrett817.github.io/Jarrett-blog/" target="_blank">个人主页</a>
+        <span class="column-line">|</span>
         <a href="https://github.com/Jarrett817" target="_blank">GitHub</a>
         <span class="column-line">|</span>
         <a href="https://www.yuque.com/jarrett-p3yai/kg62ge" target="_blank">语雀</a>
@@ -39,18 +41,21 @@
           <ul>
             <span>工作内容：</span>
             <li>
-              标签平台<strong>核心</strong>前端开发，同时支撑建模平台、机器学习平台、基座平台的开发
+              标签平台
+              <strong>核心</strong> 前端开发，同时支撑建模平台、机器学习平台、基座平台的开发
             </li>
             <li>公共技术沉淀：负责公共物料、组件开发、技术方案输出及公共文档维护</li>
           </ul>
           <ul>
             <span>主要业绩：</span>
+            <li>对项目代码持续整理和封装，为后期标签平台衍生出人口数据管理平台做了良好的铺垫</li>
             <li>
-              基于标签平台衍生出人口数据管理平台，快速响应需求，设计技术方案，主导架构设计与代码重构
+              沉淀公共组件：复杂sql规则前端可视化配置组件及并发请求数据的缓存方案实现；微前端架构下页面多级跳转路径返回的自动化处理插件
             </li>
             <li>
-              基于业务场景公共组件和技术方案，解决复杂场景下页面跳转路径的自动化处理；复杂sql规则前端可视化配置组件；解决微前端架构下多应用并存、单应用多场景的换肤问题
+              沉淀技术方案：解决微前端架构下多应用嵌套下的组件库zIndex层级管理问题；axios封装，支持配置全局loading、统一处理异常、重复请求cancel
             </li>
+            <li>团队文档沉淀：整理和维护现有的落地方案、组件，充实公司内部团队文档</li>
           </ul>
         </li>
       </ol>
@@ -62,7 +67,7 @@
       <ol>
         <li>
           <header>
-            <h4>数据智能标签平台</h4>
+            <h4>标签平台</h4>
           </header>
           <p>
             该项目通过对数据进行标签化的生产管理以及用户画像、
@@ -70,70 +75,28 @@
           </p>
           <ul>
             <li>
-              主要技术栈为 <strong>Vue2</strong> /<strong> VueRouter</strong> /
-              <strong>Vuex </strong>/<strong> Element UI </strong>/<strong> Echarts</strong>
+              基于 <strong>qiankun</strong> 的微前端架构，主要技术栈为
+              <strong>Vue2</strong> /<strong> VueRouter</strong> / <strong>Vuex </strong>/<strong>
+                Element UI </strong
+              >/<strong> Echarts</strong>
             </li>
             <li>作为核心前端开发人员，负责项目架构设计和功能迭代</li>
-            <li>
-              开发过程中抽离出通用业务组件如
-              <strong
-                >ecahrts图表渲染组件、条件查询分页列表、可配置信息面板、
-                级联下拉框、简洁翻页器</strong
-              >
-              等等，作为高频出现的组件极大的提高了开发效率
-            </li>
-            <li>
-              使用抽象工厂模式封装业务中出现的图表， 便于业务相关图表的生成，提高代码复用率，
-              解决项目场景中图表使用频繁、类型多样化的问题
-            </li>
+            <li>后期基于标签平台衍生出人口数据管理平台，快速完成项目重构</li>
           </ul>
         </li>
       </ol>
     </section>
     <div class="split-line"></div>
-
-    <section class="skills page2">
+    <section class="skills">
       <h2>技能</h2>
       <div class="wrapper">
         <ul>
-          <li>熟练掌握html5、css3、javascript、typescript开发，具备良好的解决问题的能力</li>
-          <li>熟练掌握vue全家桶，对vue2、vue3有源码级别的深入理解</li>
-          <li>熟悉<strong>vite、webpack</strong>等前端工程化技术，具备项目优化能力</li>
-          <li>熟悉微前端开发，了解qiankun和single-spa原理</li>
+          <li>熟练掌握 html5、css3、javascript、typescript 开发，具备良好的解决问题的能力</li>
+          <li>熟练掌握 <strong>vue</strong> 全家桶，对vue2、vue3有源码层面的理解</li>
+          <li>熟悉 <strong>vite、webpack</strong> 等前端工程化技术，具备项目优化能力</li>
+          <li>熟悉微前端开发，了解 qiankun 和 single-spa 原理</li>
         </ul>
       </div>
-    </section>
-    <div class="split-line"></div>
-
-    <section class="openSource">
-      <h2>个人作品</h2>
-      <ol>
-        <li>
-          <header>
-            <h4>seeker导航</h4>
-            <span>
-              <a href="https://github.com/Jarrett817/seeker-navigation" target="_blank">源码</a>
-              <a href="http://jarrett0817.gitee.io/seeker-navigation/" target="_blank">预览</a>
-            </span>
-          </header>
-          <p>
-            使用
-            <strong>jQuery</strong>
-            做的简易导航网站，实现了搜索栏、网址管理、键盘事件跳转网址的功能
-          </p>
-          <p></p>
-        </li>
-        <li>
-          <header>
-            <h4>旋转照片墙</h4>
-            <span>
-              <a href="https://github.com/Jarrett817/rotating-cube" target="_blank">源码</a>
-              <a href="https://jarrett817.github.io/rotating-cube/dist/" target="_blank">预览</a>
-            </span>
-          </header>
-          <p>使用 <strong>css</strong> 制作的自行旋转展示的照片墙</p>
-        </li>
-      </ol>
     </section>
     <div class="split-line"></div>
     <section class="education">
