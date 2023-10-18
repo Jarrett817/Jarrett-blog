@@ -1,4 +1,5 @@
 ---
+layout: false
 head:
   - - meta
     - name: viewport

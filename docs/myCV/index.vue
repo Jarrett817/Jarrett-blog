@@ -112,11 +112,11 @@
   </article>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import './style/index.scss';
 </style>
 
-<style media="print">
+<style media="print" scoped>
 body {
   margin: 0;
   background: white;
@@ -127,7 +127,7 @@ body {
   margin-top: 30px;
 }
 </style>
-<style>
+<style scoped>
 @media (max-width: 500px) {
   body {
     margin: 0;

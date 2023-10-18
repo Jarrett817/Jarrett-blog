@@ -57,15 +57,12 @@ const openFullScreenMode = () => {
 </script>
 
 <template>
-  <n-config-provider
-    v-if="!path.includes('myCV')"
-    :theme="theme === 'dark' ? darkTheme : lightTheme"
-  >
+  <n-config-provider :theme="theme === 'dark' ? darkTheme : lightTheme">
     <!-- <ClientOnly v-if="slidesVisible">
       <j-slides />
     </ClientOnly> -->
 
-    <Plum v-if="!['home', 'page'].includes(frontmatter.layout)" />
+    <Plum v-if="frontmatter.layout && !['home', 'page'].includes(frontmatter.layout)" />
 
     <Layout v-show="!slidesVisible">
       <template #home-features-after> <TimeTree class="time-tree" /> </template>
@@ -87,7 +84,6 @@ const openFullScreenMode = () => {
       </template>
     </Layout>
   </n-config-provider>
-  <Content v-else />
 </template>
 
 <style lang="scss" scoped>
