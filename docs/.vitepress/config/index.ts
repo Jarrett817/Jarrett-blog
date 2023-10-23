@@ -30,6 +30,9 @@ export default defineConfigWithTheme({
   ],
   themeConfig,
   vite: {
+    ssr: {
+      noExternal: ['naive-ui']
+    },
     plugins: [
       WindiCSS({
         scan: {
