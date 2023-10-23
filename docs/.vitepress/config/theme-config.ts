@@ -1,7 +1,7 @@
 import {
   ComputerBasicSidebar,
   FrontEndSidebar,
-  PackagesSidebar,
+  // PackagesSidebar,
   PlanSidebar,
   placticeSidebar
 } from './link-config';
@@ -50,8 +50,8 @@ export const themeConfig: DefaultTheme.Config = {
     },
     {
       text: '🔖 简历',
-      link: '/myCV/index.html',
-      activeMatch: '^/myCV/'
+      link: '/resume/index.html',
+      activeMatch: '^/resume/'
     }
   ],
 
@@ -64,10 +64,10 @@ export const themeConfig: DefaultTheme.Config = {
       text: '计算机基础',
       items: ComputerBasicSidebar
     },
-    {
-      text: '工具',
-      items: PackagesSidebar
-    },
+    // {
+    //   text: '工具',
+    //   items: PackagesSidebar
+    // },
     {
       text: '方案',
       items: PlanSidebar
