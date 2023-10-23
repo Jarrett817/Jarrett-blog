@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.6ddfd8ed.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"front-end/ts/FAQ.md","lastUpdated":1679984738000}'),p={name:"front-end/ts/FAQ.md"},o=l("",18),e=[o];function c(r,t,y,F,D,C){return a(),n("div",null,e)}var b=s(p,[["render",c]]);export{i as __pageData,b as default};
