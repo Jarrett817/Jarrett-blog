@@ -11,8 +11,10 @@
         本科 <span class="column-line">|</span> 中共党员
       </p>
       <p>
-        个人站点：
-        <a class="has-background" href="https://jarrett817.github.io/Jarrett-blog/" target="_blank"
+        个人站点：<a
+          class="has-background"
+          href="https://jarrett817.github.io/Jarrett-blog/"
+          target="_blank"
           >博客</a
         >
         <span class="column-line">|</span>
@@ -39,24 +41,24 @@
           </header>
           <span class="has-background">工作内容：</span>
           <ul>
-            <li>
-              标签平台
-              <strong>核心</strong> 前端开发，同时支撑建模平台、机器学习平台、基座平台的开发
+            <li
+              >标签平台 <strong>核心</strong>
+              前端开发，同时支撑建模平台、机器学习平台、基座平台的开发
             </li>
             <li>公共技术沉淀：负责公共物料、组件开发、技术方案输出及公共文档维护</li>
           </ul>
           <span class="has-background">主要业绩：</span>
           <ul>
             <li>对项目代码持续整理和封装，为后期标签平台衍生出人口数据管理平台做了良好的铺垫</li>
-            <li>
-              沉淀公共组件：复杂sql规则前端可视化配置组件及并发请求数据的缓存方案实现；微前端架构下页面多级跳转路径返回的自动化处理插件
+            <li
+              >沉淀公共组件：复杂sql规则前端可视化配置组件及并发请求数据的缓存方案实现；微前端架构下页面多级跳转路径返回的自动化处理插件
             </li>
-            <li>
-              沉淀技术方案：解决微前端架构下多应用嵌套下的组件库zIndex层级管理问题；axios封装，支持配置全局loading、统一处理异常、重复请求cancel
+            <li
+              >沉淀技术方案：解决微前端架构下多应用嵌套下的组件库zIndex层级管理问题；axios封装，支持配置全局loading、统一处理异常、重复请求cancel
             </li>
             <li>多业务并行支撑，快速响应需求和处理线上问题</li>
-            <li>
-              团队文档沉淀：整理和维护现有的落地方案、组件，如换肤方案、微前端下的应用嵌套方案等，充实公司内部团队文档
+            <li
+              >团队文档沉淀：整理和维护现有的落地方案、组件，包括换肤方案、微前端下的应用嵌套方案等，充实公司内部团队文档
             </li>
           </ul>
         </li>
@@ -70,19 +72,22 @@
           <header>
             <h4>标签平台</h4>
           </header>
-          <p>
-            该项目通过对数据进行标签化的生产管理以及用户画像、
+          <p
+            >该项目通过对数据进行标签化的生产管理以及用户画像、
             数据洞察等手段，帮助企业发现问题、提高效益
           </p>
           <ul>
-            <li>
-              基于 <strong>qiankun</strong> 的微前端架构，主要技术栈为
+            <li
+              >基于 <strong>qiankun</strong> 的微前端架构，主要技术栈为
               <strong>Vue2</strong> /<strong> VueRouter</strong> / <strong>Vuex </strong>/<strong>
                 Element UI </strong
               >/<strong> Echarts</strong>
             </li>
             <li>作为核心前端开发人员，负责前端项目的架构设计、需求拆解和进度把控</li>
-            <li>后期基于标签平台衍生出人口数据管理平台，快速完成项目重构</li>
+            <li>拆包优化页面加载速度；使用pnpm替换npm，缩短devOps一分钟的打包时长</li>
+            <li>分模块拆分巨石文件，降低维护难度</li>
+            <li>图表组件及配置项封装，降低开发成本；多词云、多图表性能优化</li>
+            <li>后期基于标签平台衍生出人口数据管理平台，整合基座平台，以最低成本完成项目重构</li>
           </ul>
         </li>
       </ol>
