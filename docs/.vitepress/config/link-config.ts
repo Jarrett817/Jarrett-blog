@@ -58,6 +58,10 @@ const placticeSidebar = [
   {
     text: '算法题',
     link: '/practice/leetcode'
+  },
+  {
+    text: 'Promise',
+    link: '/practice/promise'
   }
 ];
 
