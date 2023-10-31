@@ -31,6 +31,16 @@
       </p>
     </section>
     <div class="head-line"></div>
+    <section class="skills">
+      <h2>技能</h2>
+      <ul>
+        <li>熟练掌握 html5、css3、javascript、typescript 开发，具备良好的解决问题的能力</li>
+        <li>熟练掌握 <strong>vue</strong> 全家桶，对vue2、vue3有源码层面的理解</li>
+        <li>熟悉 <strong>vite、webpack</strong> 等前端工程化技术，具备项目优化能力</li>
+        <li>熟悉微前端开发，了解 qiankun 和 single-spa 原理</li>
+      </ul>
+    </section>
+    <div class="split-line"></div>
     <section class="internExperience">
       <h2>工作经历</h2>
       <ol>
@@ -49,7 +59,6 @@
           </ul>
           <span class="has-background">主要业绩：</span>
           <ul>
-            <li>对项目代码持续整理和封装，为后期标签平台衍生出人口数据管理平台做了良好的铺垫</li>
             <li
               >沉淀公共组件：复杂sql规则前端可视化配置组件及并发请求数据的缓存方案实现；微前端架构下页面多级跳转路径返回的自动化处理插件
             </li>
@@ -85,22 +94,13 @@
             </li>
             <li>作为核心前端开发人员，负责前端项目的架构设计、需求拆解和进度把控</li>
             <li>拆包优化页面加载速度；使用pnpm替换npm，缩短devOps一分钟的打包时长</li>
-            <li>分模块拆分巨石文件，降低维护难度</li>
-            <li>图表组件及配置项封装，降低开发成本；多词云、多图表性能优化</li>
+            <li
+              >持续优化项目：分模块拆分巨石文件，降低维护难度；图表组件及配置项封装，降低开发成本；多词云、多图表性能优化</li
+            >
             <li>后期基于标签平台衍生出人口数据管理平台，整合基座平台，以最低成本完成项目重构</li>
           </ul>
         </li>
       </ol>
-    </section>
-    <div class="split-line"></div>
-    <section class="skills">
-      <h2>技能</h2>
-      <ul>
-        <li>熟练掌握 html5、css3、javascript、typescript 开发，具备良好的解决问题的能力</li>
-        <li>熟练掌握 <strong>vue</strong> 全家桶，对vue2、vue3有源码层面的理解</li>
-        <li>熟悉 <strong>vite、webpack</strong> 等前端工程化技术，具备项目优化能力</li>
-        <li>熟悉微前端开发，了解 qiankun 和 single-spa 原理</li>
-      </ul>
     </section>
     <div class="split-line"></div>
     <section class="education">
