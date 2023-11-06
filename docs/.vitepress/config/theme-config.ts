@@ -3,7 +3,8 @@ import {
   FrontEndSidebar,
   // PackagesSidebar,
   PlanSidebar,
-  placticeSidebar
+  placticeSidebar,
+  web3Sidebar
 } from './link-config';
 import type { DefaultTheme } from 'vitepress';
 
@@ -48,6 +49,7 @@ export const themeConfig: DefaultTheme.Config = {
       link: '/practice/leetcode',
       activeMatch: '^/pratice/'
     },
+    { text: '📘 WEB3', link: '/web3', activeMatch: '^/web3/' },
     {
       text: '🔖 简历',
       link: '/resume/index.html',
@@ -71,6 +73,10 @@ export const themeConfig: DefaultTheme.Config = {
     {
       text: '方案',
       items: PlanSidebar
+    },
+    {
+      text: 'WEB3',
+      items: web3Sidebar
     },
     {
       text: '练习题',

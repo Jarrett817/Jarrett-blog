@@ -65,4 +65,18 @@ const placticeSidebar = [
   }
 ];
 
-export { ComputerBasicSidebar, FrontEndSidebar, PackagesSidebar, PlanSidebar, placticeSidebar };
+const web3Sidebar = [
+  {
+    text: '新手入门',
+    link: '/web3/index'
+  }
+];
+
+export {
+  ComputerBasicSidebar,
+  FrontEndSidebar,
+  PackagesSidebar,
+  PlanSidebar,
+  placticeSidebar,
+  web3Sidebar
+};
