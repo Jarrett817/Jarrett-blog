@@ -6,11 +6,12 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "promise:test": "promises-aplus-tests /docs/practice/promise/index.js"
   },
   "author": "Jarrett",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "@types/node": "^18.7.1",
     "@types/turndown": "^5.0.1",
@@ -21,6 +22,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.3.0",
     "marked": "^4.0.18",
+    "promises-aplus-tests": "^2.1.2",
     "sass": "^1.54.4",
     "unplugin-vue-components": "^0.25.2",
     "vfonts": "^0.0.3",
