@@ -22,3 +22,16 @@
 18. 如果then的返回值是一个promise，且x同时调用resolve和reject，第一个调用优先，状态不会再次被改变
 
 <<< ./promise/index.js
+
+
+## promise的方法实现
+
+```js
+static resolve(data){
+  if(data instanceof Promise){
+
+  }
+
+}
+
+```
