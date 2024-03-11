@@ -1,19 +1,24 @@
-.projects > ol {
-  margin-top: 0;
-  list-style-position: inside;
-  padding: 0;
-  li {
-    > header {
-      display: flex;
-      justify-content: space-between;
-    }
-    h3 {
-      display: inline-block;
-    }
-    a {
-      border: 1px solid #6c6c6c;
-      border-radius: 6px;
-      padding: 1px 4px;
+.projects {
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & > ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding: 0;
+    li {
+      h3 {
+        display: inline-block;
+      }
+      a {
+        border: 1px solid #6c6c6c;
+        border-radius: 6px;
+        padding: 1px 4px;
+        white-space: nowrap;
+        margin: 0 4px 0 4px;
+      }
     }
   }
 }

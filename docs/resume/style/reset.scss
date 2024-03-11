@@ -7,6 +7,14 @@ article {
   padding: 1em 3em;
   height: 100%;
 
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 2;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+
   .has-background {
     position: relative;
 
@@ -47,7 +55,8 @@ h6 {
   color: var(--blue-indigo-bunting);
 }
 h2 {
-  margin-bottom: 8px;
+  margin: 20px 0 16px 0;
+  font-size: 20px;
 }
 h4 {
   font-size: 16px;
@@ -70,6 +79,7 @@ a {
 
   &:hover {
     color: var(--blue-indigo-bunting);
+    font-weight: 500;
   }
 }
 
@@ -84,8 +94,9 @@ section {
 
 .split-line {
   width: 100%;
-  background: #dddddd;
+  background: #dddddf;
   height: 1px;
+  margin: 12px 0 12px 0;
 }
 .column-line {
   margin: 0 8px;

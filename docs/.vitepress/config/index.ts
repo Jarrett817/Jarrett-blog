@@ -3,7 +3,7 @@ import { themeConfig } from './theme-config';
 import { base } from '../shared';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
-import WindiCSS from 'vite-plugin-windicss';
+import UnoCSS from 'unocss/vite';
 
 export default defineConfigWithTheme({
   lang: 'en-US',
@@ -34,11 +34,7 @@ export default defineConfigWithTheme({
       noExternal: ['naive-ui']
     },
     plugins: [
-      WindiCSS({
-        scan: {
-          dirs: ['./.vitepress/theme']
-        }
-      }),
+      UnoCSS({ configFile: './uno.config.ts' }),
       Components({
         resolvers: [NaiveUiResolver()]
       })

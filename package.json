@@ -4,9 +4,9 @@
   "description": "Jarrett's blog",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
     "promise:test": "promises-aplus-tests /docs/practice/promise/index.js"
   },
   "author": "Jarrett",
@@ -24,11 +24,10 @@
     "marked": "^4.0.18",
     "promises-aplus-tests": "^2.1.2",
     "sass": "^1.54.4",
+    "unocss": "^0.58.5",
     "unplugin-vue-components": "^0.25.2",
     "vfonts": "^0.0.3",
-    "vite-plugin-windicss": "^1.8.7",
-    "vitepress": "1.0.0-rc.22",
-    "windicss": "^3.5.6"
+    "vitepress": "1.0.0-rc.22"
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",

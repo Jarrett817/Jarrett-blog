@@ -49,7 +49,7 @@ export const themeConfig: DefaultTheme.Config = {
       link: '/practice/leetcode',
       activeMatch: '^/pratice/'
     },
-    { text: '📘 WEB3', link: '/web3', activeMatch: '^/web3/' },
+    { text: '📘 WEB3', link: '/web3/', activeMatch: '^/web3/' },
     {
       text: '🔖 简历',
       link: '/resume/index.html',
