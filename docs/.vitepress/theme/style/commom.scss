@@ -28,35 +28,23 @@
   }
 }
 
-/* ===== Scrollbar CSS ===== */ /* Firefox */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: var(--blue-atoll) #ffffff;
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-/* Chrome, Edge, and Safari */
-// *::-webkit-scrollbar {
-//   width: 12px;
-//   height: 12px;
-// }
-
 *::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: #fff;
   border-radius: 22px;
-  border: 3px solid #ffffff;
-}
-.sidebar:hover,
-.no-sidebar:hover {
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--blue-atoll);
-  }
+  border: none;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   &-thumb {
     background-color: var(--blue-atoll);
   }

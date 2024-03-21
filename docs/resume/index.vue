@@ -81,6 +81,7 @@
           </li>
         </ol>
       </section>
+      <div class="page-num">1/2</div>
       <div class="split-line" style="page-break-before: always"></div>
       <section class="projects">
         <h2>项目经历</h2>
@@ -213,6 +214,7 @@
           <label>2017.09 - 2021.06</label>
         </p>
       </section>
+      <div class="page-num">2/2</div>
     </article>
   </div>
 

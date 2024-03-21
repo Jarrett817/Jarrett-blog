@@ -297,3 +297,5 @@ function effect() {
   a = 2; // 修改了全局变量也是一个副作用
 }
 ```
+
+<!--@include: ./diff.md-->

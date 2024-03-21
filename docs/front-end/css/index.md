@@ -223,7 +223,7 @@ flex-wrap:nowrap｜wrap;多行flex
 flex-grow:n;控制元素放大
 flex-shrink:n;控制元素收缩
 flex-basis:;定义元素的空间大小
-flex:1 0 100px;是上面三个属性的缩写
+flex:1 1 0%;是上面三个属性的缩写
 ```
 
 ### grid 网格
@@ -325,7 +325,7 @@ float: unset;
 }
 ```
 
-参考：[清除浮动的远原理](https://juejin.cn/post/6844903504545316877)
+参考：[清除浮动的原理](https://juejin.cn/post/6844903504545316877)
 
 ### position 定位
 

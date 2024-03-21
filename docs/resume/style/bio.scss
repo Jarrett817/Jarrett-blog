@@ -7,11 +7,15 @@
   h1 {
     font-size: 32px;
     margin-bottom: 12px;
+    line-height: 32px;
   }
-  p + p {
-    margin-top: 6px;
+
+  p:first-of-type {
+    margin-bottom: 0;
+
     & ~ p {
-      margin-top: 6px;
+      margin-top: 10px;
+      margin-bottom: 0;
     }
   }
 
@@ -29,6 +33,6 @@
 .head-line {
   height: 5px;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 18px;
   background: var(--blue-indigo-bunting);
 }

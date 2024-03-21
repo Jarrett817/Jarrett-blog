@@ -8,7 +8,7 @@ article {
   height: 100%;
 
   transition: color 0.5s, background-color 0.5s;
-  line-height: 2;
+  line-height: 2.2;
   font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -83,6 +83,11 @@ a {
   }
 }
 
+.page-num {
+  text-align: right;
+  font-size: 12px;
+}
+
 li {
   margin: 6px 0;
   overflow-wrap: break-word;
@@ -99,7 +104,7 @@ section {
   margin: 12px 0 12px 0;
 }
 .column-line {
-  margin: 0 8px;
+  margin: 0 6px;
 }
 .prominent {
   color: var(--blue-indigo-bunting);
