@@ -34,11 +34,11 @@ export const themeConfig: DefaultTheme.Config = {
       link: '/computer-basic/design-pattern/',
       activeMatch: '^/computer-basic/'
     },
-    {
-      text: '🔧 工具',
-      link: '/tools/slides',
-      activeMatch: '^/packages/'
-    },
+    // {
+    //   text: '🔧 工具',
+    //   link: '/tools/slides',
+    //   activeMatch: '^/packages/'
+    // },
     {
       text: '🏹 方案',
       link: '/plan/virtual-scroll/',

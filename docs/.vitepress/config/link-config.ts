@@ -41,10 +41,6 @@ const PackagesSidebar = [
 
 const PlanSidebar = [
   {
-    text: '虚拟滚动',
-    link: '/plan/virtual-scroll/'
-  },
-  {
     text: '多级跳转',
     link: '/plan/navigation/'
   },
