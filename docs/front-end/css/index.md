@@ -487,3 +487,25 @@ lighten 亮度降低 |
 
   `@import "typo.css";`
   导入 less 文件可以省略后缀
+
+## flex 子元素宽度超出的问题
+
+flex:1 的子元素，存在内容超出的现象
+
+原因是 flex:1 并不决定子元素的宽度，它只是规定了如果父元素有多余空间，以怎样的比例去分配剩余空间，并不会对子元素原本的就占据的空间做处理
+
+解决办法：
+
+1. 对于内容超出的 `flex` 子元素设置 `width:0` 或者 `min-width:0`,让 flex 元素的宽度完全由 `flex:1` 来分配。推荐使用 `min-width:0`，`width:0` 在子元素设置了宽度时，内容仍可超出
+2. 设置 `overflow` 属性不为 `visible`，最推荐的方法
+
+**min-width 的原理：** 浏览器默认为 `flex` 容器的子元素设置了 `min-width: auto;min-height: auto`, 即 `flex` 子元素的最小宽度高度不能小于其内容的宽高, 在规范里的表述是:`A flex item cannot be smaller than the size of its content along the main axis.` 所以通过设置 `min-width: 0`, 覆盖这个默认设置, `flex-shrink` 属性就能生效了
+
+- [html - Why don't flex items shrink past content size? - Stack Overflow](stackoverflow.com)
+- [min-width:0 原理](https://www.w3.org/TR/css-flexbox-1/#min-size-auto)
+
+<script setup>
+import FlexDemo from './flex-demo.vue'
+</script>
+
+<FlexDemo/>

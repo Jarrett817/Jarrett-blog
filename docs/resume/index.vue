@@ -35,11 +35,17 @@
       <section class="skills">
         <h2>技能</h2>
         <ul>
-          <li>熟练掌握 HTML5、CSS3、JavaScript、TypeScript 开发</li>
-          <li>熟练掌握 <strong>Vue</strong> 全家桶，有源码层面的理解</li>
-          <li>熟悉 <strong>Vue-Cli、Vite、Webpack</strong> 等前端工程化技术，具备项目优化能力</li>
-          <li>熟悉微前端开发，了解 Qiankun 和 Single-Spa 原理</li>
-          <li>了解 Nodejs 后端开发，熟悉前后端交互协作流程</li>
+          <li>掌握响应式设计，能够根据不同设备和屏幕尺寸优化页面布局，提升用户体验。</li>
+          <li
+            >理解并掌握JavaScript语言核心技术，如原型、闭包、作用域链、事件循环、缓存、BOM、DOM、AJAX、JSON等</li
+          >
+          <li> 熟练使用Vue 框架，熟练使用其周边生态进行项目开发并深入研究过其内部实现 </li>
+          <li>熟悉前端性能优化，能够分析并解决页面性能瓶颈，提升页面加载速度和运行效率。</li>
+          <li>熟练使用 Webpack、Vite 等前端构建工具，有前端项目工程化和脚手架开发经验。</li>
+          <li>熟悉微前端架构，了解前端微前端框架 qiankun 与 single-spa 原理</li>
+          <li
+            >良好的沟通能力和团队协作精神，能够根据项目需求进行技术方案的设计和优化，持续学习新技术和跟进前端发展趋势。</li
+          >
         </ul>
       </section>
       <div class="split-line"></div>
@@ -51,7 +57,7 @@
               <h4>每日互动股份有限公司 治数平台部 前端开发</h4>
               <h4>2021.07-2023.12</h4>
             </header>
-            <span class="has-background">工作内容：</span>
+            <span class="has-background">主要工作：</span>
             <ul>
               <li>主负责标签平台前端开发，同时参与建模平台、机器学习平台、基座平台的开发 </li>
               <li
@@ -60,7 +66,6 @@
             </ul>
             <span class="has-background">主要业绩：</span>
             <ul>
-              <li>自标签平台 mvp 版本起参与开发迭代，后期负责业务重构，多业务线并行支撑</li>
               <li
                 ><strong>业务组件输出：</strong
                 >复杂sql规则前端可视化配置组件，解决多业务场景对且、或多层 sql

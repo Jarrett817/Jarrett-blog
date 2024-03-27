@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import XmlAbort from './demos/XmlAbort.vue'
+</script>
+
 ### 数据类型
 
 - 写出下面运行的结果,解释原因
@@ -671,3 +675,104 @@ console.log('start', new Date().getSeconds());
 
 scheduler.start();
 ```
+
+### axios cancelToken 原理
+
+cancelToken 是 abortController 的自行实现
+
+XMLHttpRequest 提供了 abort 方法可以中止请求（后端是否接收到请求，取决于中止的阶段）
+
+axios 中 onCanceled 是真正中止请求的方法，会调用 xhr.abort()且抛出 abort 错误
+
+<XmlAbort />
+
+```js
+let xhr = new XMLHttpRequest();
+xhr.method = 'GET';
+xhr.url = 'https://slowmo.glitch.me/5000';
+xhr.open(method, url, true);
+xhr.send();
+
+// Abort the request at a later stage
+abortButton.addEventListener('click', function () {
+  xhr.abort();
+});
+```
+
+```js
+request (configOrUrl, config) {
+
+    // 合并配置
+    config = mergeConfig(this.defaults, config);
+
+    // 合并请求头信息
+    config.headers = AxiosHeaders.concat(contextHeaders, headers);
+
+    // 请求拦截器链
+    const requestInterceptorChain = [];
+    this.interceptors.request.forEach(function unshiftRequestInterceptors (interceptor) {
+      requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
+    });
+
+    // 响应拦截器链
+    const responseInterceptorChain = [];
+    this.interceptors.response.forEach(function pushResponseInterceptors (interceptor) {
+      responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
+    });
+
+    // 执行请求拦截器方法
+    doRequestInterceptorChain()
+
+    // 判断config.cancelToken.reason，也就是是否被取消
+    throwIfCancellationRequested(config);
+
+    // 请求体
+    let requestData = config.data;
+
+    // 创建一个xhr实例
+    let request = new XMLHttpRequest();
+
+    // open xhr
+    request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
+
+    // 请求状态变更处理函数
+    request.onreadystatechange = function handleLoad () {
+        //.....
+    };
+
+    // 订阅取消事件
+    if (config.cancelToken || config.signal) {
+
+      // 当token取消了，会执行该函数，也就是abort
+      onCanceled = cancel => {
+        if (!request) {
+          return;
+        }
+        reject(!cancel || cancel.type ? new CanceledError(null, config, request) : cancel);
+        request.abort();
+        request = null;
+      };
+
+      // 此处是用cancelToken的订阅取消事件
+      config.cancelToken && config.cancelToken.subscribe(onCanceled);
+      // 此处是用signal，也就是AbortConrtroller订阅取消事件
+      if (config.signal) {
+        config.signal.aborted ? onCanceled() : config.signal.addEventListener('abort', onCanceled);
+      }
+    }
+
+    // 真正发送请求
+    request.send(requestData || null);
+
+    // 再次判断config.cancelToken.reason，也就是是否被取消
+    throwIfCancellationRequested(config);
+
+    // 执行返回拦截器
+    doResponseInterceptorChain()
+
+}
+
+```
+
+[cancelToken 原理](https://juejin.cn/post/7284417436752265277)
+[abortController 原理](https://cloud.tencent.com/developer/article/2030277)
