@@ -14,6 +14,7 @@ xhr.addEventListener('load', hadnler);
 const sendRequest = () => {
   const method = 'GET',
     url = 'https://test';
+
   xhr.open(method, url, true);
   xhr.send();
   xhr && xhr.abort();

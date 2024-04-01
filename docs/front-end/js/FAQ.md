@@ -684,6 +684,8 @@ XMLHttpRequest 提供了 abort 方法可以中止请求（后端是否接收到�
 
 axios 中 onCanceled 是真正中止请求的方法，会调用 xhr.abort()且抛出 abort 错误
 
+cancelToken 和 abortController 实现思路都是发布订阅机制，请求发起时订阅，抛出的 abort 方法调用时，触发订阅过的请求实例内部的 reject
+
 <XmlAbort />
 
 ```js

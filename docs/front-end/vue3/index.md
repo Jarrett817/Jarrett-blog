@@ -267,15 +267,7 @@ function computed(getter) {
 }
 ```
 
-### 为什么使用 Proxy
-
-真正的拦截
-
-- 无需`$set`动态添加对象属性
-- 无需 hack 数组方法
-- 无需深度遍历，惰性响应式转换
-
-### 为什么需要包装对象
+## 为什么需要包装对象
 
 函数直接返回一个原始值，如 number、string，是无法追踪变化的
 
@@ -285,7 +277,7 @@ function computed(getter) {
 
 - (响应性语法糖（已废弃）)[https://cn.vuejs.org/guide/reactivity-transform.html]
 
-### 什么是副作用函数
+## 什么是副作用函数
 
 _会产生副作用的函数_
 
@@ -296,6 +288,50 @@ function effect() {
   document.body.innerText = 'hello vue3';
   a = 2; // 修改了全局变量也是一个副作用
 }
+```
+
+## 为什么使用 Proxy
+
+真正的拦截
+
+- 无需`$set`动态添加对象属性
+- 无需 hack 数组方法
+- 无需深度遍历，惰性响应式转换
+
+## Proxy 的原理
+
+ECMAScript 规范里将对象分为两种，一种叫常规对象，一种叫异质对象。
+
+对象有各种内部方法比如`[[Get]]`、`[[Call]]`、`[[Construct]]`。他们有对应的规定实现，所有步符合规定实现的对象都是异质对象，由于 Proxy 的内部方法`[[Get]]`没有使用 ECMA 的规范实现（方法具有多态性），所以 Proxy 是异质对象。
+
+正是由于 Proxy 的`[[Get]]`方法实现了不同的逻辑，才能够拦截操作。如果创建代理对象时没有指定拦截函数，代理对象的`[[Get]]`方法会调用原始对象的内部方法`[[Get]]`来获取属性值，这其实就是代理透明性质。
+
+## 为什么使用 reflect api
+
+```js
+const obj = {
+  foo: 1,
+  get bar() {
+    return this.foo;
+  }
+};
+
+const p = new Proxy(obj, {
+  get(target, key) {
+    return target[key];
+  }
+});
+```
+
+调用 p.bar 时，this 指向 obj，相当于 obj.foo，通过原始对象访问它的某个属性值是不会建立联系的，而 Reflect.get 的第三个参数 receiver 很好的解决了这个问题。receiver 是 Proxy 或者继承 Proxy 的对象，能够避免上述使用原始对象的问题
+
+```js
+const p = new Proxy(obj, {
+  get(target, key, receiver) {
+    console.log(target, key, receiver);
+    return Reflect.get(target, key, receiver);
+  }
+});
 ```
 
 <!--@include: ./diff.md-->

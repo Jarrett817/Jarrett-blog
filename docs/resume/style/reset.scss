@@ -8,7 +8,7 @@ article {
   height: 100%;
 
   transition: color 0.5s, background-color 0.5s;
-  line-height: 2.2;
+  line-height: 1.6;
   font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -110,6 +110,6 @@ section {
   color: var(--blue-indigo-bunting);
 }
 strong {
-  font-weight: 500;
-  color: var(--blue-primary);
+  font-weight: normal;
+  color: #3e66ae;
 }

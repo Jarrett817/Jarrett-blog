@@ -35,16 +35,16 @@
       <section class="skills">
         <h2>技能</h2>
         <ul>
-          <li>掌握响应式设计，能够根据不同设备和屏幕尺寸优化页面布局，提升用户体验。</li>
+          <li>掌握响应式设计，能够根据不同设备和屏幕尺寸优化页面布局，提升用户体验</li>
           <li
-            >理解并掌握JavaScript语言核心技术，如原型、闭包、作用域链、事件循环、缓存、BOM、DOM、AJAX、JSON等</li
+            >理解并掌握JavaScript语言核心技术，如原型、闭包、作用域链、事件循环、缓存、BOM、DOM、AJAX等</li
           >
-          <li> 熟练使用Vue 框架，熟练使用其周边生态进行项目开发并深入研究过其内部实现 </li>
-          <li>熟悉前端性能优化，能够分析并解决页面性能瓶颈，提升页面加载速度和运行效率。</li>
-          <li>熟练使用 Webpack、Vite 等前端构建工具，有前端项目工程化和脚手架开发经验。</li>
+          <li>熟练使用 Vue 及其周边生态进行项目开发并深入研究过其内部实现</li>
+          <li>熟悉前端性能优化，能够分析并解决页面性能瓶颈，提升页面加载速度和运行效率</li>
+          <li>熟练使用 Webpack、Vite 等前端构建工具，有前端项目工程化及优化经验</li>
           <li>熟悉微前端架构，了解前端微前端框架 qiankun 与 single-spa 原理</li>
           <li
-            >良好的沟通能力和团队协作精神，能够根据项目需求进行技术方案的设计和优化，持续学习新技术和跟进前端发展趋势。</li
+            >良好的沟通能力和团队协作精神，能够根据项目需求进行技术方案的设计和优化，持续学习新技术和跟进前端发展趋势</li
           >
         </ul>
       </section>
@@ -78,40 +78,63 @@
               </li>
               <li
                 ><strong>团队文档沉淀：</strong
-                >编写微前端架构下，主、子应用从环境配置、项目开发、组内约定的全流程教学文档及开发规范，文档中推动使用
-                nginx、pnpm
-                加快开发效率并结合业务编写了基础的使用说明，加快新人上手；梳理换肤方案及微前端下的应用嵌套方案，降低新人理解成本</li
+                >编写微前端架构下主、子应用从环境配置、开发规范的全流程教学文档及开发规范，推动使用
+                nginx、pnpm等工具提高开发效率，并结合业务编写了使用说明，加快新人上手；梳理换肤方案及微前端下的应用嵌套方案，降低新人理解成本</li
               >
             </ul>
           </li>
         </ol>
       </section>
-      <div class="page-num">1/2</div>
-      <div class="split-line" style="page-break-before: always"></div>
+      <!-- <div class="page-num">1/2</div> -->
+      <!-- <div class="split-line" style="page-break-before: always"></div> -->
+      <div class="split-line"></div>
       <section class="projects">
         <h2>项目经历</h2>
         <ol>
           <li>
-            <span class="has-background">标签平台：</span>
+            <h4>标签平台</h4>
+            <span class="has-background">项目描述：</span>
             <p
               >该项目通过对数据进行标签化的生产管理以及用户画像、
-              数据洞察等手段，快速分析、圈选人群，提高效益
+              数据洞察等手段，快速分析、圈选人群，提高效益。基于
+              <strong>Qiankun</strong> 的微前端架构，主要技术栈为 <strong>Vue2</strong> /<strong>
+                VueRouter</strong
+              >
+              / <strong>Vuex </strong>/<strong> Element UI </strong>/<strong> Echarts</strong>
             </p>
+            <span class="has-background">项目职责：</span>
+            <p>负责前端项目的迭代开发、需求拆解和进度把控</p>
+            <span class="has-background">技术产出：</span>
+            <ul>
+              <li>统一项目代码规范，通过配置husky为项目代码提交时添加代码规范检查与自动修复</li>
+              <li
+                >对项目进行梳理，列出存在的问题清单，并输出相应的优化方案和解决方案，包括功能模块、性能问题、安全漏洞等，并向组内推行</li
+              >
+              <li
+                >主导实现业务的权限控制，根据产品需求独立设计权限控制方式并落地开发，封装公函实现权限校验与交互提示，减少各业务代码改动点</li
+              >
+              <li
+                >持续优化项目：拆分多个巨石文件，抽象出可复用组件，降低维护难度；图表组件封装、配置项封装，降低开发成本；多词云、多图表加载性能优化；拆包优化项目加载速度</li
+              >
+            </ul>
+          </li>
+          <li>
+            <h4>人口数据管理平台</h4>
+            <span class="has-background">项目描述：</span>
+            <p
+              >基于标签平台能力开发的衍生产品，独立部署的单体应用，提供从标签创建、群体管理、群体洞察、计划投放的完整业务功能，具备比原标签平台更加用户友好的业务逻辑</p
+            >
+            <span class="has-background">项目职责：</span>
+            <p>负责前端项目的迭代开发、需求拆解和进度把控</p>
+            <span class="has-background">技术产出：</span>
             <ul>
               <li
-                >基于 <strong>Qiankun</strong> 的微前端架构，主要技术栈为
-                <strong>Vue2</strong> /<strong> VueRouter</strong> / <strong>Vuex </strong>/<strong>
-                  Element UI </strong
-                >/<strong> Echarts</strong>
-              </li>
-              <li>负责前端项目的迭代开发、需求拆解和进度把控</li>
-              <li
-                >拆包优化页面加载速度；在组内主动推动使用pnpm替换npm，缩短devOps一分钟的打包时长</li
+                >梳理项目的公共可用部分，包括项目配置、开发规范、复用代码，便于后续开发不同的衍生产品</li
               >
               <li
-                >持续优化项目：拆分多个巨石文件，抽象出可复用组件，降低维护难度；图表组件封装、配置项封装，降低开发成本；多词云、多图表加载性能优化</li
+                >以最低成本整合基座的系统管理、用户管理、权限管理模块，并基于业务场景修改原有权限设计</li
               >
-              <li>后期基于标签平台业务重构出人口数据管理平台，以最低成本完成项目重构</li>
+              <li>重业务逻辑模块的功能重构，包括标签管理、群体管理、群体洞察模块</li>
             </ul>
           </li>
         </ol>
@@ -121,9 +144,9 @@
         <h2>个人作品</h2>
         <ol>
           <li>
-            <span class="has-background">记账本</span>
+            <h4>记账本</h4>
             <p>
-              一个具备记账、账单管理、记账标签管理及报表功能的移动端记账本，使用Vue2、Vue3、React分别制作了一版，熟悉web开发全流程，熟悉主流开发工具差异
+              一个具备记账、账单管理、记账标签管理及报表功能的移动端记账本，使用Vue2、Vue3、React分别制作了一版，后端使用Egg.js和MySQL数据库开发。通过该项目熟悉web开发全流程，熟悉主流开发工具差异
             </p>
             <ul>
               <li>
@@ -187,9 +210,14 @@
                 </div>
               </li>
             </ul>
+            <span class="has-background">技术亮点：</span>
+            <ul>
+              <li>针对不同的设备，进行相应的适配和兼容，以保证在各种设备上都能够正常运行</li>
+              <li>抽取通用方法和业务组件，保证项目中所有复用内容保持一致，提高开发效率</li>
+            </ul>
           </li>
-          <li>
-            <span class="has-background">自制 UI 组件库</span>
+          <!-- <li>
+            <h4>自制 UI 组件库</h4>
             <div class="flex justify-between items-center">
               <p> 使用 <strong>Vue3</strong> / <strong>TypeScript</strong> 的自制 UI 库 </p>
               <span>
@@ -205,7 +233,7 @@
               </li>
               <li>自制了官网，对每个组件用例进行介绍和展示</li>
             </ul>
-          </li>
+          </li> -->
         </ol>
       </section>
       <div class="split-line"></div>
@@ -219,7 +247,7 @@
           <label>2017.09 - 2021.06</label>
         </p>
       </section>
-      <div class="page-num">2/2</div>
+      <!-- <div class="page-num">2/2</div> -->
     </article>
   </div>
 
