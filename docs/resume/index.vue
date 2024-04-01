@@ -1,35 +1,41 @@
 <template>
   <div style="background: rgb(218, 220, 224)">
     <article>
+      <n-button v-if="isMobile" quaternary class="hidden-when-print px-0" @click="router.go('/')">
+        <n-icon size="20"><ArrowLeft /></n-icon>
+        首页
+      </n-button>
       <section class="bio">
-        <div>
-          <h1>王俊然</h1>
-          <img src="./images/photo.jpg" alt="" />
+        <div class="flex-1">
+          <div>
+            <h1>王俊然</h1>
+          </div>
+          <p>
+            基本信息：男 <span class="column-line">|</span>25岁
+            <span class="column-line">|</span>
+            本科 <span class="column-line">|</span> 中共党员
+          </p>
+          <p>
+            个人站点：<a
+              class="has-background"
+              href="https://jarrett817.github.io/Jarrett-blog/"
+              target="_blank"
+              >博客</a
+            >
+            <span class="column-line">|</span>
+            <a href="https://github.com/Jarrett817" target="_blank">GitHub</a>
+            <span class="column-line">|</span>
+            <a href="https://juejin.cn/user/3940246036687774/posts" target="_blank">掘金</a>
+          </p>
+          <p>
+            电话：<a href="tel:13516724981">135-1672-4981</a>
+            <span class="column-line">|</span> 微信：13867223154
+            <span class="column-line">|</span> 邮箱：<a href="mailto:jrwang0817@163.com"
+              >jrwang0817@163.com</a
+            >
+          </p>
         </div>
-        <p>
-          基本信息：男 <span class="column-line">|</span>25岁
-          <span class="column-line">|</span>
-          本科 <span class="column-line">|</span> 中共党员
-        </p>
-        <p>
-          个人站点：<a
-            class="has-background"
-            href="https://jarrett817.github.io/Jarrett-blog/"
-            target="_blank"
-            >博客</a
-          >
-          <span class="column-line">|</span>
-          <a href="https://github.com/Jarrett817" target="_blank">GitHub</a>
-          <span class="column-line">|</span>
-          <a href="https://juejin.cn/user/3940246036687774/posts" target="_blank">掘金</a>
-        </p>
-        <p>
-          电话：<a href="tel:13516724981">135-1672-4981</a>
-          <span class="column-line">|</span> 微信：13867223154
-          <span class="column-line">|</span> 邮箱：<a href="mailto:jrwang0817@163.com"
-            >jrwang0817@163.com</a
-          >
-        </p>
+        <img src="./images/photo.jpg" alt="" />
       </section>
       <div class="head-line"></div>
       <section class="skills">
@@ -150,8 +156,8 @@
             </p>
             <ul>
               <li>
-                <div class="flex justify-between items-center">
-                  <span>
+                <div class="flex justify-between items-start">
+                  <span class="flex-1">
                     Vue2 版：使用 <strong>Vue2</strong> / <strong>VueRouter</strong> /
                     <strong>Vuex</strong> / <strong>TypeScript</strong> 开发
                   </span>
@@ -164,8 +170,8 @@
                 </div>
               </li>
               <li>
-                <div class="flex justify-between items-center">
-                  <span>
+                <div class="flex justify-between items-start">
+                  <span class="flex-1">
                     React 版：使用 <strong>React</strong> / <strong>React Router</strong> /
                     <strong>TypeScript</strong> 开发
                   </span>
@@ -181,7 +187,7 @@
               </li>
               <li>
                 <div class="flex item-start justify-between">
-                  <span>
+                  <span class="flex-1">
                     Vue3 版：前端使用 <strong>Vue3</strong> / <strong>VueRouter</strong> /
                     <strong>Vuex</strong> / <strong>Vite</strong> / <strong>Axios</strong> /
                     <strong>Vant UI</strong> / <strong>TypeScript</strong> 开发 ；后端使用
@@ -250,19 +256,28 @@
       <!-- <div class="page-num">2/2</div> -->
     </article>
   </div>
-
-  <n-button class="download-btn hidden-when-print" text type="info" @click="handleDownloadPdf">
-    <n-icon size="20"><Download /></n-icon>
-  </n-button>
-  <n-button class="fixed left-20px top-20px hidden-when-print" @click="router.go('/')">
-    <n-icon size="20"><ArrowLeft /></n-icon>
-    回到首页
-  </n-button>
+  <template v-if="!isMobile">
+    <n-button
+      class="download-btn hidden-when-print"
+      quaternary
+      type="info"
+      @click="handleDownloadPdf"
+    >
+      <n-icon size="20"><Download /></n-icon>
+    </n-button>
+    <n-button quaternary class="fixed left-20px top-20px hidden-when-print" @click="router.go('/')">
+      <n-icon size="20"><ArrowLeft /></n-icon>
+      首页
+    </n-button>
+  </template>
 </template>
 
 <script setup lang="ts">
 import { Download, ArrowLeft } from '@vicons/carbon';
 import { useRouter } from 'vitepress';
+import { useMediaQuery } from '@vueuse/core';
+
+const isMobile = useMediaQuery('(max-width: 900px)');
 
 const router = useRouter();
 const handleDownloadPdf = () => {
@@ -306,14 +321,11 @@ const handleDownloadPdf = () => {
   article {
     width: auto;
     height: auto;
+    padding: 14px;
   }
 
-  .bio img {
-    display: none;
-  }
-
-  .skills .wrapper {
-    flex-direction: column;
-  }
+  // .bio img {
+  //   display: none;
+  // }
 }
 </style>

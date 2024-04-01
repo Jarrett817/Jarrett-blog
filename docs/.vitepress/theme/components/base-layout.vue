@@ -65,7 +65,7 @@ const openFullScreenMode = () => {
     <Plum v-if="frontmatter.layout && !['home', 'page'].includes(frontmatter.layout)" />
 
     <Layout v-show="!slidesVisible">
-      <template #home-features-after> <TimeTree class="time-tree" /> </template>
+      <template #home-features-after><TimeTree class="time-tree" /> </template>
 
       <template #aside-bottom>
         <!-- <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
@@ -87,10 +87,18 @@ const openFullScreenMode = () => {
 </template>
 
 <style lang="scss" scoped>
+@import '../style//function.scss';
+
 .time-tree {
   position: absolute;
   bottom: 112px;
   right: 10px;
+
+  @include Mobile {
+    position: relative;
+    left: 34%;
+    bottom: 0;
+  }
 
   &,
   ::v-deep canvas {

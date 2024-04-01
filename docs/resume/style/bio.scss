@@ -1,13 +1,18 @@
+@import '../../.vitepress/theme/style/function.scss';
+
 .bio {
-  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
   h1 {
     font-size: 32px;
     margin-bottom: 12px;
     line-height: 32px;
+
+    @include Mobile {
+      font-size: 28px;
+    }
   }
 
   p:first-of-type {
@@ -20,13 +25,10 @@
   }
 
   img {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: auto;
     height: auto;
     max-height: 100%;
-    max-width: 100%;
+    max-width: 100px;
   }
 }
 

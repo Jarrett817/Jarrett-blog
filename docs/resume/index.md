@@ -1,5 +1,7 @@
 ---
 layout: false
+title: 王俊然-前端开发-13516724981
+titleTemplate: ':title'
 head:
   - - meta
     - name: viewport
