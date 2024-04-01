@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-map">
+  <div class="knowledge-map relative w-full h-90vh overflow-hidden">
     <div id="mind-map" class="w-full h-full relative" />
   </div>
 </template>
@@ -56,12 +56,8 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="postcss">
-.map-container .lt {
+<style lang="scss" scoped>
+:deep(.map-container .lt) {
   width: 40px;
-}
-
-.knowledge-map {
-  @apply relative w-full h-screen-sm overflow-auto;
 }
 </style>

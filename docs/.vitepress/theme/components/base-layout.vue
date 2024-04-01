@@ -3,13 +3,13 @@ import DefaultTheme from 'vitepress/theme';
 // import JSlides from './ppt/src/index.vue';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
-import { PlayOutline, Maximize } from '@vicons/carbon';
+import { Maximize } from '@vicons/carbon';
 import { useData, useRoute } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
 
 const { frontmatter } = useData();
-const { path } = useRoute();
+const data = useData();
 
 const { Layout } = DefaultTheme;
 const slidesVisible = ref(false);
@@ -65,7 +65,9 @@ const openFullScreenMode = () => {
     <Plum v-if="frontmatter.layout && !['home', 'page'].includes(frontmatter.layout)" />
 
     <Layout v-show="!slidesVisible">
-      <template #home-features-after><TimeTree class="time-tree" /> </template>
+      <template v-if="!data.frontmatter.value.isMapMode" #home-features-after
+        ><TimeTree class="time-tree" />
+      </template>
 
       <template #aside-bottom>
         <!-- <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
