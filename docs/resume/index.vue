@@ -35,7 +35,7 @@
             >
           </p>
         </div>
-        <img src="./images/photo.jpg" alt="" />
+        <img src="./images/photo.jpeg" alt="证件照" />
       </section>
       <div class="head-line"></div>
       <section class="skills">
