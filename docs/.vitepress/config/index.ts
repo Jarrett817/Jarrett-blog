@@ -27,7 +27,7 @@ export default defineConfigWithTheme({
           'width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
       }
     ],
-    ['link', { rel: 'icon', href: '/favicon.jpg' }]
+    ['link', { rel: 'icon', href: base + 'favicon.jpg' }]
   ],
   themeConfig,
   vite: {
