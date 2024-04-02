@@ -261,11 +261,17 @@
       class="download-btn hidden-when-print"
       quaternary
       type="info"
+      key="download"
       @click="handleDownloadPdf"
     >
       <n-icon size="20"><Download /></n-icon>
     </n-button>
-    <n-button quaternary class="fixed left-20px top-20px hidden-when-print" @click="router.go('/')">
+    <n-button
+      key="back"
+      quaternary
+      class="fixed left-20px top-20px hidden-when-print"
+      @click="router.go('/')"
+    >
       <n-icon size="20"><ArrowLeft /></n-icon>
       首页
     </n-button>
