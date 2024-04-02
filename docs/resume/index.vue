@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgb(218, 220, 224)">
+  <div style="background: rgb(218, 220, 224)" class="color-#3c3c43">
     <article>
       <n-button v-if="isMobile" quaternary class="hidden-when-print px-0" @click="router.go('/')">
         <n-icon size="20"><ArrowLeft /></n-icon>
