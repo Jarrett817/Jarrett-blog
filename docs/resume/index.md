@@ -14,4 +14,6 @@ head:
 import MyCV from './index.vue'
 </script>
 
-<MyCV />
+<ClientOnly>
+  <MyCV />
+</ClientOnly>
