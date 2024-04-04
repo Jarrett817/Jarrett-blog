@@ -29,7 +29,8 @@ const FrontEndSidebar = [
   { text: 'vue3', link: '/front-end/vue3/' },
   { text: 'nodejs', link: '/front-end/nodejs/' },
   { text: 'git', link: '/front-end/git/' },
-  { text: 'canvas', link: '/front-end/canvas/' }
+  { text: 'canvas', link: '/front-end/canvas/' },
+  { text: '微前端', link: '/front-end/micro-front/' }
 ];
 
 const PackagesSidebar = [
