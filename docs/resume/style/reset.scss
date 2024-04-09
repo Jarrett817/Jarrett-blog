@@ -61,7 +61,7 @@ h6 {
   color: var(--blue-indigo-bunting);
 }
 h2 {
-  margin: 20px 0 16px 0;
+  margin: 10px 0 10px 0;
   font-size: 20px;
 
   @include Mobile {
@@ -93,7 +93,7 @@ a {
 
   &:hover {
     color: var(--blue-indigo-bunting);
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 

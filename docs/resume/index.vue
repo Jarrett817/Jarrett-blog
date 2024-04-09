@@ -16,18 +16,6 @@
             本科 <span class="column-line">|</span> 中共党员
           </p>
           <p>
-            个人站点：<a
-              class="has-background"
-              href="https://jarrett817.github.io/Jarrett-blog/"
-              target="_blank"
-              >博客</a
-            >
-            <span class="column-line">|</span>
-            <a href="https://github.com/Jarrett817" target="_blank">GitHub</a>
-            <span class="column-line">|</span>
-            <a href="https://juejin.cn/user/3940246036687774/posts" target="_blank">掘金</a>
-          </p>
-          <p>
             电话：<a href="tel:13516724981">135-1672-4981</a>
             <span class="column-line">|</span> 微信：13867223154
             <span class="column-line">|</span> 邮箱：<a href="mailto:jrwang0817@163.com"
@@ -152,19 +140,14 @@
           <li>
             <h4>记账本</h4>
             <p>
-              一个具备记账、账单管理、记账标签管理及报表功能的移动端记账本，使用Vue2、Vue3、React分别制作了一版，后端使用Egg.js和MySQL数据库开发。通过该项目熟悉web开发全流程，熟悉主流开发工具差异
+              一个具备记账、账单管理、记账标签管理及报表功能的移动端记账本，使用Vue2、Vue3、React分别制作了一版，后端使用Egg.js和MySQL数据库开发。
             </p>
             <ul>
               <li>
                 <div class="flex justify-between items-start">
                   <span class="flex-1">
-                    Vue2 版：使用 <strong>Vue2</strong> / <strong>VueRouter</strong> /
-                    <strong>Vuex</strong> / <strong>TypeScript</strong> 开发
-                  </span>
-                  <span>
-                    <a href="https://github.com/Jarrett817/money-lover" target="_blank">源码</a>
-                    <a href="http://jarrett0817.gitee.io/money-lover-website" target="_blank"
-                      >预览</a
+                    Vue2 版：<a href="https://github.com/Jarrett817/iAccounts-vue2" target="_blank"
+                      >https://github.com/Jarrett817/iAccounts-vue2</a
                     >
                   </span>
                 </div>
@@ -172,15 +155,10 @@
               <li>
                 <div class="flex justify-between items-start">
                   <span class="flex-1">
-                    React 版：使用 <strong>React</strong> / <strong>React Router</strong> /
-                    <strong>TypeScript</strong> 开发
-                  </span>
-                  <span>
-                    <a href="https://github.com/Jarrett817/monry-lover-react" target="_blank"
-                      >源码</a
-                    >
-                    <a href="http://jarrett0817.gitee.io/money-lover-react-website" target="_blank"
-                      >预览</a
+                    React 版：<a
+                      href="https://github.com/Jarrett817/iAccounts-react"
+                      target="_blank"
+                      >https://github.com/Jarrett817/iAccounts-react</a
                     >
                   </span>
                 </div>
@@ -188,30 +166,18 @@
               <li>
                 <div class="flex item-start justify-between">
                   <span class="flex-1">
-                    Vue3 版：前端使用 <strong>Vue3</strong> / <strong>VueRouter</strong> /
-                    <strong>Vuex</strong> / <strong>Vite</strong> / <strong>Axios</strong> /
-                    <strong>Vant UI</strong> / <strong>TypeScript</strong> 开发 ；后端使用
-                    <strong>Eggjs</strong> / <strong>MySql</strong> 开发，云服务器部署
+                    Vue3 版：<a href="https://github.com/Jarrett817/iAccounts_vue3" target="_blank"
+                      >https://github.com/Jarrett817/iAccounts_vue3</a
+                    >
                   </span>
-                  <span class="flex flex-col items-end">
-                    <span>
-                      <a
-                        href="https://modao.cc/app/70d1df3f41666d3c9917f6e233d472c5a1b4e3e5?simulator_type=outside_artboard&sticky"
-                        target="_blank"
-                        >原型</a
-                      >
-                      <a href="https://jarrett817.github.io/iAccounts_vue3/" target="_blank"
-                        >预览</a
-                      >
-                    </span>
-                    <span class="whitespace-nowrap">
-                      <a href="https://github.com/Jarrett817/money-lover_vue3" target="_blank"
-                        >前端源码</a
-                      >
-                      <a href="https://github.com/Jarrett817/i-accounts-api" target="_blank"
-                        >后端源码</a
-                      >
-                    </span>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between items-start">
+                  <span class="flex-1">
+                    后端：<a href="https://github.com/Jarrett817/i-accounts-api" target="_blank"
+                      >https://github.com/Jarrett817/i-accounts-api</a
+                    >
                   </span>
                 </div>
               </li>
@@ -241,6 +207,30 @@
             </ul>
           </li> -->
         </ol>
+      </section>
+      <div class="split-line"></div>
+      <section class="website">
+        <h2>个人站点</h2>
+        <ul>
+          <li
+            >博客：
+            <a href="https://jarrett817.github.io/Jarrett-blog/" target="_blank"
+              >https://jarrett817.github.io/Jarrett-blog/</a
+            ></li
+          >
+          <li
+            >Github：
+            <a href="https://github.com/Jarrett817" target="_blank"
+              >https://github.com/Jarrett817</a
+            >
+          </li>
+          <li
+            >掘金：
+            <a href="https://juejin.cn/user/3940246036687774/posts" target="_blank"
+              >https://juejin.cn/user/3940246036687774/posts</a
+            ></li
+          >
+        </ul>
       </section>
       <div class="split-line"></div>
       <section class="education">
