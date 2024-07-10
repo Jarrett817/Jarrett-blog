@@ -41,7 +41,7 @@ export const themeConfig: DefaultTheme.Config = {
     // },
     {
       text: '🏹 方案',
-      link: '/plan/virtual-scroll/',
+      link: '/plan/micro-fe-communication/',
       activeMatch: '^/plan/'
     },
     {
