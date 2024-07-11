@@ -16,7 +16,10 @@ export default defineConfigWithTheme({
   markdown: {
     theme: 'solarized-dark',
     lineNumbers: true,
-    toc: { level: [1, 2] }
+    toc: { level: [1, 2, 3] },
+    image: {
+      lazyLoading: true
+    }
   },
   head: [
     [
