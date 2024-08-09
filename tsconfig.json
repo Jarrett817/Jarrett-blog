@@ -23,7 +23,8 @@
     "docs/.vitepress/**/*.d.ts",
     "docs/.vitepress/**/*.tsx",
     "docs/.vitepress/**/*.vue",
-    "docs/**/*.md"
+    "docs/**/*.md",
+    "docs/**/*.vue"
   ],
   "exclude": ["docs/.vitepress/dist"]
 }

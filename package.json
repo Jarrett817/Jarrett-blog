@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",
+    "axios": "^1.7.2",
     "mind-elixir": "workspace:^1.1.0",
     "naive-ui": "^2.35.0",
     "pixi.js": "^7.3.1",

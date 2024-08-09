@@ -82,33 +82,16 @@ registerApplication(
   location => location.pathname.startsWith('/app1')
 );
 
-registerApplication(
-  'app2',
-  () => import('path/to/app2'),
-  location => location.pathname.startsWith('/app2')
-);
-
 start();
 
-// 子应用
-const appOptions = {
-  el: '#vue', // 增加一个属性挂在到父应用的 id为vue的标签上
-  router,
-  render: h => h(App)
+export const bootstrap = async function () {
+  console.log('应用正在启动');
 };
-
-// 把vue和上面这个对象传入进去  这个singleSpaVue就会返回vueLife
-// vueLife是包装好的生命周期  对应的就是bootstrap mount unmount  这三个方法
-const vueLife = singleSpaVue({
-  Vue,
-  appOptions
-});
-
-//导出这三个方法
-//协议接入  我定好了这些方法  父应用会调用这些方法
-export const bootstrap = vueLife.bootstrap;
-export const mount = vueLife.mount;
-export const unmount = vueLife.unmount;
+export const mount = async function () {};
+export const unmount = async function () {
+  console.log('应用正在卸载');
+  document.body.removeChild(childContainer);
+};
 ```
 
 ```js [qiankun]
@@ -276,9 +259,10 @@ module.exports = {
 
 3. 独立开发、部署带来的便利
 
-- 独立仓库、独立团队，能够针对性地响应客户需求，各自独立打包提测，维护更方便，速度更快
+- 独立仓库、独立团队，并行开发、独立打包提测，能够更加快速且针对性地响应客户需求。
 - 兼容不同技术栈。对于远古项目使用的老旧技术栈能够快速接入，已接入项目技术栈重构也可以按项目逐个迭代，甚至可以进一步按模块拆分，颗粒度更细
 - 降低单个项目复杂度，减少维护成本
+- 安全。沙箱的存在使得不同技术栈项目的渐进式融合更加方便，且风险降低
 
 ### 微前端带来了什么问题
 

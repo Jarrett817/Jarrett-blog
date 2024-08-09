@@ -7,9 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    NBackTop: typeof import('naive-ui')['NBackTop']
-    NButton: typeof import('naive-ui')['NButton']
-    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
-    NIcon: typeof import('naive-ui')['NIcon']
+    NBackTop: typeof import('naive-ui')['NBackTop'];
+    NButton: typeof import('naive-ui')['NButton'];
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider'];
+    NIcon: typeof import('naive-ui')['NIcon'];
   }
 }

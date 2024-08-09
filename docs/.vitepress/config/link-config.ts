@@ -49,6 +49,10 @@ const PlanSidebar = [
   {
     text: '微前端下的主子通信',
     link: '/plan/micro-fe-communication/'
+  },
+  {
+    text: '接口测试',
+    link: '/plan/api-test/'
   }
 ];
 
