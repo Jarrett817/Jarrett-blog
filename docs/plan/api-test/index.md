@@ -8,12 +8,20 @@
 
 前后端开发阶段，未部署接口时，前端需要模拟接口来开发，尽可能地模拟真实接口请求和数据能更好的完成开发工作
 
-核心需求有如下几点：
+::: danger 常规开发的痛点：
+
+1. 前端 mock 数据大段大段的复制粘贴写在项目代码里，如果没有及时清理，会增加不必要的项目体积
+2. 前端将数据写在项目里，如果想要添加逻辑，需要写更多的临时代码
+3. 后端给出的接口文档不具备修改通知和 diff 功能，需要仔细询问核对哪些经过修改，且后续无历史记录
+   :::
+
+::: tip 基于上述，核心需求有如下几点：
 
 1. 交互友好的接口文档
 2. 接口更改时，可追溯、可通知
 3. 模拟接口可调用
 4. 零侵入的、便于使用的数据 mock 系统
+   :::
 
 ## yapi 简介
 
@@ -36,23 +44,26 @@ yapi 是一个开源的接口管理平台，目前 star 数量 27.3k，具备以
 
 ```nginx
 server {
-  listen 8888;
-  server_name localhost;
+  listen 443 ssl;
+  server_name test.jarrett.com;
 
-  # 线上接口
-  location /api/getUsers {
-    proxy_pass http://10.86.8.192:3000/mock/83/api/getUsers;
-  }
+  ssl_certificate SSL/test.jarrett.com.crt;
+  ssl_certificate_key SSL/test.jarrett.com.key;
 
   location / {
-    proxy_pass http://localhost:5173;
+    proxy_pass https://xx.xx.x.xxx:443/;
+    proxy_set_header Host https://xx.xx.x.xxx:443/;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Photo $scheme;
+  }
 
-    # 代理webSocket流量
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host $host;
-    proxy_cache_bypass $http_upgrade;
+  location /api/getUsers{
+    proxy_pass http://xx.xx.x.xxx:3000/mock/83/api/getUsers;
+    proxy_set_header Host http://xx.xx.x.xxx:3000;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Photo $scheme;
   }
 }
 ```

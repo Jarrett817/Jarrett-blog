@@ -15,7 +15,7 @@ export default defineConfigWithTheme({
   lastUpdated: true,
   markdown: {
     theme: 'solarized-dark',
-    lineNumbers: true,
+    lineNumbers: false,
     toc: { level: [1, 2, 3] },
     image: {
       lazyLoading: true

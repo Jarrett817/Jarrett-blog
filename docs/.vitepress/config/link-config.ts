@@ -53,6 +53,10 @@ const PlanSidebar = [
   {
     text: '接口测试',
     link: '/plan/api-test/'
+  },
+  {
+    text: '运行时数据校验',
+    link: '/plan/zod/'
   }
 ];
 
