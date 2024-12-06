@@ -55,8 +55,8 @@ const PlanSidebar = [
     link: '/plan/api-test/'
   },
   {
-    text: '运行时数据校验',
-    link: '/plan/zod/'
+    text: '如何让ts更好用',
+    link: '/plan/how-to-make-ts-useful/'
   }
 ];
 
