@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import * as monaco from 'monaco-editor';
-import { nextTick, ref, watch } from 'vue';
+import { nextTick, onUnmounted, ref, watch } from 'vue';
 
 interface Props {
   value: string | null;
@@ -51,12 +51,10 @@ watch(
     immediate: true
   }
 );
+
+onUnmounted(() => {
+  editor?.dispose();
+});
 </script>
 
-<style lang="scss" scoped>
-.monaco-editor-wrap {
-  background-color: #1e1e1e;
-  width: 100%;
-  padding-top: 12px;
-}
-</style>
+<style lang="scss" scoped></style>
