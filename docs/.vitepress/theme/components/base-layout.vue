@@ -109,7 +109,7 @@ const openFullScreenMode = () => {
   }
 
   &,
-  ::v-deep canvas {
+  :deep(canvas) {
     height: 37vh;
   }
 }
