@@ -1,3 +1,5 @@
+import { link } from 'fs';
+
 const ComputerBasicSidebar = [
   {
     text: '设计模式',
@@ -51,12 +53,16 @@ const PlanSidebar = [
     link: '/plan/micro-fe-communication/'
   },
   {
-    text: '接口测试',
+    text: '接口测试平台',
     link: '/plan/api-test/'
   },
   {
-    text: '如何让ts更好用',
+    text: '10分钟速通TS',
     link: '/plan/how-to-make-ts-useful/'
+  },
+  {
+    text: '前端基建（一）',
+    link: '/plan/front-end-infrastructure/'
   }
 ];
 

@@ -38,9 +38,9 @@ const listenThemeChange = () => {
 };
 
 const openFullScreenMode = () => {
-  const mainContent: HTMLElement = document.querySelector('main.main') || document.body;
-
-  if (mainContent) {
+  const mainContent: HTMLElement = document.querySelector('div.VPDoc>.container') || document.body;
+  const contentBlock: HTMLElement | null = mainContent.querySelector('.content-container');
+  if (contentBlock) {
     type Styles = Partial<Omit<CSSStyleDeclaration, 'parentRule' | 'length'>>;
     const styles: Styles = {
       padding: '40px',
@@ -50,6 +50,12 @@ const openFullScreenMode = () => {
     };
     for (const key in styles) {
       mainContent.style[key] = styles[key] as string;
+    }
+    const contentStyles: Styles = {
+      maxWidth: '1000px'
+    };
+    for (const key in contentStyles) {
+      contentBlock.style[key] = contentStyles[key] as string;
     }
     mainContent.requestFullscreen();
   }

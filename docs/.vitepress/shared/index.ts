@@ -1,3 +1,3 @@
-const base = '/Jarrett-blog/';
+const base = '/Jarrett-blog';
 
 export { base };

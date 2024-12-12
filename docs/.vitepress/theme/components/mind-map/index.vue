@@ -1,38 +1,44 @@
 <template>
-  <div class="knowledge-map relative w-full h-90vh overflow-hidden">
-    <div id="mind-map" class="w-full h-full relative" />
+  <div class="knowledge-map relative w-full h-full overflow-hidden">
+    <div :id="nodeId" class="w-full h-full relative" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { MindMapNode } from './types';
+import { onMounted, onUnmounted } from 'vue';
 const emits = defineEmits(['node-click']);
+import MindElixir, {
+  type Options,
+  type MindElixirInstance,
+  type MindElixirData
+} from 'mind-elixir';
+import { v4 } from 'uuid';
 
 interface Props {
-  data: MindMapNode | null;
+  data: MindElixirData | null;
+  options: Omit<Options, 'el'> | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  data: null
+  data: null,
+  options: null
 });
 
-const isClicked = ref(false);
+const nodeId = 'el' + v4().replace(/-/g, '');
+
+let mind: MindElixirInstance | null = null;
 
 onMounted(async () => {
-  const MindElixirModule = await import('mind-elixir');
-  const { default: MindElixir } = MindElixirModule;
-
   if (!props.data) return;
-  // @ts-ignore
-  const mind = new MindElixir({
-    el: '#mind-map',
-    direction: MindElixir.RIGHT,
+  const options: Options = {
+    el: '#' + nodeId,
+    direction: MindElixir.SIDE,
     draggable: true,
     contextMenu: false, // default true
     toolBar: true, // default true
     nodeMenu: false, // default true
     keypress: false, // default true,
+    locale: 'zh_CN',
     contextMenuOption: {
       focus: true,
       link: true,
@@ -45,14 +51,14 @@ onMounted(async () => {
         }
       ]
     }
-  });
-  mind.bus.addListener('selectNode', (node: MindMapNode) => {
-    emits('node-click', node);
-  });
-  mind.init({
-    nodeData: props.data,
-    linkData: {}
-  });
+  };
+  mind = new MindElixir(props.options ? Object.assign(options, props.options) : options);
+  mind.bus.addListener('selectNode', node => emits('node-click', node));
+  mind.init(props.data);
+});
+
+onUnmounted(() => {
+  mind?.destroy();
 });
 </script>
 

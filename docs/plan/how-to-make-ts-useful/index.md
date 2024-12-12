@@ -1,4 +1,9 @@
 <script setup>
+  import Intro from '../front-end-infrastructure/components/Intro.vue'
+  import ApiTest from '../api-test/components/ApiTest.vue'
+  import DaylyUse from '/plan/how-to-make-ts-useful/components/DailyUse.vue'
+  import Zod from '/plan/how-to-make-ts-useful/components/Zod.vue'
+
   const demo1 =`/** This is a cool guy. */
 interface Person {
   /** This is name. */
@@ -200,8 +205,42 @@ Status[0] === 'SUCCESS'
 `
 
 const dailyUse =`
-// service层定义接口及入参出参类型
+/* service层定义接口及入参出参类型 */
 
+/*--------------- /services/base/types.ts ----------------*/
+
+export interface BaseResponse {
+  msg: string;
+  code: number;
+}
+
+interface RequestParams<T> {
+  url: string;
+  method: 'GET' | 'POST';
+  query: T;
+}
+
+/*---------------------------------------------------------*/
+
+
+
+/*--------------- /services/base/request.ts ----------------*/
+
+function sendRequest<Response extends object, Params>(params?: RequestParams<Params>): Promise<Response> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(params);
+      const data = {} as Response
+      resolve(data)
+    }, 1000)
+  })
+}
+
+/*---------------------------------------------------------*/
+
+
+
+/*--------------- /services/order-service/types.ts ---------------*/
 enum Status {
   SUCCESS,
   FAIL
@@ -212,8 +251,7 @@ export interface ListItem {
   status: Status;
   children: ListItem[];
 }
-export interface DetailResponse {
-  code: number;
+export interface DetailResponse extends BaseResponse {
   data: {
     id: string;
     name: string;
@@ -222,22 +260,27 @@ export interface DetailResponse {
 }
 
 export type Data = DetailResponse['data']
+export type List = DetailResponse['data']['list']
+export type DataWithoutId = Omit<Data, 'id'>
 
-function sendRequest<Response extends object>(params?: object): Promise<Response> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(params);
-      const data = {} as Response
-      resolve(data)
-    }, 1000)
+/*---------------------------------------------------------*/
+
+
+
+/*--------------- /services/order-services/api.ts ---------------*/
+export function getDetail<Params extends { id: number }>(query: Params) {
+  return sendRequest<DetailResponse, Params>({
+    method: 'GET',
+    url: '/spi/detail',
+    query
   })
 }
-function getDetail(params: { id: number }) {
-  return sendRequest<DetailResponse>(params)
-}
+/*---------------------------------------------------------*/
 
 
-// 业务层使用
+
+
+/*--------------- 业务层使用 ---------------*/
 
 const data = {
   list: [] as Data['list'],
@@ -250,6 +293,7 @@ getDetail({ id: 123 }).then(res => {
   data.list = res.data.list
   data.info.name = res.data.name
 })
+/*---------------------------------------------------------*/
 
 `
 
@@ -257,14 +301,14 @@ getDetail({ id: 123 }).then(res => {
 
 # 10 分钟速通 TS
 
-## 必知必会
+## TS 必知必会
 
-用 20%的知识解决 80%的日常开发
+用 20% 的知识解决 80% 的日常开发
 
 ### type & interface
 
-- type 类型别名。适用于定义复杂的类型组合，如联合类型和交叉类型。当需要表示一个值可能是多种类型之一，或者一个类型需要同时满足多种类型的特征时，类型别名非常方便
-- interface 接口。更适合用于定义对象的形状，尤其是在面向对象编程或者定义 API 的返回值和参数类型时。当需要描述一个类应该实现的契约（如具有哪些方法和属性）时，接口是很好的选择
+- type 类型别名。适用于定义复杂的类型组合，如联合类型和交叉类型。**当需要表示一个值可能是多种类型之一，或者一个类型需要同时满足多种类型的特征时，类型别名非常方便**
+- interface 接口。更适合用于定义对象的形状，尤其是在面向对象编程或者定义 API 的返回值和参数类型时。**当需要描述一个类应该实现的契约（如具有哪些方法和属性）时，接口是很好的选择**
 
 <CodeEditor :value="typeOrInterface" />
 
@@ -282,7 +326,9 @@ extends 既可以用于继承，也可用于类型约束
 
 ### 泛型
 
-合理使用泛型是 ts 类型可用性的保障，能够更好的封装通用方法，也能更好地阅读、使用库
+合理使用泛型是 ts 的精髓，能够更好的封装通用方法
+
+学会泛型能够轻松阅读各类社区库的类型声明，良好的变量命名、类型声明很多时候可以替代文档
 
 <CodeEditor :value="generics" />
 
@@ -290,7 +336,7 @@ extends 既可以用于继承，也可用于类型约束
 
 业务代码中常有关于枚举的判断，比如`data.status===1`，这可能分散在各个项目文件，并且缺失语义
 
-:::warning
+:::danger 建议
 如果不想在业务变动时一处处地逐个修改枚举判断，建议所有使用常量或枚举而不是硬编码
 :::
 
@@ -465,4 +511,222 @@ let evenNumber: EvenNumbers = 2;
 
 ## 业务应用实践
 
+<DaylyUse/>
+
 <CodeEditor :value="dailyUse" />
+
+以上是静态类型校验，那么如何过渡到动态类型校验？
+
+## 运行时数据校验
+
+:::warning 解决什么问题
+
+- 后端服务互相调用，数据类型不确定
+- 可能出现的属性空值
+- 可能由类型导致的问题，比如 falsy 判断、字符串和数字相加
+  :::
+
+### 碰到的挑战
+
+![使用组件](/plan/how-to-make-ts-useful/images/challenges.png)
+
+经过调研，选用了 zod 库作为方案实现的核心库
+
+该库较为成熟，社区活跃，原生支持 TS，且能够完全对标 TS 语法，一份 schema 同时生成校验器和 TS 静态类型，使用简单、直观、轻便
+
+<Zod/>
+
+:::code-group
+
+```ts [/base-service/validator.ts]
+const safeString = () =>
+  string().catch(ctx => {
+    log2wx(ctx.error.message);
+    try {
+      const data = JSON.stringify(ctx.input);
+      return data || '';
+    } catch (e) {
+      return '';
+    }
+  });
+
+// coerce number 解析如'测试文本'这样的文本字符串，无法类型强转，会parse error
+const safeNumber = () =>
+  number().catch(ctx => {
+    log2wx(ctx.error.message);
+    const { success, data } = coerce.number().safeParse(ctx.input);
+    if (success) return data;
+    else return 0;
+  });
+
+const safeBoolean = () =>
+  boolean().catch(ctx => {
+    log2wx(ctx.error.message);
+    const { success, data } = coerce.boolean().safeParse(ctx.input);
+    if (success) return data;
+    else return false;
+  });
+
+const safeArray = <T extends ZodTypeAny>(
+  schema: T,
+  params?: RawCreateParams & { filter?: (val: unknown[]) => unknown[] }
+) => {
+  return array(schema).catch(ctx => {
+    log2wx(ctx.error.message);
+    if (Array.isArray(ctx.input)) {
+      return params?.filter ? params.filter(ctx.input) : ctx.input; // 避免混合类型数组报错 [{name:'test'},null]
+    } else {
+      return [];
+    }
+  });
+};
+type ObjectParams = ZodObject<ZodRawShape>;
+const safeObject = <
+  T extends
+    | ObjectParams
+    | ZodDefault<ObjectParams>
+    | ZodNullable<ObjectParams>
+    | ZodDefault<ZodNullable<ObjectParams>>
+>(
+  schema: T
+) => {
+  return schema.catch((ctx: { error: ZodError }) => {
+    log2wx(ctx.error.message);
+    return {};
+  }) as ZodCatch<typeof schema>;
+};
+
+const safeLiteral = <T extends Primitive>(schema?: T) =>
+  literal(schema).catch(ctx => {
+    log2wx(ctx.error.message);
+    return schema;
+  });
+
+const safeNativeEnum = <T extends EnumLike>(schema: T) =>
+  nativeEnum(schema).catch(ctx => {
+    log2wx(ctx.error.message);
+    return Object.values(ctx.input)[0];
+  });
+
+const safeNull = () =>
+  zodNull().catch(ctx => {
+    log2wx(ctx.error.message);
+    return null;
+  });
+
+const safeUnion = <T extends Readonly<[ZodTypeAny, ZodTypeAny, ...ZodTypeAny[]]>>(schema: T) => {
+  return union(schema).catch(ctx => {
+    log2wx(ctx.error.message);
+    return '';
+  });
+};
+
+const createBaseResponseValidator = <Data extends ZodType, Meta extends ZodType>(
+  data?: Data,
+  meta?: Meta
+) => {
+  return safeObject(
+    object({
+      code: number(),
+      msg: string(),
+      data: preprocess(val => val || null, data || safeNull()),
+      meta: preprocess(val => val || null, meta || safeNull())
+    }).partial({
+      meta: true,
+      msg: true,
+      data: true
+    })
+  );
+};
+```
+
+```ts [/detail-service/api.ts]
+import { createDetailValitor } from './validator'
+class DetailService extends BaseServices {
+  constructor() {
+    super();
+  }
+
+  getDetail(query: { orderId: string }) {
+    return this.sendRequest(
+      {
+        url:'/api/detail'
+        method: 'POST',
+        query,
+        validator: createDetailValitor
+      },
+    );
+  }
+}
+
+export const detailService = new DetailServices();
+```
+
+```ts [/detail-service/validator.ts]
+/*
+enum Status {
+  SUCCESS,
+  FAIL
+}
+export interface ListItem {
+  name: string;
+  age: number;
+  status: Status;
+  children?: ListItem[];
+}
+export interface DetailResponse extends BaseResponse {
+  data: {
+    id: string;
+    name: string;
+    tags: string[];
+    list: ListItem[];
+  };
+}
+*/
+
+const listItem = safeObjectWrap(
+  object({
+    status: safeNativeEnum(Status).default(Status.FAIL),
+    name: safeString().default(''),
+    age: safeNumber().default(20)
+  }).passthrough()
+);
+
+const createDetailValidator = () => {
+  type Input = input<typeof listItem> & {
+    children?: Input[];
+  };
+  type Output = output<typeof listItem> & {
+    children?: Output[];
+  };
+  const schema: ZodType<Output, ZodTypeDef, Input> = listItem
+    .extend({
+      children: lazy(() => schema.array())
+    })
+    .partial({ children: true });
+  return createBaseResponseValidator(
+    safeObjectWrap(
+      object({
+        id: safeString(),
+        name: safeString(),
+        tags: safeArray(safeString()).default([]),
+        list: safeArray(schema)
+      }).partial({ list: true })
+    )
+  );
+};
+
+export const detailSchema = createDetailValidator();
+```
+
+```ts [/detail-service/types.ts]
+import { detailSchema } from './validator';
+
+type DetailSchema = z.infer<typeof detailSchema>;
+
+export type Data = DetailSchema['data'];
+export type List = DetailSchema['data']['list'];
+export type DataWithoutId = Omit<Data, 'id'>;
+```
+
+:::

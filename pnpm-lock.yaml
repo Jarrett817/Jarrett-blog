@@ -15,8 +15,8 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       mind-elixir:
-        specifier: workspace:^1.1.0
-        version: link:docs/.vitepress/packages/mind-elixir-core
+        specifier: ^4.3.3
+        version: 4.3.3
       monaco-editor:
         specifier: ^0.52.0
         version: 0.52.0
@@ -2903,6 +2903,9 @@ packages:
   mimic-fn@2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
+
+  mind-elixir@4.3.3:
+    resolution: {integrity: sha512-kBPMy8Skn6ep1Sd42xZ/XAcQVDi9ca/yTz+Z7ZezCTHA6pWcFG6U/eNseYxatOCxBii38baY8eslck43vxRbWw==}
 
   minimatch@0.3.0:
     resolution: {integrity: sha512-WFX1jI1AaxNTZVOHLBVazwTWKaQjoykSzCBNXB72vDTCzopQGtyP91tKdFK5cv1+qMwPyiTu1HqUriqplI8pcA==}
@@ -7413,6 +7416,8 @@ snapshots:
     optional: true
 
   mimic-fn@2.1.0: {}
+
+  mind-elixir@4.3.3: {}
 
   minimatch@0.3.0:
     dependencies:
