@@ -501,7 +501,7 @@ flex:1 的子元素，存在内容超出的现象
 
 **min-width 的原理：** 浏览器默认为 `flex` 容器的子元素设置了 `min-width: auto;min-height: auto`, 即 `flex` 子元素的最小宽度高度不能小于其内容的宽高, 在规范里的表述是:`A flex item cannot be smaller than the size of its content along the main axis.` 所以通过设置 `min-width: 0`, 覆盖这个默认设置, `flex-shrink` 属性就能生效了
 
-- [html - Why don't flex items shrink past content size? - Stack Overflow](stackoverflow.com)
+- html - Why don't flex items shrink past content size? - Stack Overflow
 - [min-width:0 原理](https://www.w3.org/TR/css-flexbox-1/#min-size-auto)
 
 <script setup>
