@@ -4,7 +4,7 @@ import DefaultTheme from 'vitepress/theme';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { Maximize } from '@vicons/carbon';
-import { useData, useRoute } from 'vitepress';
+import { useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
 

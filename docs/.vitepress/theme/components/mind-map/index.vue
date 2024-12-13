@@ -7,11 +7,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
 const emits = defineEmits(['node-click']);
-import MindElixir, {
-  type Options,
-  type MindElixirInstance,
-  type MindElixirData
-} from 'mind-elixir';
+import { type Options, type MindElixirInstance, type MindElixirData } from 'mind-elixir';
 import { v4 } from 'uuid';
 
 interface Props {
@@ -30,6 +26,8 @@ let mind: MindElixirInstance | null = null;
 
 onMounted(async () => {
   if (!props.data) return;
+  const MindElixirModule = await import('mind-elixir');
+  const { default: MindElixir } = MindElixirModule;
   const options: Options = {
     el: '#' + nodeId,
     direction: MindElixir.SIDE,

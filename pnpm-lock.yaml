@@ -85,8 +85,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(monaco-editor@0.52.0)
       vitepress:
-        specifier: 1.4.5
-        version: 1.4.5(@algolia/client-search@5.12.0)(@types/node@18.18.7)(async-validator@4.2.5)(axios@1.7.2)(less@4.2.0)(postcss@8.4.47)(sass@1.69.5)(search-insights@2.17.2)
+        specifier: 1.5.0
+        version: 1.5.0(@algolia/client-search@5.12.0)(@types/node@18.18.7)(async-validator@4.2.5)(axios@1.7.2)(less@4.2.0)(postcss@8.4.47)(sass@1.69.5)(search-insights@2.17.2)
 
 packages:
 
@@ -553,6 +553,9 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.1':
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+
+  '@iconify-json/simple-icons@1.2.15':
+    resolution: {integrity: sha512-4vxMQwkjsbjVIVGsPjKBnLMqAXu4wSlHmeN35KaJLK0UJNUj/ef6ES5c4bT/U4bSZjD2oZqOjOWTPD+HCrSUkg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2812,8 +2815,8 @@ packages:
       terser:
         optional: true
 
-  vitepress@1.4.5:
-    resolution: {integrity: sha512-9K0k8kvdEbeowVCpKF/x0AySSq0Pr9pM8xufLgQcKMjsifwxtDjXJjcFhZv4LYw2dcpdYiBq2j7PnWi0tCaMCg==}
+  vitepress@1.5.0:
+    resolution: {integrity: sha512-q4Q/G2zjvynvizdB3/bupdYkCJe2umSAMv9Ju4d92E6/NXJ59z70xB0q5p/4lpRyAwflDsbwy1mLV9Q5+nlB+g==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -3399,6 +3402,10 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.1': {}
+
+  '@iconify-json/simple-icons@1.2.15':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/types@2.0.0': {}
 
@@ -4149,7 +4156,7 @@ snapshots:
 
   '@vueuse/shared@10.5.0(vue@3.3.7)':
     dependencies:
-      vue-demi: 0.14.6(vue@3.3.7)
+      vue-demi: 0.14.10(vue@3.3.7)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -5968,10 +5975,11 @@ snapshots:
       less: 4.2.0
       sass: 1.69.5
 
-  vitepress@1.4.5(@algolia/client-search@5.12.0)(@types/node@18.18.7)(async-validator@4.2.5)(axios@1.7.2)(less@4.2.0)(postcss@8.4.47)(sass@1.69.5)(search-insights@2.17.2):
+  vitepress@1.5.0(@algolia/client-search@5.12.0)(@types/node@18.18.7)(async-validator@4.2.5)(axios@1.7.2)(less@4.2.0)(postcss@8.4.47)(sass@1.69.5)(search-insights@2.17.2):
     dependencies:
       '@docsearch/css': 3.6.3
       '@docsearch/js': 3.6.3(@algolia/client-search@5.12.0)(search-insights@2.17.2)
+      '@iconify-json/simple-icons': 1.2.15
       '@shikijs/core': 1.22.2
       '@shikijs/transformers': 1.22.2
       '@shikijs/types': 1.22.2
@@ -6020,6 +6028,10 @@ snapshots:
   vooks@0.2.12(vue@3.3.7):
     dependencies:
       evtd: 0.2.4
+      vue: 3.3.7
+
+  vue-demi@0.14.10(vue@3.3.7):
+    dependencies:
       vue: 3.3.7
 
   vue-demi@0.14.10(vue@3.5.12):

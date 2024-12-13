@@ -4,7 +4,6 @@ import { base } from '../shared';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import UnoCSS from 'unocss/vite';
-import monacoEditorPlugin from 'vite-plugin-monaco-editor';
 
 export default defineConfigWithTheme({
   lang: 'en-US',
@@ -36,15 +35,13 @@ export default defineConfigWithTheme({
   themeConfig,
   vite: {
     ssr: {
-      noExternal: ['naive-ui']
+      noExternal: ['naive-ui', 'monaco-editor']
     },
     plugins: [
       UnoCSS({ configFile: './uno.config.ts' }),
       Components({
         resolvers: [NaiveUiResolver()]
-      }),
-      //@ts-ignore
-      monacoEditorPlugin.default({})
+      })
     ]
   }
 });

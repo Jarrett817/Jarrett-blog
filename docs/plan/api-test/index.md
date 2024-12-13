@@ -64,8 +64,9 @@ vite 热更新配置
 ```
 
 接口测试
-
+<ClientOnly>
 <ApiTest/>
+</ClientOnly>
 
 ## 创建模拟数据
 

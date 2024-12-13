@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MindElixir, { MindElixirData, NodeObj } from 'mind-elixir';
+import { type MindElixirData, type NodeObj } from 'mind-elixir';
 import { v4 } from 'uuid';
 
 const model: NodeObj = {
@@ -110,6 +110,6 @@ const mindMapData: MindElixirData = {
 
 <template>
   <div class="h-500px">
-    <MindMap :data="mindMapData" :options="{ direction: MindElixir.RIGHT }" />
+    <MindMap :data="mindMapData" :options="{ direction: 1 }" />
   </div>
 </template>
