@@ -17,6 +17,7 @@
     "@types/turndown": "^5.0.1",
     "@types/uuid": "^8.3.4",
     "@vicons/carbon": "^0.12.0",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
     "eslint": "^8.21.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -28,19 +29,23 @@
     "unplugin-vue-components": "^0.25.2",
     "vfonts": "^0.0.3",
     "vite-plugin-monaco-editor": "^1.1.0",
-    "vitepress": "1.5.0"
+    "vitepress": "1.6.3"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^10.5.0",
+    "ant-design-vue": "^4.2.6",
+    "ant-design-x-vue": "^1.0.7",
     "axios": "^1.7.2",
     "mind-elixir": "^4.3.3",
     "monaco-editor": "^0.52.0",
     "naive-ui": "^2.35.0",
+    "ollama": "^0.5.14",
     "pixi.js": "^7.3.1",
     "reveal.js": "^4.3.1",
     "turndown": "^7.1.1",
     "uuid": "^8.3.2",
-    "vue": "^3.3.4"
+    "vue": "^3.5.13"
   },
   "engines": {
     "node": ">=14",

@@ -54,6 +54,11 @@ export const themeConfig: DefaultTheme.Config = {
       text: '🔖 简历',
       link: '/resume/index.html',
       activeMatch: '^/resume/'
+    },
+    {
+      text: '🤖 Chat',
+      link: '/chat/index.html',
+      activeMatch: '^/chat/'
     }
   ],
 

@@ -4,6 +4,7 @@ import { base } from '../shared';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import UnoCSS from 'unocss/vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default defineConfigWithTheme({
   lang: 'en-US',
@@ -41,7 +42,8 @@ export default defineConfigWithTheme({
       UnoCSS({ configFile: './uno.config.ts' }),
       Components({
         resolvers: [NaiveUiResolver()]
-      })
+      }),
+      vueJsx()
     ]
   }
 });
