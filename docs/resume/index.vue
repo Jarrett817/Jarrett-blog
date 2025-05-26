@@ -11,7 +11,7 @@
             <h1>王俊然</h1>
           </div>
           <p>
-            基本信息：男 <span class="column-line">|</span>25岁
+            基本信息：男 <span class="column-line">|</span>26岁
             <span class="column-line">|</span>
             本科 <span class="column-line">|</span> 中共党员
           </p>
@@ -35,11 +35,23 @@
           >
           <li>熟练使用 Vue 及其周边生态进行项目开发并深入研究过其内部实现</li>
           <li>熟悉前端性能优化，能够分析并解决页面性能瓶颈，提升页面加载速度和运行效率</li>
-          <li>熟练使用 Webpack、Vite 等前端构建工具，有前端项目工程化及优化经验</li>
+          <li>熟练使用 Webpack、Vite 等前端构建工具，有前端项目工程化及调优经验</li>
           <li>熟悉微前端架构，了解前端微前端框架 qiankun 与 single-spa 原理</li>
           <li
             >良好的沟通能力和团队协作精神，能够根据项目需求进行技术方案的设计和优化，持续学习新技术和跟进前端发展趋势</li
           >
+        </ul>
+      </section>
+      <div class="split-line"></div>
+      <section class="skills">
+        <h2>个人优势</h2>
+        <ul>
+          <li>较强的主观能动性，常主动承担难点问题解决，有效落地不烂尾</li>
+          <li>善于围绕业务发现需求，用代码、工具解决团队问题</li>
+          <li
+            >良好的编码习惯，对代码质量有追求，合理设计、拆分模块，合理利用技术栈特性，代码高效、灵活抽象、减少重复</li
+          >
+          <li>善用工具库，能够快速定位源码，从根源解决问题</li>
         </ul>
       </section>
       <div class="split-line"></div>
@@ -48,8 +60,31 @@
         <ol>
           <li>
             <header>
+              <h4>杭州萤石网络股份有限公司 中台研发部 前端开发</h4>
+              <h4>2024.05-至今</h4>
+            </header>
+            <span class="has-background">主要工作：</span>
+            <ul>
+              <li>负责萤石官方商城小程序、商家后台的业务迭代及技术优化</li>
+            </ul>
+            <span class="has-background">主要业绩：</span>
+            <ul>
+              <li
+                ><strong>技术栈迁移：</strong
+                >为项目量身设计并落地技术栈迁移方案，通过node脚本及相关适配，由wepy1.0平滑过渡到webpack混合打包，实现业务稳定、项目结构零改动、开发者零感知，为后续性能优化及实现纯原生开发做了关键铺垫</li
+              >
+              <li
+                ><strong>性能优化：</strong
+                >因地制宜，通过webpack配置调优、合理拆包、分包、组件用时注入等方式，单季度提升小程序启动性能30%以上，启动耗时由3000ms稳定下降至2000ms以内，其余各项数值均大幅提升</li
+              >
+
+              <li>入职第一季度获评新人之星</li>
+            </ul>
+          </li>
+          <li>
+            <header>
               <h4>每日互动股份有限公司 治数平台部 前端开发</h4>
-              <h4>2021.07-2023.12</h4>
+              <h4>2021.07-2023.12（2020.11-2021.05实习）</h4>
             </header>
             <span class="has-background">主要工作：</span>
             <ul>
@@ -75,6 +110,7 @@
                 >编写微前端架构下主、子应用从环境配置、开发规范的全流程教学文档及开发规范，推动使用
                 nginx、pnpm等工具提高开发效率，并结合业务编写了使用说明，加快新人上手；梳理换肤方案及微前端下的应用嵌套方案，降低新人理解成本</li
               >
+              <li>2021 P6，2022跳级P7-</li>
             </ul>
           </li>
         </ol>
@@ -96,9 +132,7 @@
               >
               / <strong>Vuex </strong>/<strong> Element UI </strong>/<strong> Echarts</strong>
             </p>
-            <span class="has-background">项目职责：</span>
-            <p>负责前端项目的迭代开发、需求拆解和进度把控</p>
-            <span class="has-background">技术产出：</span>
+            <span class="has-background">个人产出：</span>
             <ul>
               <li>统一项目代码规范，通过配置husky为项目代码提交时添加代码规范检查与自动修复</li>
               <li
@@ -118,9 +152,7 @@
             <p
               >基于标签平台能力开发的衍生产品，独立部署的单体应用，提供从标签创建、群体管理、群体洞察、计划投放的完整业务功能，具备比原标签平台更加用户友好的业务逻辑</p
             >
-            <span class="has-background">项目职责：</span>
-            <p>负责前端项目的迭代开发、需求拆解和进度把控</p>
-            <span class="has-background">技术产出：</span>
+            <span class="has-background">个人产出：</span>
             <ul>
               <li
                 >梳理项目的公共可用部分，包括项目配置、开发规范、复用代码，便于后续开发不同的衍生产品</li
@@ -131,10 +163,36 @@
               <li>重业务逻辑模块的功能重构，包括标签管理、群体管理、群体洞察模块</li>
             </ul>
           </li>
+          <li>
+            <h4>萤石官方商城</h4>
+            <span class="has-background">项目描述：</span>
+            <p
+              >萤石自有的商城小程序，具备商城及社区玩法能力，结合商家后台，页面可配置性强，满足运营多样化需求</p
+            >
+            <span class="has-background">个人产出：</span>
+            <ul>
+              <li
+                ><strong>插件定制：</strong
+                >开发实现小程序无效组件声明清理插件、高性能wxss清理插件，做好长期性能把关</li
+              >
+              <li
+                ><strong>通用组件：</strong
+                >开发实现小程序虚拟滚动组件，填补组内通用虚拟滚动组件空白，支持多列瀑布流、数据懒加载</li
+              >
+              <li
+                ><strong>技术推动：</strong
+                >推行商城小程序项目ts化，并设计推行zod接口数据校验方案</li
+              >
+              <li
+                ><strong>工具开发：</strong
+                >主动发掘日常测试需求，开发提供了“测试工具”系列，提供了测试环境切换工具、页面跳转工具、登录token修改工具、控制台工具，广受好评</li
+              >
+            </ul>
+          </li>
         </ol>
       </section>
-      <div class="split-line"></div>
-      <section class="projects">
+      <!-- <div class="split-line"></div> -->
+      <!-- <section class="projects">
         <h2>个人作品</h2>
         <ol>
           <li>
@@ -188,28 +246,10 @@
               <li>抽取通用方法和业务组件，保证项目中所有复用内容保持一致，提高开发效率</li>
             </ul>
           </li>
-          <!-- <li>
-            <h4>自制 UI 组件库</h4>
-            <div class="flex justify-between items-center">
-              <p> 使用 <strong>Vue3</strong> / <strong>TypeScript</strong> 的自制 UI 库 </p>
-              <span>
-                <a href="https://github.com/Jarrett817/lazyer-ui" target="_blank">源码</a>
-                <a href="http://jarrett0817.gitee.io/lazyer-ui-website" target="_blank">预览</a>
-              </span>
-            </div>
-            <ul>
-              <li>目前实现了按钮、开关、弹出框、标签页、下拉菜单等基础组件</li>
-              <li
-                >使用了 vue3 的<strong> Composition API</strong
-                >，setup、onMounted、watchEffect、ref、computed 等
-              </li>
-              <li>自制了官网，对每个组件用例进行介绍和展示</li>
-            </ul>
-          </li> -->
         </ol>
-      </section>
-      <div class="split-line"></div>
-      <section class="website">
+      </section> -->
+      <!-- <div class="split-line"></div> -->
+      <!-- <section class="website">
         <h2>个人站点</h2>
         <ul>
           <li
@@ -231,7 +271,7 @@
             ></li
           >
         </ul>
-      </section>
+      </section> -->
       <div class="split-line"></div>
       <section class="education">
         <h2>教育经历</h2>
