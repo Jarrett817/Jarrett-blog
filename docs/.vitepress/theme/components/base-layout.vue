@@ -95,7 +95,7 @@ const openFullScreenMode = () => {
 </template>
 
 <style lang="scss" scoped>
-@import '../style//function.scss';
+@use '../style//function.scss' as *;
 
 .time-tree {
   position: absolute;

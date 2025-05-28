@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import 'vfonts/FiraCode.css';
+@use './colors.scss' as *;
+@use 'vfonts/FiraCode.css' as *;
 
 /* 覆盖vitepress默认的颜色样式 */
 * {

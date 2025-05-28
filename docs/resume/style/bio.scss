@@ -1,4 +1,4 @@
-@import '../../.vitepress/theme/style/function.scss';
+@use '../../.vitepress/theme/style/function.scss' as *;
 
 .bio {
   display: flex;
@@ -35,6 +35,5 @@
 .head-line {
   height: 5px;
   width: 100%;
-  margin-top: 10px;
   background: var(--blue-indigo-bunting);
 }
