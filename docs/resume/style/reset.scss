@@ -61,7 +61,7 @@ h6 {
   color: var(--blue-indigo-bunting);
 }
 h2 {
-  margin: 6px 0 6px 0;
+  margin: 8px 0 8px 0;
   font-size: 20px;
 
   @include Mobile {
@@ -103,10 +103,11 @@ a {
 }
 
 li {
-  margin: 5px 0;
+  margin: 6px 0;
   overflow-wrap: break-word;
   white-space: break-spaces;
 }
+
 section {
   margin: 8px 0;
 }
