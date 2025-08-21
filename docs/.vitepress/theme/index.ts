@@ -6,6 +6,7 @@ import { EnhanceAppContext, type Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import 'virtual:uno.css';
 import CodeEditor from './components/code-editor/index.vue';
+import CaseComparison from './components/CaseComparison.vue';
 
 export default <Theme>{
   extends: DefaultTheme,
@@ -14,5 +15,6 @@ export default <Theme>{
     app.component('MindMap', MindMap);
     app.component('KnowledgeMap', KnowledgeMap);
     app.component('CodeEditor', CodeEditor);
+    app.component('CaseComparison', CaseComparison);
   }
 };

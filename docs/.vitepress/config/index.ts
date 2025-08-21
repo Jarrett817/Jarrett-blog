@@ -1,4 +1,4 @@
-import { defineConfigWithTheme } from 'vitepress';
+import { defineConfig } from 'vitepress';
 import { themeConfig } from './theme-config';
 import { base } from '../shared';
 import Components from 'unplugin-vue-components/vite';
@@ -6,7 +6,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import UnoCSS from 'unocss/vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-export default defineConfigWithTheme({
+export default defineConfig({
   lang: 'en-US',
   title: '🏠 JarrettBlog',
   titleTemplate: 'Vite & Vue powered static site generator',
@@ -15,7 +15,6 @@ export default defineConfigWithTheme({
   appearance: true,
   lastUpdated: true,
   markdown: {
-    theme: 'solarized-dark',
     lineNumbers: false,
     toc: { level: [1, 2, 3] },
     image: {

@@ -28,7 +28,7 @@ export const themeConfig: DefaultTheme.Config = {
   // },
   lastUpdatedText: 'Last Updated',
   nav: [
-    { text: '📘 前端基础', link: '/front-end/html/', activeMatch: '^/front-end/' },
+    { text: '📘 随记', link: '/front-end/html/', activeMatch: '^/front-end/' },
     {
       text: '📚 计算机基础',
       link: '/computer-basic/design-pattern/',

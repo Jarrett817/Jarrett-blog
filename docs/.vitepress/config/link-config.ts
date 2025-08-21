@@ -1,5 +1,3 @@
-import { link } from 'fs';
-
 const ComputerBasicSidebar = [
   {
     text: '设计模式',
@@ -33,7 +31,8 @@ const FrontEndSidebar = [
   { text: 'git', link: '/front-end/git/' },
   { text: 'canvas', link: '/front-end/canvas/' },
   { text: '微前端', link: '/front-end/micro-front/' },
-  { text: '小程序', link: '/front-end/miniprogram/' }
+  { text: '小程序', link: '/front-end/miniprogram/' },
+  { text: 'AI', link: '/ai/' }
 ];
 
 const PackagesSidebar = [
