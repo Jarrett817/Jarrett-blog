@@ -68,7 +68,9 @@ const openFullScreenMode = () => {
       <j-slides />
     </ClientOnly> -->
 
-    <Plum v-if="frontmatter.layout && !['home', 'page'].includes(frontmatter.layout)" />
+    <Plum
+      v-if="frontmatter.value?.layout && !['home', 'page'].includes(frontmatter.value.layout)"
+    />
 
     <Layout v-show="!slidesVisible">
       <template v-if="!data.frontmatter.value.isMapMode" #home-features-after

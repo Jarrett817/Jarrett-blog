@@ -4,9 +4,8 @@ import KnowledgeMap from './components/knowledge-map.vue';
 import MindMap from './components/mind-map/index.vue';
 import { EnhanceAppContext, type Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import 'virtual:uno.css';
 import CodeEditor from './components/code-editor/index.vue';
-import CaseComparison from './components/CaseComparison.vue';
+import CaseComparison from './components/case-comparison.vue';
 
 export default <Theme>{
   extends: DefaultTheme,
