@@ -11,7 +11,7 @@
             <h1>王俊然</h1>
           </div>
           <p>
-            基本信息：男 <span class="column-line">|</span>26岁
+            基本信息：男 <span class="column-line">|</span>27岁
             <span class="column-line">|</span>
             本科 <span class="column-line">|</span> 中共党员
           </p>
