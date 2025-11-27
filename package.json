@@ -32,7 +32,7 @@
     "unplugin-vue-components": "^0.25.2",
     "vfonts": "^0.0.3",
     "vite-plugin-monaco-editor": "^1.1.0",
-    "vitepress": "2.0.0-alpha.12"
+    "vitepress": "1.6.4"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
