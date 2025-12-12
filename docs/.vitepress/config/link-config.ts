@@ -32,7 +32,11 @@ const FrontEndSidebar = [
   { text: 'canvas', link: '/front-end/canvas/' },
   { text: '微前端', link: '/front-end/micro-front/' },
   { text: '小程序', link: '/front-end/miniprogram/' },
-  { text: 'AI', link: '/ai/' }
+  { text: 'AI', link: '/ai/' },
+  {
+    text: 'quill',
+    link: '/front-end/quill/'
+  }
 ];
 
 const PackagesSidebar = [

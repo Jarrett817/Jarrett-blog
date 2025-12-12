@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme';
-// import JSlides from './ppt/src/index.vue';
 import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
-import { Maximize } from '@vicons/carbon';
+import { Maximize, PlayOutline } from '@vicons/carbon';
 import { useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
+import SlidesViewer from './slides-viewer.vue';
 
 const { frontmatter } = useData();
 const data = useData();
@@ -77,22 +77,43 @@ const openFullScreenMode = () => {
         ><TimeTree class="time-tree" />
       </template>
 
-      <template #aside-bottom>
-        <!-- <n-button quaternary circle type="info" size="large" @click="slidesVisible = true">
-          <template #icon>
-            <n-icon size="26"><PlayOutline /></n-icon>
-          </template>
-        </n-button> -->
-        <n-button quaternary circle type="info" size="large" @click="openFullScreenMode">
-          <template #icon>
-            <n-icon size="20"><Maximize /></n-icon>
-          </template>
-        </n-button>
-      </template>
       <template #layout-bottom>
+        <div
+          class="fixed right-6 bottom-[100px] flex flex-col gap-3 z-[100] pointer-events-auto md:right-4 md:bottom-20 md:gap-2"
+        >
+          <n-button
+            quaternary
+            circle
+            type="info"
+            size="large"
+            @click="slidesVisible = true"
+            title="播放幻灯片"
+            class="shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg bg-[var(--vp-c-bg-soft)] border border-[var(--vp-c-divider)]"
+          >
+            <template #icon>
+              <n-icon size="20"><PlayOutline /></n-icon>
+            </template>
+          </n-button>
+          <n-button
+            quaternary
+            circle
+            type="info"
+            size="large"
+            @click="openFullScreenMode"
+            title="全屏模式"
+            class="shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg bg-[var(--vp-c-bg-soft)] border border-[var(--vp-c-divider)]"
+          >
+            <template #icon>
+              <n-icon size="20"><Maximize /></n-icon>
+            </template>
+          </n-button>
+        </div>
         <n-back-top />
       </template>
     </Layout>
+
+    <!-- 幻灯片播放器 -->
+    <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" />
   </n-config-provider>
 </template>
 

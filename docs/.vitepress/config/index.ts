@@ -20,6 +20,7 @@ export default defineConfig({
       lazyLoading: true
     }
   },
+  metaChunk: true,
   head: [
     [
       'meta',
@@ -33,6 +34,9 @@ export default defineConfig({
   ],
   themeConfig,
   vite: {
+    optimizeDeps: {
+      exclude: ['naive-ui', 'highlight.js', 'reveal.js']
+    },
     ssr: {
       noExternal: ['naive-ui', 'monaco-editor']
     },
