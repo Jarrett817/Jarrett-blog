@@ -1,4 +1,4 @@
-# 基于 Quill.js 2 原理浅谈富文本编辑器设计思想
+## 基于 Quill.js 看富文本编辑器设计思想
 
 ---
 
@@ -10,16 +10,25 @@
 
 ---
 
-### 1. 符合直觉的树形结构
-
 **思考：如何表示富文本内容？**
+
+- 符合直觉的树形结构 <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```json
 // 我们可能想到的结构
 {
+  "id": "132123123",
   "type": "paragraph",
   "content": "Hello World",
-  "format": { "bold": true }
+  "format": { "bold": true },
+  "children": [
+    {
+      "id": "132123123",
+      "type": "paragraph",
+      "content": "Hello World",
+      "format": { "bold": true }
+    }
+  ]
 }
 ```
 
@@ -54,16 +63,11 @@
 }
 ```
 
-**为什么用树形？** <!-- .element: class="fragment" data-fragment-index="1" -->
-易于序列化、版本控制、协同编辑 <!-- .element: class="fragment" data-fragment-index="2" -->
-
 ---
-
-### 2. 模块化、可插拔
 
 **思考：如何设计架构？**
 
-- 插件化，按需加载
+- 模块化、可插拔 <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```ts
 // 可能的设计
@@ -99,16 +103,15 @@ editor.config.menus = ['bold', 'italic', 'image'];
 ```
 
 **为什么模块化？** <!-- .element: class="fragment" data-fragment-index="1" -->
+
 体积可控、功能灵活、易于扩展 <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ---
 
-### 3. 一致性
-
 **思考：如何保证行为一致？**
 
-- Web 端：浏览器差异
-- 跨端：不同宿主环境（Web、移动端、桌面端）渲染差异
+- Web 端：浏览器差异 <!-- .element: class="fragment" data-fragment-index="1" -->
+- 跨端：不同宿主环境（Web、移动端、桌面端）渲染差异 <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ```ts
 // 可能的设计
@@ -192,6 +195,8 @@ const delta = editor.getContents(); // 获取 Delta
 
 ---
 
+### 基本与我们的设想一致 😀
+
 ---
 
 ### quill 是什么？
@@ -213,6 +218,8 @@ const quill = new Quill('#editor', {
 
 ## 一、概述
 
+---
+
 ### 核心设计理念
 
 - **数据驱动**：Delta 数据模型
@@ -221,15 +228,13 @@ const quill = new Quill('#editor', {
 
 ---
 
-## 架构概述
-
 ![](./images/quill-detail.jpeg)
 
 ---
 
 ## 二、Delta 数据模型
 
-### 核心概念
+---
 
 **Delta = 极为紧凑的 JSON 数据结构**
 
@@ -245,7 +250,7 @@ const quill = new Quill('#editor', {
 
 ---
 
-## Delta 描述富文本
+### Delta 描述富文本
 
 ```json
 {
@@ -261,7 +266,7 @@ const quill = new Quill('#editor', {
 
 ---
 
-## Delta 的三种操作类型
+### Delta 的三种操作类型
 
 | 操作       | 说明         | 示例                                              |
 | ---------- | ------------ | ------------------------------------------------- |
@@ -273,42 +278,58 @@ const quill = new Quill('#editor', {
 
 ---
 
-## Delta 格式与操作变换的精妙配合
+### Delta 格式与操作变换的精妙配合
 
 Delta 记录的是`操作日志`而非`快照`
 
 ```javascript
-// 插入文本“hello”并设置加粗
+// 插入文本"hello"并设置加粗
 { "ops": [{ "insert": "hello", "attributes": { "bold": true } }] }
 // 删除3个字符
 { "ops": [{ "delete": 3 }] }
-// 保留5个字符（无变更），再插入“world”
+// 保留5个字符（无变更），再插入"world"
 { "ops": [{ "retain": 5 }, { "insert": "world" }] }
 ```
 
-- 极高效的存储，100 次编辑日志远远小于 100 份数据/文档快照（快照型 TinyMCE、UEditor；操作日志型 Quill、Draft；状态驱动型 Tiptap、Slate） <!-- .element: class="fragment" data-fragment-index="1" -->
-- 极低计算成本，反向 Delta，而非整个数据快照的重新加载 <!-- .element: class="fragment" data-fragment-index="2" -->
-- 数据不可变，每一步操作都是增量，天然对协同编辑友好 <!-- .element: class="fragment" data-fragment-index="3" -->
+- 极高效的存储，100 次编辑日志远远小于 100 份数据/文档快照 <!-- .element: class="fragment" data-fragment-index="2" -->
+- 极低计算成本，反向 Delta，而非整个数据快照的重新加载 <!-- .element: class="fragment" data-fragment-index="3" -->
+- 数据不可变，每一步操作都是增量，天然对协同编辑友好 <!-- .element: class="fragment" data-fragment-index="4" -->
+
+---
+
+**对比其他编辑器：**
+
+- Quill/Draft：操作日志型（Delta/ContentState），存储高效 <!-- .element: class="fragment" data-fragment-index="2" -->
+- Slate/TipTap：状态驱动型（树形结构），类型安全 <!-- .element: class="fragment" data-fragment-index="3" -->
+- TinyMCE/UEditor：快照型（HTML），简单但存储成本高 <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
 ## 三、Parchment 文档模型
 
-### 架构思想
-
-- **与 DOM 平行的抽象树**
-- **Blot 类型系统**（类似 DOM Node）
-- **跨浏览器一致性**
-
 ---
 
-## Blot 类型层次
+### Blot 的层次结构
 
 ![](./images/parchment.jpeg)
 
 ---
 
-## Blot 生命周期
+### 架构思想
+
+- 与 DOM 平行的抽象树 <!-- .element: class="fragment" data-fragment-index="1" -->
+- Blot 类型系统（类似 DOM Node）<!-- .element: class="fragment" data-fragment-index="2" -->
+- 跨浏览器一致性 <!-- .element: class="fragment" data-fragment-index="3" -->
+
+**对比其他编辑器：**<!-- .element: class="fragment" data-fragment-index="4" -->
+
+- Quill：Parchment/Blot 抽象层 <!-- .element: class="fragment" data-fragment-index="5" -->
+- ProseMirror/TipTap：Schema + Node 类型系统 <!-- .element: class="fragment" data-fragment-index="6" -->
+- Slate：Node + Element 树形结构 <!-- .element: class="fragment" data-fragment-index="7" -->
+
+---
+
+### Blot 生命周期
 
 ```javascript
 class CustomBlot extends Parchment.Inline {
@@ -333,7 +354,7 @@ class CustomBlot extends Parchment.Inline {
 
 ---
 
-## 关键 Blot 类型
+### 关键 Blot 类型
 
 #### ScrollBlot（文档根）
 
@@ -347,7 +368,7 @@ class CustomBlot extends Parchment.Inline {
 
 ---
 
-## 关键 Blot 类型（续）
+## 关键 Blot 类型
 
 #### InlineBlot（内联格式）
 
@@ -361,7 +382,7 @@ class CustomBlot extends Parchment.Inline {
 
 ---
 
-## Parchment 的优化机制
+### Parchment 的优化机制
 
 **节点合并**
 
@@ -373,14 +394,11 @@ class CustomBlot extends Parchment.Inline {
 <p><strong>HelloWorld</strong></p>
 ```
 
-**格式规范化**
-
-- `<b>` → `<strong>`
-- `<i>` → `<em>`
-
 ---
 
 ## 四、实现原理
+
+---
 
 ### 编辑流程
 
@@ -398,7 +416,7 @@ Delta → Blot 操作 → 计算更新范围 → 最小化 DOM 更新 → 优化
 
 ---
 
-## MutationObserver 机制
+### MutationObserver 机制
 
 ```javascript
 // 监听 DOM 变化
@@ -412,9 +430,15 @@ observer.observe(root, {
 DOM 变化 → 计算 Delta → 更新内部状态
 ```
 
+**对比其他编辑器：**<!-- .element: class="fragment" data-fragment-index="1" -->
+
+- Quill：MutationObserver 监听 DOM → 计算 Delta <!-- .element: class="fragment" data-fragment-index="2" -->
+- Slate：React 状态驱动 → 统一 DOM 操作 <!-- .element: class="fragment" data-fragment-index="3" -->
+- ProseMirror：Transaction 系统 → 状态更新 → 视图渲染 <!-- .element: class="fragment" data-fragment-index="4" -->
+
 ---
 
-## 撤销/重做实现
+### 撤销/重做实现
 
 ```javascript
 class History {
@@ -431,11 +455,21 @@ class History {
 }
 ```
 
-**原理**：基于 Delta 的不可变性，保存操作历史
+基于 Delta 的不可变性，保存操作历史<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+**对比其他编辑器：**<!-- .element: class="fragment" data-fragment-index="1" -->
+
+- Quill/Draft：操作反转（invert），存储操作序列<!-- .element: class="fragment" data-fragment-index="2" -->
+- Slate：状态快照栈，存储完整状态<!-- .element: class="fragment" data-fragment-index="3" -->
+- ProseMirror：Transaction 历史，支持分支历史<!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
 ## 五、定制逻辑
+
+---
 
 ### 自定义 Blot 示例
 
@@ -464,16 +498,16 @@ Parchment.register(ImageBlot);
 
 ---
 
-## 自定义 Blot 关键步骤
+### 自定义 Blot 关键步骤
 
 1. 继承对应的 Blot 基类 <!-- .element: class="fragment" data-fragment-index="1" -->
-2. 定义 `blotName` 和 `tagName` <!-- .element: class="fragment" data-fragment-index="2" -->
-3. 实现 `create`、`value` <!-- .element: class="fragment" data-fragment-index="3" -->
+2. 定义 blotName 和 tagName <!-- .element: class="fragment" data-fragment-index="2" -->
+3. 实现 create、value <!-- .element: class="fragment" data-fragment-index="3" -->
 4. 注册 Blot <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
-## 自定义工具栏
+### 自定义工具栏
 
 ```javascript
 // 方式1：配置工具栏容器和处理器
@@ -512,7 +546,7 @@ const quill = new Quill('#editor', {
 
 ---
 
-## 自定义模块
+### 自定义模块
 
 ```javascript
 class CustomModule {
@@ -534,7 +568,7 @@ const quill = new Quill('#editor', {
 
 ---
 
-## 自定义快捷键
+### 自定义快捷键
 
 ```javascript
 const Keyboard = Quill.import('modules/keyboard');
@@ -550,7 +584,7 @@ Keyboard.addBinding({
 
 ---
 
-## 自定义粘贴处理
+### 自定义粘贴处理
 
 ```javascript
 class CustomClipboard extends Clipboard {
@@ -569,6 +603,8 @@ Quill.register('modules/clipboard', CustomClipboard, true);
 
 ## 六、最佳实践
 
+---
+
 ### 数据结构设计
 
 ✅ **优先使用 Delta**
@@ -585,27 +621,39 @@ Quill.register('modules/clipboard', CustomClipboard, true);
 
 ## 七、总结
 
-### 核心优势
+---
 
-1. **数据驱动**：Delta 作为单一数据源
-2. **抽象层**：Parchment 提供跨浏览器一致性
-3. **模块化**：易于扩展和定制
-4. **性能优化**：最小化 DOM 操作
+### 富文本编辑器的共性设计
 
 ---
 
-## 关键要点
+**1. 数据模型抽象**<!-- .element: class="fragment" data-fragment-index="1" -->
 
-- **Delta**：不可变的操作序列，支持协同编辑
-- **Parchment**：与 DOM 平行的抽象树，提供类型系统
-- **双向同步**：MutationObserver 实现 DOM ↔ Delta 同步
-- **扩展性**：通过 Blot、Module、Theme 实现定制
+- 统一的数据表示（Delta/Node/Schema），与 DOM 解耦 <!-- .element: class="fragment" data-fragment-index="2" -->
+- 不可变数据结构，支持时间旅行和协同编辑 <!-- .element: class="fragment" data-fragment-index="3" -->
+
+**2. 抽象层设计**<!-- .element: class="fragment" data-fragment-index="4" -->
+
+- 文档模型抽象（Parchment/ProseMirror/Slate），屏蔽浏览器差异 <!-- .element: class="fragment" data-fragment-index="5" -->
+- 类型系统（Blot/Node/Element），保证结构一致性<!-- .element: class="fragment" data-fragment-index="6" -->
+
+**3. 双向同步机制**<!-- .element: class="fragment" data-fragment-index="7" -->
+
+- 用户输入 → 数据模型 → DOM 渲染 <!-- .element: class="fragment" data-fragment-index="8" -->
+- DOM 变化 → 数据模型 → 状态更新 <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
-## 应用场景
+**4. 模块化架构**<!-- .element: class="fragment" data-fragment-index="10" -->
 
-- 富文本编辑器
-- 协同编辑系统
-- 内容管理系统
-- 在线文档编辑
+- 插件/扩展系统，按需加载功能 <!-- .element: class="fragment" data-fragment-index="11" -->
+- 命令/操作抽象，统一行为接口 <!-- .element: class="fragment" data-fragment-index="12" -->
+
+**5. 性能优化**<!-- .element: class="fragment" data-fragment-index="13" -->
+
+- 最小化 DOM 操作，批量更新 <!-- .element: class="fragment" data-fragment-index="14" -->
+- 虚拟化渲染，处理大文档 <!-- .element: class="fragment" data-fragment-index="15" -->
+
+---
+
+谢谢观看 🙂

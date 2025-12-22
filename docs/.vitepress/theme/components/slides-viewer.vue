@@ -27,28 +27,28 @@ const currentTheme = ref('black');
 const markdownContent = ref('');
 let revealInstance: Reveal.Api | null = null;
 
-// 主题 CSS 模块映射（按字母顺序）
+// 主题 CSS 模块映射（使用 ?url 后缀获取文件 URL）
 const themeCSSModules = {
-  beige: () => import('reveal.js/dist/theme/beige.css' as any),
-  black: () => import('reveal.js/dist/theme/black.css' as any),
-  'black-contrast': () => import('reveal.js/dist/theme/black-contrast.css' as any),
-  blood: () => import('reveal.js/dist/theme/blood.css' as any),
-  dracula: () => import('reveal.js/dist/theme/dracula.css' as any),
-  league: () => import('reveal.js/dist/theme/league.css' as any),
-  moon: () => import('reveal.js/dist/theme/moon.css' as any),
-  night: () => import('reveal.js/dist/theme/night.css' as any),
-  serif: () => import('reveal.js/dist/theme/serif.css' as any),
-  simple: () => import('reveal.js/dist/theme/simple.css' as any),
-  sky: () => import('reveal.js/dist/theme/sky.css' as any),
-  solarized: () => import('reveal.js/dist/theme/solarized.css' as any),
-  white: () => import('reveal.js/dist/theme/white.css' as any),
-  'white-contrast': () => import('reveal.js/dist/theme/white-contrast.css' as any),
+  beige: () => import('reveal.js/dist/theme/beige.css?url' as any),
+  black: () => import('reveal.js/dist/theme/black.css?url' as any),
+  'black-contrast': () => import('reveal.js/dist/theme/black-contrast.css?url' as any),
+  blood: () => import('reveal.js/dist/theme/blood.css?url' as any),
+  dracula: () => import('reveal.js/dist/theme/dracula.css?url' as any),
+  league: () => import('reveal.js/dist/theme/league.css?url' as any),
+  moon: () => import('reveal.js/dist/theme/moon.css?url' as any),
+  night: () => import('reveal.js/dist/theme/night.css?url' as any),
+  serif: () => import('reveal.js/dist/theme/serif.css?url' as any),
+  simple: () => import('reveal.js/dist/theme/simple.css?url' as any),
+  sky: () => import('reveal.js/dist/theme/sky.css?url' as any),
+  solarized: () => import('reveal.js/dist/theme/solarized.css?url' as any),
+  white: () => import('reveal.js/dist/theme/white.css?url' as any),
+  'white-contrast': () => import('reveal.js/dist/theme/white-contrast.css?url' as any),
   'white-contrast-compact-verbatim-headers': () =>
-    import('reveal.js/dist/theme/white_contrast_compact_verbatim_headers.css' as any)
+    import('reveal.js/dist/theme/white_contrast_compact_verbatim_headers.css?url' as any)
 };
 
-// 当前加载的主题 CSS 模块
-let currentThemeModule: any = null;
+// 当前加载的主题 link 元素
+let currentThemeLink: HTMLLinkElement | null = null;
 
 // Reveal.js 主题列表（与 themeCSSModules 保持一致）
 const themes = [
@@ -82,12 +82,32 @@ const loadTheme = async (themeName: string) => {
     revealRef.value.classList.add(`theme-${themeName}`);
   }
 
+  // 移除之前加载的主题 CSS link 标签
+  if (currentThemeLink && currentThemeLink.parentNode) {
+    currentThemeLink.parentNode.removeChild(currentThemeLink);
+    currentThemeLink = null;
+  }
+
   // 动态加载对应的主题 CSS
   const themeLoader = themeCSSModules[themeName as keyof typeof themeCSSModules];
   if (themeLoader) {
     try {
-      // 加载新主题 CSS（Vite 会自动处理 CSS 的加载和卸载）
-      currentThemeModule = await themeLoader();
+      // 使用 ?url 后缀获取 CSS 文件的 URL
+      // Vite 的 ?url 返回格式: { default: string }
+      const module = await themeLoader();
+      const cssUrl = (module as any).default || (module as any).url || module;
+
+      if (cssUrl && typeof cssUrl === 'string') {
+        // 创建新的 link 标签
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = cssUrl;
+        link.id = `reveal-theme-${themeName}`;
+
+        // 添加到 head
+        document.head.appendChild(link);
+        currentThemeLink = link;
+      }
     } catch (error) {
       console.error(`Failed to load theme ${themeName}:`, error);
     }
@@ -179,6 +199,14 @@ const init = async () => {
   }
 };
 
+// 清理主题 CSS
+const cleanupTheme = () => {
+  if (currentThemeLink && currentThemeLink.parentNode) {
+    currentThemeLink.parentNode.removeChild(currentThemeLink);
+    currentThemeLink = null;
+  }
+};
+
 // 关闭幻灯片
 const closeSlides = () => {
   if (revealInstance) {
@@ -189,6 +217,8 @@ const closeSlides = () => {
     }
     revealInstance = null;
   }
+  // 清理主题 CSS
+  cleanupTheme();
   emit('close');
 };
 
