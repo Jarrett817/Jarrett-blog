@@ -1,4 +1,4 @@
-import{_ as d,a as g,b as y}from"./chunks/Zod.vue_vue_type_script_setup_true_lang.13j7qGr-.js";/* empty css                                                                       */import{$ as F,E as c,H as o,ay as h,a1 as a,Q as i,f as t}from"./chunks/framework.Dg8G6gHk.js";import"./chunks/theme.DYljdQcp.js";const S=JSON.parse('{"title":"10 分钟速通 TS","description":"","frontmatter":{},"headers":[],"relativePath":"plan/how-to-make-ts-useful/index.md","filePath":"plan/how-to-make-ts-useful/index.md","lastUpdated":1766486753000}'),C={name:"plan/how-to-make-ts-useful/index.md"},f=Object.assign(C,{setup(A){const k=`
+import{_ as d,a as g,b as y}from"./chunks/Zod.vue_vue_type_script_setup_true_lang.13j7qGr-.js";/* empty css                                                                       */import{$ as F,E as c,H as o,ay as h,a1 as a,Q as i,f as t}from"./chunks/framework.Dg8G6gHk.js";import"./chunks/theme.DYljdQcp.js";const S=JSON.parse('{"title":"10 分钟速通 TS","description":"","frontmatter":{},"headers":[],"relativePath":"plan/how-to-make-ts-useful/index.md","filePath":"plan/how-to-make-ts-useful/index.md","lastUpdated":1766486753000}'),C={name:"plan/how-to-make-ts-useful/index.md"},v=Object.assign(C,{setup(A){const k=`
 type MyType<T> = T extends string ? T : '1';
 const a: MyType<string> = 'test';
 const b: MyType<number> = 1
@@ -152,7 +152,7 @@ const person2: Employer = {
 const person3: SomeOne = {
 
 }
-`,r=`
+`,E=`
 // 能生成真实对象并操作
 enum Status{
  SUCCESS,
@@ -179,7 +179,7 @@ Status.SUCCESS = 111;
 ConstStatus.SUCCESS = 111;
 _ConstStatus.SUCCESS = 111;
 Status[0] === 'SUCCESS'
-`,E=`
+`,r=`
 /* service层定义接口及入参出参类型 */
 
 /*--------------- /services/base/types.ts ----------------*/
@@ -270,4 +270,4 @@ getDetail({ id: 123 }).then(res => {
 })
 /*---------------------------------------------------------*/
 
-`;return(u,s)=>{const n=F("CodeEditor");return o(),c("div",null,[s[0]||(s[0]=h("",5)),a(n,{value:e}),s[1]||(s[1]=i("h3",{id:"条件类型",tabindex:"-1"},[t("条件类型 "),i("a",{class:"header-anchor",href:"#条件类型","aria-label":'Permalink to "条件类型"'},"​")],-1)),s[2]||(s[2]=i("p",null,"extends 既可以用于继承，也可用于类型约束",-1)),a(n,{value:k}),s[3]||(s[3]=i("h3",{id:"namespace",tabindex:"-1"},[t("namespace "),i("a",{class:"header-anchor",href:"#namespace","aria-label":'Permalink to "namespace"'},"​")],-1)),s[4]||(s[4]=i("p",null,"用于防止类型重命名冲突，比如微信小程序提供了全局类型的 namespace",-1)),a(n,{value:l}),s[5]||(s[5]=i("h3",{id:"泛型",tabindex:"-1"},[t("泛型 "),i("a",{class:"header-anchor",href:"#泛型","aria-label":'Permalink to "泛型"'},"​")],-1)),s[6]||(s[6]=i("p",null,"合理使用泛型是 ts 的精髓，能够更好的封装通用方法",-1)),s[7]||(s[7]=i("p",null,"学会泛型能够轻松阅读各类社区库的类型声明，良好的变量命名、类型声明很多时候可以替代文档",-1)),a(n,{value:p}),s[8]||(s[8]=i("h3",{id:"枚举-常量枚举",tabindex:"-1"},[t("枚举 & 常量枚举 "),i("a",{class:"header-anchor",href:"#枚举-常量枚举","aria-label":'Permalink to "枚举 & 常量枚举"'},"​")],-1)),s[9]||(s[9]=i("p",null,[t("业务代码中常有关于枚举的判断，比如"),i("code",null,"data.status===1"),t("，这可能分散在各个项目文件，并且缺失语义")],-1)),s[10]||(s[10]=i("div",{class:"danger custom-block"},[i("p",{class:"custom-block-title"},"建议"),i("p",null,"如果不想在业务变动时一处处地逐个修改枚举判断，建议所有使用常量或枚举而不是硬编码")],-1)),a(n,{value:r}),s[11]||(s[11]=h("",35)),a(d),a(n,{value:E}),s[12]||(s[12]=h("",7)),a(y),s[13]||(s[13]=h("",1))])}}});export{S as __pageData,f as default};
+`;return(u,s)=>{const n=F("CodeEditor");return o(),c("div",null,[s[0]||(s[0]=h("",5)),a(n,{value:e}),s[1]||(s[1]=i("h3",{id:"条件类型",tabindex:"-1"},[t("条件类型 "),i("a",{class:"header-anchor",href:"#条件类型","aria-label":'Permalink to "条件类型"'},"​")],-1)),s[2]||(s[2]=i("p",null,"extends 既可以用于继承，也可用于类型约束",-1)),a(n,{value:k}),s[3]||(s[3]=i("h3",{id:"namespace",tabindex:"-1"},[t("namespace "),i("a",{class:"header-anchor",href:"#namespace","aria-label":'Permalink to "namespace"'},"​")],-1)),s[4]||(s[4]=i("p",null,"用于防止类型重命名冲突，比如微信小程序提供了全局类型的 namespace",-1)),a(n,{value:l}),s[5]||(s[5]=i("h3",{id:"泛型",tabindex:"-1"},[t("泛型 "),i("a",{class:"header-anchor",href:"#泛型","aria-label":'Permalink to "泛型"'},"​")],-1)),s[6]||(s[6]=i("p",null,"合理使用泛型是 ts 的精髓，能够更好的封装通用方法",-1)),s[7]||(s[7]=i("p",null,"学会泛型能够轻松阅读各类社区库的类型声明，良好的变量命名、类型声明很多时候可以替代文档",-1)),a(n,{value:p}),s[8]||(s[8]=i("h3",{id:"枚举-常量枚举",tabindex:"-1"},[t("枚举 & 常量枚举 "),i("a",{class:"header-anchor",href:"#枚举-常量枚举","aria-label":'Permalink to "枚举 & 常量枚举"'},"​")],-1)),s[9]||(s[9]=i("p",null,[t("业务代码中常有关于枚举的判断，比如"),i("code",null,"data.status===1"),t("，这可能分散在各个项目文件，并且缺失语义")],-1)),s[10]||(s[10]=i("div",{class:"danger custom-block"},[i("p",{class:"custom-block-title"},"建议"),i("p",null,"如果不想在业务变动时一处处地逐个修改枚举判断，建议所有使用常量或枚举而不是硬编码")],-1)),a(n,{value:E}),s[11]||(s[11]=h("",35)),a(d),a(n,{value:r}),s[12]||(s[12]=h("",7)),a(y),s[13]||(s[13]=h("",1))])}}});export{S as __pageData,v as default};
