@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue';
-import Reveal from 'reveal.js';
-import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
-import Highlight from 'reveal.js/plugin/highlight/highlight.esm.js';
+import { nextTick, ref, shallowRef, watch } from 'vue';
 import 'reveal.js/plugin/highlight/zenburn.css';
 import { useRoute } from 'vitepress';
 import { data as markdownData } from '../../data/markdown.data';
@@ -22,10 +19,15 @@ const route = useRoute();
 const containerRef = ref<HTMLElement | null>(null);
 const revealRef = ref<HTMLElement | null>(null);
 const themeContainerRef = ref<HTMLElement | null>(null);
-const themeHovered = ref(false);
 const currentTheme = ref('black');
 const markdownContent = ref('');
-let revealInstance: Reveal.Api | null = null;
+
+// Reveal.js 相关类型和实例（仅在客户端使用）
+// 使用 shallowRef 因为不需要深度响应式，只需要引用
+const revealInstance = shallowRef<any>(null);
+const Reveal = shallowRef<any>(null);
+const Markdown = shallowRef<any>(null);
+const Highlight = shallowRef<any>(null);
 
 // 主题 CSS 模块映射（使用 ?url 后缀获取文件 URL）
 const themeCSSModules = {
@@ -48,7 +50,7 @@ const themeCSSModules = {
 };
 
 // 当前加载的主题 link 元素
-let currentThemeLink: HTMLLinkElement | null = null;
+const currentThemeLink = ref<HTMLLinkElement | null>(null);
 
 // Reveal.js 主题列表（与 themeCSSModules 保持一致）
 const themes = [
@@ -74,6 +76,9 @@ const themes = [
 
 // 切换主题
 const loadTheme = async (themeName: string) => {
+  // 仅在客户端执行
+  if (typeof window === 'undefined') return;
+
   if (revealRef.value) {
     // 移除所有主题类
     const themeClasses = themes.map(t => `theme-${t.value}`);
@@ -83,9 +88,9 @@ const loadTheme = async (themeName: string) => {
   }
 
   // 移除之前加载的主题 CSS link 标签
-  if (currentThemeLink && currentThemeLink.parentNode) {
-    currentThemeLink.parentNode.removeChild(currentThemeLink);
-    currentThemeLink = null;
+  if (currentThemeLink.value && currentThemeLink.value.parentNode) {
+    currentThemeLink.value.parentNode.removeChild(currentThemeLink.value);
+    currentThemeLink.value = null;
   }
 
   // 动态加载对应的主题 CSS
@@ -106,7 +111,7 @@ const loadTheme = async (themeName: string) => {
 
         // 添加到 head
         document.head.appendChild(link);
-        currentThemeLink = link;
+        currentThemeLink.value = link;
       }
     } catch (error) {
       console.error(`Failed to load theme ${themeName}:`, error);
@@ -120,6 +125,8 @@ const loadTheme = async (themeName: string) => {
 
 // 初始化主题
 const initTheme = async () => {
+  // 仅在客户端执行
+  if (typeof window === 'undefined') return;
   const savedTheme = localStorage.getItem('reveal-theme') || 'black';
   await loadTheme(savedTheme);
 };
@@ -138,16 +145,35 @@ const getPageMarkdown = (): string => {
 
 // 初始化 Reveal.js
 const init = async () => {
+  // 仅在客户端执行
+  if (typeof window === 'undefined') return;
   if (!containerRef.value || !revealRef.value) return;
 
-  // 清理之前的实例
-  if (revealInstance) {
+  // 动态导入 reveal.js 及其插件（仅在客户端）
+  if (!Reveal.value) {
     try {
-      revealInstance.destroy();
+      const revealModule = await import('reveal.js');
+      Reveal.value = revealModule.default || revealModule;
+
+      const markdownModule = await import('reveal.js/plugin/markdown/markdown.esm.js');
+      Markdown.value = markdownModule.default || markdownModule;
+
+      const highlightModule = await import('reveal.js/plugin/highlight/highlight.esm.js');
+      Highlight.value = highlightModule.default || highlightModule;
+    } catch (error) {
+      console.error('Failed to load reveal.js:', error);
+      return;
+    }
+  }
+
+  // 清理之前的实例
+  if (revealInstance.value) {
+    try {
+      revealInstance.value.destroy();
     } catch (e) {
       // 忽略销毁错误
     }
-    revealInstance = null;
+    revealInstance.value = null;
   }
 
   // 从构建时加载的数据中获取原始 Markdown 内容
@@ -169,8 +195,8 @@ const init = async () => {
   await nextTick();
 
   // 初始化 Reveal.js - 使用正确的 API
-  revealInstance = new Reveal(revealRef.value, {
-    plugins: [Markdown, Highlight],
+  revealInstance.value = new Reveal.value(revealRef.value, {
+    plugins: [Markdown.value, Highlight.value],
     hash: true,
     controls: true,
     progress: true,
@@ -189,7 +215,7 @@ const init = async () => {
   });
 
   try {
-    await revealInstance.initialize();
+    await revealInstance.value.initialize();
     // 初始化后再次确保主题正确
     if (revealRef.value) {
       loadTheme(currentTheme.value);
@@ -201,21 +227,21 @@ const init = async () => {
 
 // 清理主题 CSS
 const cleanupTheme = () => {
-  if (currentThemeLink && currentThemeLink.parentNode) {
-    currentThemeLink.parentNode.removeChild(currentThemeLink);
-    currentThemeLink = null;
+  if (currentThemeLink.value && currentThemeLink.value.parentNode) {
+    currentThemeLink.value.parentNode.removeChild(currentThemeLink.value);
+    currentThemeLink.value = null;
   }
 };
 
 // 关闭幻灯片
 const closeSlides = () => {
-  if (revealInstance) {
+  if (revealInstance.value) {
     try {
-      revealInstance.destroy();
+      revealInstance.value.destroy();
     } catch (e) {
       // 忽略销毁错误
     }
-    revealInstance = null;
+    revealInstance.value = null;
   }
   // 清理主题 CSS
   cleanupTheme();
@@ -278,6 +304,8 @@ watch(
 
 <style lang="scss">
 // Reveal.js 基础样式
+// 使用条件导入，仅在客户端加载
+// 注意：CSS 导入在 SSR 时通常不会执行，但为了安全，可以在这里添加条件
 @import 'reveal.js/dist/reveal.css';
 
 // Reveal.js 主题样式
