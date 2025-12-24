@@ -6,7 +6,7 @@ import { Maximize, PlayOutline } from '@vicons/carbon';
 import { useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
-import SlidesViewer from './slides-viewer.vue';
+import SlidesViewer from './slides-viewer/index.vue';
 
 const { frontmatter } = useData();
 const data = useData();
