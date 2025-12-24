@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, ref, shallowRef, watch } from 'vue';
+import 'reveal.js/dist/reveal.css';
 import 'reveal.js/plugin/highlight/zenburn.css';
 import { useRoute } from 'vitepress';
 import { data as markdownData } from '../../data/markdown.data';
@@ -301,17 +302,6 @@ watch(
     </div>
   </Teleport>
 </template>
-
-<style lang="scss">
-// Reveal.js 基础样式
-// 使用条件导入，仅在客户端加载
-// 注意：CSS 导入在 SSR 时通常不会执行，但为了安全，可以在这里添加条件
-@import 'reveal.js/dist/reveal.css';
-
-// Reveal.js 主题样式
-// 主题 CSS 通过 JavaScript 动态 import 导入，实现按需加载
-// 这里只定义主题类名，用于 JavaScript 切换
-</style>
 
 <style lang="scss" scoped>
 /* Reveal.js 容器样式 */

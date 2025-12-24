@@ -74,7 +74,7 @@ defineProps({
   gap: 0.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
-  ont-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .case-icon {
