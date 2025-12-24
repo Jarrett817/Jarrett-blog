@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme';
-import { ref, onMounted, defineAsyncComponent } from 'vue';
+import { ref, onMounted } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { Maximize, PlayOutline } from '@vicons/carbon';
-import { useData } from 'vitepress';
+import { defineClientComponent, useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
 
 // 懒加载SlidesViewer组件
-const SlidesViewer = defineAsyncComponent(() => import('./slides-viewer.vue'));
+const SlidesViewer = defineClientComponent(() => import('./slides-viewer.vue'));
 
 const { frontmatter } = useData();
 const data = useData();
