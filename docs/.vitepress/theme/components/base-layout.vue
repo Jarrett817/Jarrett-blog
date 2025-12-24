@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineAsyncComponent } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
 import { Maximize, PlayOutline } from '@vicons/carbon';
 import { useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
-// import SlidesViewer from './slides-viewer/index.vue';
+
+// 懒加载SlidesViewer组件
+const SlidesViewer = defineAsyncComponent(() => import('./slides-viewer.vue'));
 
 const { frontmatter } = useData();
 const data = useData();
@@ -113,7 +115,9 @@ const openFullScreenMode = () => {
     </Layout>
 
     <!-- 幻灯片播放器 -->
-    <!-- <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" /> -->
+    <ClientOnly>
+      <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" />
+    </ClientOnly>
   </n-config-provider>
 </template>
 

@@ -3,8 +3,8 @@ import { nextTick, ref, shallowRef, watch } from 'vue';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/plugin/highlight/zenburn.css';
 import { useRoute } from 'vitepress';
-import { data as markdownData } from '../../../data/markdown.data';
-import { base } from '../../../shared/index';
+import { data as markdownData } from '../../data/markdown.data';
+import { base } from '../../shared/index';
 import { Close } from '@vicons/carbon';
 
 interface Props {
