@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { nextTick, ref, shallowRef, watch } from 'vue';
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/plugin/highlight/zenburn.css';
 import { useRoute } from 'vitepress';
 import { data as markdownData } from '../../data/markdown.data';
 import { base } from '../../shared/index';
@@ -302,6 +300,11 @@ watch(
     </div>
   </Teleport>
 </template>
+
+<style lang="scss">
+@import 'reveal.js/dist/reveal.css';
+@import 'reveal.js/plugin/highlight/zenburn.css';
+</style>
 
 <style lang="scss" scoped>
 /* Reveal.js 容器样式 */
