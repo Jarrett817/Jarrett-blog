@@ -6,7 +6,7 @@ import { Maximize, PlayOutline } from '@vicons/carbon';
 import { useData } from 'vitepress';
 import Plum from './Plum/index.vue';
 import TimeTree from './TimeTree/index.vue';
-import SlidesViewer from './slides-viewer/index.vue';
+// import SlidesViewer from './slides-viewer/index.vue';
 
 const { frontmatter } = useData();
 const data = useData();
@@ -113,7 +113,7 @@ const openFullScreenMode = () => {
     </Layout>
 
     <!-- 幻灯片播放器 -->
-    <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" />
+    <!-- <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" /> -->
   </n-config-provider>
 </template>
 
