@@ -115,7 +115,9 @@ const openFullScreenMode = () => {
     </Layout>
 
     <!-- 幻灯片播放器 -->
-    <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" />
+    <ClientOnly>
+      <SlidesViewer :visible="slidesVisible" @close="slidesVisible = false" />
+    </ClientOnly>
   </n-config-provider>
 </template>
 
