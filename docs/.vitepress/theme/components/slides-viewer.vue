@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { nextTick, ref, shallowRef, watch } from 'vue';
-import { useRoute } from 'vitepress';
+import { useRoute, withBase } from 'vitepress';
 import { data as markdownData } from '../../data/markdown.data';
 import { base } from '../../shared/index';
 import { Close } from '@vicons/carbon';
+import type Revealjs from 'reveal.js';
+import { type Api } from 'reveal.js';
+import type Markdownjs from 'reveal.js/plugin/markdown/markdown.esm.js';
+import type Highlightjs from 'reveal.js/plugin/highlight/highlight.esm.js';
 
 interface Props {
   visible: boolean;
@@ -23,35 +27,15 @@ const markdownContent = ref('');
 
 // Reveal.js 相关类型和实例（仅在客户端使用）
 // 使用 shallowRef 因为不需要深度响应式，只需要引用
-const revealInstance = shallowRef<any>(null);
-const Reveal = shallowRef<any>(null);
-const Markdown = shallowRef<any>(null);
-const Highlight = shallowRef<any>(null);
-
-// 主题 CSS 模块映射（直接导入CSS模块）
-const themeCSSModules: Record<string, () => Promise<any>> = {
-  beige: () => import('reveal.js/dist/theme/beige.css' as any),
-  black: () => import('reveal.js/dist/theme/black.css' as any),
-  'black-contrast': () => import('reveal.js/dist/theme/black-contrast.css' as any),
-  blood: () => import('reveal.js/dist/theme/blood.css' as any),
-  dracula: () => import('reveal.js/dist/theme/dracula.css' as any),
-  league: () => import('reveal.js/dist/theme/league.css' as any),
-  moon: () => import('reveal.js/dist/theme/moon.css' as any),
-  night: () => import('reveal.js/dist/theme/night.css' as any),
-  serif: () => import('reveal.js/dist/theme/serif.css' as any),
-  simple: () => import('reveal.js/dist/theme/simple.css' as any),
-  sky: () => import('reveal.js/dist/theme/sky.css' as any),
-  solarized: () => import('reveal.js/dist/theme/solarized.css' as any),
-  white: () => import('reveal.js/dist/theme/white.css' as any),
-  'white-contrast': () => import('reveal.js/dist/theme/white-contrast.css' as any),
-  'white-contrast-compact-verbatim-headers': () =>
-    import('reveal.js/dist/theme/white_contrast_compact_verbatim_headers.css' as any)
-};
+const revealInstance = shallowRef<Api | null>(null);
+const Reveal = shallowRef<typeof Revealjs | null>(null);
+const Markdown = shallowRef<typeof Markdownjs | null>(null);
+const Highlight = shallowRef<typeof Highlightjs | null>(null);
 
 // 当前加载的主题（CSS模块由Vite自动管理）
 
 // Reveal.js 主题列表（与 themeCSSModules 保持一致）
-const themes = [
+const themes: Array<{ label: string; value: string }> = [
   { label: '米色 (Beige)', value: 'beige' },
   { label: '黑色 (Black)', value: 'black' },
   { label: '黑色高对比 (Black Contrast)', value: 'black-contrast' },
@@ -72,44 +56,19 @@ const themes = [
   }
 ];
 
-// 切换主题
-const loadTheme = async (themeName: string) => {
-  // 仅在客户端执行
-  if (typeof window === 'undefined') return;
-
-  if (revealRef.value) {
-    // 移除所有主题类
-    const themeClasses = themes.map(t => `theme-${t.value}`);
-    revealRef.value.classList.remove(...themeClasses);
-    // 添加新主题类
-    revealRef.value.classList.add(`theme-${themeName}`);
-  }
-
-  // CSS模块由Vite自动管理，不需要手动移除之前的主题
-
-  // 动态加载对应的主题 CSS
-  const themeLoader = themeCSSModules[themeName as keyof typeof themeCSSModules];
-  if (themeLoader) {
-    try {
-      // 直接导入CSS模块，Vite会自动处理CSS注入
-      await themeLoader();
-      console.log(`Theme ${themeName} loaded successfully`);
-    } catch (error) {
-      console.error(`Failed to load theme ${themeName}:`, error);
-    }
-  }
-
+// 切换主题 - 只更新当前主题状态
+const loadTheme = (themeName: string) => {
   // 保存到 localStorage
   localStorage.setItem('reveal-theme', themeName);
   currentTheme.value = themeName;
 };
 
 // 初始化主题
-const initTheme = async () => {
+const initTheme = () => {
   // 仅在客户端执行
   if (typeof window === 'undefined') return;
   const savedTheme = localStorage.getItem('reveal-theme') || 'black';
-  await loadTheme(savedTheme);
+  loadTheme(savedTheme);
 };
 // 从构建时加载的数据中获取当前页面的原始 Markdown
 const getPageMarkdown = (): string => {
@@ -170,14 +129,14 @@ const init = async () => {
   await nextTick();
 
   // 初始化主题（必须在初始化 Reveal.js 之前）
-  await initTheme();
+  initTheme();
 
   // 再次等待，确保主题类已应用
   await nextTick();
 
   // 初始化 Reveal.js - 使用正确的 API
   revealInstance.value = new Reveal.value(revealRef.value, {
-    plugins: [Markdown.value, Highlight.value],
+    plugins: [Markdown.value!, Highlight.value!],
     hash: true,
     controls: true,
     progress: true,
@@ -196,7 +155,7 @@ const init = async () => {
   });
 
   try {
-    await revealInstance.value.initialize();
+    await revealInstance.value?.initialize();
     // 初始化后再次确保主题正确
     if (revealRef.value) {
       loadTheme(currentTheme.value);
@@ -216,6 +175,7 @@ const closeSlides = () => {
     }
     revealInstance.value = null;
   }
+
   emit('close');
 };
 
@@ -234,6 +194,17 @@ watch(
 </script>
 
 <template>
+  <!-- 预加载所有主题的 CSS -->
+  <Teleport to="head">
+    <template v-for="theme in themes" :key="theme.value">
+      <link
+        v-if="currentTheme === theme.value"
+        rel="stylesheet"
+        :href="withBase(`/revealjs-theme/${theme.value}.css`)"
+        :data-reveal-theme="theme.value"
+      />
+    </template>
+  </Teleport>
   <Teleport to="body">
     <div
       v-if="visible"
